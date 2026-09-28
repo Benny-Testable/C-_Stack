@@ -1,0 +1,10 @@
+{
+  "name": "dependency-negative-isolated",
+  "private": true,
+  "version": "0.0.0",
+  "description": "INTENTIONAL NEGATIVE TEST DATA. Isolated outdated packages for dependency-vulnerability metrics. Do not npm install this file as part of the application build.",
+  "dependencies": {
+    "axios": "0.21.1",
+    "lodash": "4.17.20"
+  }
+}

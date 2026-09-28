@@ -2,6 +2,8 @@
 
 **Scholarship-CMGroups-negative-metrics** is a runnable Scholarship Management System named **Scholarship CMGroups**. It is intentionally designed for **negative metric validation** on the Testable platform.
 
+The published branch is [Scholarship-CMGroups-negative](https://github.com/Mohammed-shihaf/C-_Stack/tree/Scholarship-CMGroups-negative).
+
 The application builds and exercises student, scholarship, application, document, admin, and reporting flows. Selected areas are deliberately low quality so static-analysis, coverage, security, and Git metrics have something measurable to report. Do not treat this repository as a production system.
 
 ## Project overview
