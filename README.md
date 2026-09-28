@@ -15,7 +15,7 @@ that metric passes.
 | | |
 |---|---|
 | Backend | C# / .NET 9.0 ASP.NET Core Web API (MVC), EF Core |
-| Frontend | ReactJS (Webpack + Babel) |
+| Frontend | ReactJS (Vite + esbuild) |
 | Architecture | Model-View-Controller, single solution |
 
 ## Structure
