@@ -1,0 +1,42 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+dist/
+build/
+
+# Test and coverage output
+TestResults/
+coverage/
+*.trx
+*.coverage
+coverage.cobertura.xml
+.nyc_output/
+jscpd-report/
+
+# Dependencies
+node_modules/
+
+# Local configuration and secrets. Never commit these: appsettings.*.local.json and .env files are
+# the intended place for connection strings, signing keys, and the bootstrap administrator password.
+appsettings.*.local.json
+appsettings.Local.json
+.env
+.env.*
+!.env.example
+*.user
+*.pfx
+*.p12
+secrets.json
+
+# Editor and OS noise
+.vs/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Vite cache
+.vite/
+*.local
