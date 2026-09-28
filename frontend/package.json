@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "parcel index.html --port 5173",
+    "build": "parcel build index.html --dist-dir dist",
     "typecheck": "tsc -b --noEmit",
     "lint": "oxlint",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "preview": "vite preview"
+    "preview": "parcel serve dist --port 4173"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -28,6 +28,7 @@
     "@vitest/coverage-v8": "^5.0.2",
     "jsdom": "^29.1.1",
     "oxlint": "^1.81.0",
+    "parcel": "^2.16.4",
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
     "vitest": "^5.0.2"
