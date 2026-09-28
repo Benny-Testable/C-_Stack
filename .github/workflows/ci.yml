@@ -1,70 +1,70 @@
-name: CI
+name: 9-Block CI/CD Pipeline
 
 on:
   push:
-    branches: [negative-build-2]
+    branches:
+      - 9-Block-Negative-Cases
+      - 9-Block-Negative-Cases-Rollup
+      - 9-Block-Positive-Cases
+      - main
   pull_request:
-    branches: [negative-build-2]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build-and-metrics:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_DB: westcoastfitness
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports: ["5432:5432"]
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
+  backend-build:
+    name: Backend CI (.NET 8.0)
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
         with:
-          node-version: "22"
+          dotnet-version: '8.0.x'
 
-      - uses: actions/setup-dotnet@v4
+      - name: Restore Dependencies
+        run: dotnet restore backend/NineBlock.csproj
+
+      - name: Build Backend (Release)
+        run: dotnet build backend/NineBlock.csproj --configuration Release --no-restore
+
+  frontend-build:
+    name: Frontend CI (React + Rollup)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          dotnet-version: "8.0.x"
+          node-version: '20'
 
-      # Unlike positive-build-2's workflow, this build is EXPECTED to
-      # report failing steps (see scripts/build-negative-build-2.sh) —
-      # don't let that fail the job, since collecting the evidence is
-      # the point. GitHub-hosted runners have Docker preinstalled, so
-      # the multi-stage Docker image builds run for real here.
-      - name: "Build (negative-build-2, Configuration B: self-contained + Docker)"
-        run: bash scripts/build-negative-build-2.sh
-        continue-on-error: true
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm install --legacy-peer-deps
 
-      - name: Metrics (negative-build-2)
-        run: bash scripts/run-negative-build-2-metrics.sh
-        continue-on-error: true
+      - name: Compile Rollup Production Bundle
+        working-directory: frontend
+        run: npm run build
 
-      - name: E2E smoke test — containerized backend against real Postgres
-        run: |
-          docker run --rm -d --network host \
-            -e ConnectionStrings__FitnessClubDb="Host=localhost;Port=5432;Database=westcoastfitness;Username=postgres;Password=postgres" \
-            -e ASPNETCORE_URLS="http://+:8080" \
-            --name wcf-backend \
-            westcoastfitness-backend:negative-build-2
-          for i in $(seq 1 30); do
-            if curl -sf http://localhost:8080/health; then break; fi
-            sleep 1
-          done
-          curl -sf http://localhost:8080/health
-          curl -sf http://localhost:8080/api/members
-          docker logs wcf-backend
-          docker stop wcf-backend
+  white-box-metrics:
+    name: White-Box Metrics (jscpd Clone Scan)
+    runs-on: ubuntu-latest
+    needs: [backend-build, frontend-build]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          name: negative-build-2-artifacts
-          path: artifacts/negative-build-2/
+          node-version: '20'
+
+      - name: Scan Backend Code Duplication
+        run: npx jscpd backend/Services/ || true
+
+      - name: Scan Frontend Code Duplication
+        run: npx jscpd frontend/src/components/ || true
