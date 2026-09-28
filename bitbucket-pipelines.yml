@@ -1,0 +1,14 @@
+# Scholarship CMGroups — negative metric validation baseline (branch Scholarship-CMGroups-negative-1)
+image: mcr.microsoft.com/dotnet/sdk:8.0
+
+pipelines:
+  default:
+    - step:
+        name: Verify negative baseline
+        script:
+          - apt-get update && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
+          - npm install -g pnpm@9.15.9
+          - bash scripts/verify-negative-baseline.sh
+        artifacts:
+          - reports/**
+          - frontend/coverage/**
