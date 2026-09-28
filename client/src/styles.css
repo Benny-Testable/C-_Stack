@@ -1,0 +1,61 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 2rem;
+}
+
+.grid-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 720px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 140px repeat(3, 1fr);
+  gap: 4px;
+  align-items: stretch;
+}
+
+.grid-row-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.grid-cell {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 110px;
+  background: #fafafa;
+}
+
+.grid-cell-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.grid-col-labels {
+  display: grid;
+  grid-template-columns: 140px repeat(3, 1fr);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.employee-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+}
+
+.employee-department {
+  color: #888;
+}
