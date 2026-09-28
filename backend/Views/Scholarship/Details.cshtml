@@ -1,0 +1,9 @@
+@model Scholarship
+<section class="panel">
+    <h1>@Model.Name</h1>
+    <p>@Model.Sponsor · @Model.AwardAmount.ToString("C") · Minimum GPA @Model.MinimumGpa</p>
+    <p>Category: @Model.Category?.CategoryName</p>
+    @* INTENTIONAL NEGATIVE TEST DATA *@
+    <article>@Html.Raw(Model.Description)</article>
+    <article>@Html.Raw(ViewBag.UnsafeDescription as string)</article>
+</section>

@@ -1,0 +1,27 @@
+@model IEnumerable<Scholarship>
+<section class="panel">
+    <h1>Scholarships</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sponsor</th>
+                <th>Award</th>
+                <th>Minimum GPA</th>
+                <th>Deadline</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><a href="/scholarships/details/@item.ScholarshipId">@item.Name</a></td>
+                <td>@item.Sponsor</td>
+                <td>@item.AwardAmount</td>
+                <td>@item.MinimumGpa</td>
+                <td>@item.Deadline.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
