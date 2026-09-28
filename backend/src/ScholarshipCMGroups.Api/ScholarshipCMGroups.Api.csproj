@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <RootNamespace>ScholarshipCMGroups.Api</RootNamespace>
+    <AssemblyName>ScholarshipCMGroups.Api</AssemblyName>
+    <UserSecretsId>scholarship-cmgroups-api</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SQL Server provider for Entity Framework Core: the application's data access layer. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.31" />
+    <!-- Design-time services required by `dotnet ef migrations` to generate the schema. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.31">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- JWT bearer validation; the Excel security metrics require authenticated endpoints. -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.31" />
+    <!-- PasswordHasher<T> only; avoids taking the full ASP.NET Core Identity stack. -->
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.31" />
+    <!-- Emits the OpenAPI 3.x document used as the contract-conformance evidence artifact. -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+  </ItemGroup>
+
+  <!--
+    Direct pins that remediate vulnerable packages reaching the graph transitively through
+    Microsoft.Data.SqlClient. These exist solely to satisfy the Excel SCA expected value of
+    "0 Critical CVEs; 0 High CVEs in production dependencies" and are the standard NuGet
+    remediation pattern; remove a pin once the parent package ships the fixed version.
+  -->
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.13.2" />
+    <PackageReference Include="System.Formats.Asn1" Version="8.0.2" />
+  </ItemGroup>
+
+</Project>

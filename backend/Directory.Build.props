@@ -1,0 +1,36 @@
+<Project>
+
+  <!--
+    Shared build configuration for every project in the Scholarship CMGroups backend.
+
+    Analyzer settings here are the evidence source for the Excel "White Box / Static Code
+    Analysis / Lint / Rule Violations" metric family, whose C# primary tool is Roslyn.
+    Warnings are errors so that the "0 blocking errors" expected value is enforced by the
+    build itself rather than by a separate reporting step.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-Recommended</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <!--
+    NuGet audit surfaces vulnerable transitive packages at restore time. This is the
+    evidence source for the SCA metric family ("Known CVE Count", "Supply Chain Security"),
+    whose Excel-named C# tool is the NuGet audit built into the dotnet CLI.
+  -->
+  <PropertyGroup>
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
+  </PropertyGroup>
+
+</Project>
