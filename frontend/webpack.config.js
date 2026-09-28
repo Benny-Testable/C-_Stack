@@ -1,41 +1,44 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-export default (env, argv) => ({
-  mode: argv.mode === 'development' ? 'development' : 'production',
-  entry: './src/main.tsx',
+module.exports = {
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/[name].[contenthash].js',
-    clean: true,
+    filename: 'bundle.js',
+    clean: true
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'babel-loader'
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
-      favicon: './public/favicon.svg',
-    }),
+      template: './public/index.html'
+    })
   ],
   devServer: {
-    port: 5173,
+    port: 3000,
     open: false,
-  },
-})
+    hot: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
+    ]
+  }
+};
