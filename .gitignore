@@ -1,34 +1,50 @@
-# .NET
-bin/
-obj/
+# ==========================================
+# 9-Block Project .gitignore (Single Branch)
+# ==========================================
+
+# .NET / C# Build Artifacts
+**/bin/
+**/obj/
+**/publish/
 *.user
-
-# Node
-node_modules/
-dist/
-dist-ssr/
-*.local
-
-# Coverage / test output
-coverage/
-TestResults/
-*.trx
-
-# Benchmark artifacts (regenerated per branch build)
-artifacts/
-
-# Editor / OS
-.vs/
-.vscode/*
-!.vscode/extensions.json
-.idea/
 *.suo
-*.ntvs*
-*.njsproj
+*.userosscache
 *.sln.docstates
-.DS_Store
-Thumbs.db
+.vs/
+*.nupkg
+**/TestResults/
 
-# Env files
-.env
-.env.local
+# Sensitive appsettings overrides
+**/appsettings.Local.json
+**/appsettings.Secrets.json
+
+# Node / React (Vite & esbuild)
+**/node_modules/
+**/dist/
+**/dist-ssr/
+*.local
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Generated Files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+.DS_Store
+
+# IDE and Editor Files
+.idea/
+*.swp
+*~
+
+# Tool Trigger Reports
+**/report/
+
+# Local run logs
+*.log
