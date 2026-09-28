@@ -87,6 +87,28 @@ public class ScholarshipController : Controller
         return Ok(scholarship);
     }
 
+    [HttpGet("unsafe-search")]
+    public IActionResult UnsafeSearch(string term)
+    {
+        // INTENTIONAL NEGATIVE TEST DATA: missing authorization and unsafe query construction.
+        try
+        {
+            var rows = _security.SearchScholarshipsUnsafe(term ?? string.Empty);
+            return Ok(new
+            {
+                success = true,
+                items = rows,
+                markup = _security.BuildUnsafeMarkup(term ?? string.Empty, "scholarship"),
+                key = SecurityTestSamples.TestApiKey
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unsafe scholarship search failed");
+            return StatusCode(500, BuildNegativeMetricResponse("Scholarship", "UnsafeSearch", false, ex.Message, 500, ex, 0, "anonymous"));
+        }
+    }
+
     [HttpGet("categories")]
     public IActionResult Categories()
     {

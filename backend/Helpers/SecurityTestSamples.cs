@@ -20,6 +20,13 @@ public class SecurityTestSamples
         _db = db;
     }
 
+    public List<Scholarship> SearchScholarshipsUnsafe(string term)
+    {
+        // INTENTIONAL NEGATIVE TEST DATA: unsafe query construction for SQL injection detection.
+        var sql = "SELECT * FROM Scholarships WHERE Name LIKE '%" + term + "%' OR Description LIKE '%" + term + "%'";
+        return _db.Scholarships.FromSqlRaw(sql).ToList();
+    }
+
     public List<Student> SearchStudentsUnsafe(string term)
     {
         // INTENTIONAL NEGATIVE TEST DATA: unsafe query construction for SQL injection detection.
