@@ -44,3 +44,8 @@ ehthumbs_vista.db
 
 # Tool Trigger Reports
 **/report/
+
+# Spreadsheets
+*.xlsx
+*.xls
+*.csv

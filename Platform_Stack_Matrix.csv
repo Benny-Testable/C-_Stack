@@ -1,2 +1,0 @@
-Branch,Language,Build Tool & Package Manager,Architecture Style,Description / Role
-P-Block-Negative-Cases,C# / .NET 9.0 & JavaScript (ReactJS),dotnet + NuGet & Vite (esbuild) + npm,MVC (Model-View-Controller),C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with negative and boundary test case validations.

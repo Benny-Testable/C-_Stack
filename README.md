@@ -61,9 +61,6 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   ├── webpack.config.js                  # Webpack Build Configuration
 │   ├── .babelrc                           # Babel React Presets
 │   └── package.json                       # Frontend Dependencies & Scripts
-│
-├── Platform_Stack_Matrix.xlsx             # Formatted Platform Stack Matrix
-├── Platform_Stack_Matrix.csv              # CSV Export
 └── README.md                              # This Documentation
 ```
 
