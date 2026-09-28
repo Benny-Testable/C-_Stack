@@ -30,15 +30,15 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   ├── Controllers/                       # CONTROLLER LAYER (API Endpoints)
 │   │   ├── NineBoxGridController.cs       # Grid matrix distribution & calculations
 │   │   ├── EmployeeController.cs          # Employee profiles & departments
-│   │   └── AssessmentController.cs        # Performance/Potential review submissions
+│   │   └── AssessmentController.cs        # [SAST FIXTURE] Input taint & hardcoded secret
 │   ├── Models/                            # MODEL LAYER (Domain Entities & DTOs)
 │   │   ├── Employee.cs                    # Employee entity
 │   │   ├── Assessment.cs                  # Assessment ratings & coordinates
 │   │   ├── NineBoxQuadrant.cs             # 9 Quadrant definitions & metadata
 │   │   └── ReviewCycle.cs                 # Quarterly/Annual review cycles
 │   ├── Services/                          # BUSINESS LOGIC & CALCULATION LAYER
-│   │   ├── NineBoxMatrixService.cs        # Primary 9-box coordinate calculator
-│   │   └── EmployeeEvaluationService.cs   # [NEGATIVE FIXTURE] Duplicated calculation logic
+│   │   ├── NineBoxMatrixService.cs        # [CC, COG, LINT & DUPLICATION FIXTURES]
+│   │   └── EmployeeEvaluationService.cs   # [DUPLICATION FIXTURE] Cloned calculation logic
 │   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core)
 │   │   └── NineBlockDbContext.cs          # DbContext & quadrant seed data
 │   ├── Program.cs                         # DI Container, CORS & Pipeline setup
@@ -50,9 +50,9 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   ├── src/
 │   │   ├── components/                    # VIEW LAYER (UI Components)
 │   │   │   ├── NineBoxGrid.jsx            # Interactive 9-Box Matrix Grid Board
-│   │   │   └── CalibrationBoard.jsx       # [NEGATIVE FIXTURE] Duplicated UI coordinate logic
+│   │   │   └── CalibrationBoard.jsx       # [DUPLICATION FIXTURE] Duplicated UI coordinate logic
 │   │   ├── views/                         # PAGE VIEWS
-│   │   │   └── Dashboard.jsx              # Calibration Dashboard & Matrix View
+│   │   │   └── Dashboard.jsx              # [FRONTEND CC & LINT FIXTURES]
 │   │   ├── services/
 │   │   │   └── api.js                     # API Client for Backend Communication
 │   │   ├── App.jsx                        # Main Application Root
@@ -68,7 +68,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ## 3. Platform Stack & Branch Specification
 
-This branch (`9-Block-Negative-Cases-Rollup`) implements the full application with **Rollup + npm** bundling while intentionally incorporating **White-Box metric trigger cases** (specifically Code Duplication) based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
+This branch (`9-Block-Negative-Cases-Rollup`) implements the full application with **Rollup + npm** bundling while intentionally incorporating **White-Box metric trigger cases** across 5 distinct testing techniques based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
 
 | Specification | Details |
 | :--- | :--- |
@@ -87,41 +87,52 @@ This branch (`9-Block-Negative-Cases-Rollup`) implements the full application wi
 
 | Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
 | :--- | :--- | :--- | :--- | :--- |
-| `9-Block-Negative-Cases-Rollup` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Rollup + npm | MVC | C# ASP.NET Core Web API + ReactJS with Rollup bundler. 9-Box talent matrix evaluation platform with negative and boundary test case validations. |
+| `9-Block-Negative-Cases-Rollup` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Rollup + npm | MVC | C# ASP.NET Core Web API + ReactJS with Rollup bundler. 9-Box talent matrix evaluation platform with multi-category White-Box negative metric fixtures. |
 
 ---
 
 ## 4. Branch Containing Files for Metric Covering
 
-This branch embeds **real-world White-Box metric targets** directly into the project architecture, mapped against the master taxonomy:
+This branch embeds **real-world White-Box metric targets** mapped directly to `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
 
-| Taxonomy Level | Reference Value from Sheet | Application Files Covering the Metric |
-| :--- | :--- | :--- |
-| **L1 Strategy** | **White Box** | Static code analysis of internal application structures. |
-| **L2 Testing Type** | **Code Quality Auditing** | Structural redundancy and maintainability scoring. |
-| **L3 Technique** | **Code Duplication** | Detects duplicated calculation/rendering algorithms. |
-| **L4 Classification** | **Defect Propagation Risk** | Measures multi-point failure probability. |
-| **L5 Metric** | **Multi-Point Failure Probability / Redundancy Localization** | Pinpoints exact clone clusters across services and components. |
+| # | L2 Testing Type | L3 Technique | L4 Classification | L5 Metric | Application Files Covering the Metric |
+|---|---|---|---|---|---|
+| **1** | **Code Quality Auditing** | **Code Duplication** | Defect Propagation Risk | Multi-Point Failure Probability / Redundancy Localization | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) & [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs)<br>[`frontend/src/components/NineBoxGrid.jsx`](frontend/src/components/NineBoxGrid.jsx) & [`frontend/src/components/CalibrationBoard.jsx`](frontend/src/components/CalibrationBoard.jsx) |
+| **2** | **Structural Analysis** | **Cyclomatic Complexity** | Static Analysis Metric | Execution Path Integrity (CC > 15) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`CalculateComplexTalentRiskScore`)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`calculateClientAttritionRisk`) |
+| **3** | **Readability / Maintainability** | **Cognitive Complexity** | Maintainability Evaluation | Technical Debt Impact (CogC > 15) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`ComputeDepartmentCognitiveCalibration`) |
+| **4** | **Static Code Analysis** | **Lint / Rule Violations** | Unused Variable / Naming Rules | Violation Density / Resource Waste | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`_unusedAuditCacheKey`, `temp_debug_log_str`, dead code)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`UNUSED_CALIBRATION_TOKEN`) |
+| **5** | **Security White-box Testing** | **Static Vulnerabilities (SAST)** | Input Validation / Credentials | Exploit Surface / Sensitive Tracking | [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs) (`ExportDepartmentAssessmentsRaw` CWE-89 & `FallbackAdminAuthSecret`) |
 
-### Concrete Metric Fixtures Embedded in Code:
+---
 
-1. **Backend C# Duplication Fixture**:
-   * Files: [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) and [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs)
-   * **Violation**: Both services share an identical 25-line quadrant resolution pattern (`ResolveNineBoxQuadrant`), producing a duplicate clone detectable by `jscpd` or SonarQube.
-   * **Verification Command**:
-     ```bash
-     npx jscpd backend/Services/
-     ```
+### Concrete Verification Commands for White-Box Tools:
 
-2. **Frontend React Duplication Fixture**:
-   * Files: [`frontend/src/components/NineBoxGrid.jsx`](frontend/src/components/NineBoxGrid.jsx) and [`frontend/src/components/CalibrationBoard.jsx`](frontend/src/components/CalibrationBoard.jsx)
-   * **Violation**: Both components share identical 35-line helper functions (`getQuadrantCoordinates` and `getQuadrantColor`), producing a frontend clone detectable by `jscpd`.
-   * **Verification Command**:
-     ```bash
-     npx jscpd frontend/src/components/
-     ```
+1. **Code Duplication (`jscpd`)**:
+   ```bash
+   npx jscpd backend/Services/
+   npx jscpd frontend/src/components/
+   ```
 
-3. **Boundary & Negative Value Rejection**:
+2. **Cyclomatic Complexity (`Lizard` / `complexipy`)**:
+   ```bash
+   # Scan backend services for CC threshold violations (target CC > 15)
+   python -m lizard backend/Services/
+   python -m lizard frontend/src/views/
+   ```
+
+3. **Cognitive Complexity & Lint (`dotnet format` / `ESLint`)**:
+   ```bash
+   # Check unused variables and naming violations
+   dotnet format whitespace --verify-no-changes
+   npx eslint frontend/src/
+   ```
+
+4. **Security Vulnerabilities (`Semgrep` / `Roslyn Security`)**:
+   ```bash
+   npx semgrep --config=auto backend/Controllers/
+   ```
+
+5. **Boundary & Negative Value Validation**:
    * File: [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs)
    * Rejects out-of-bounds scores ($< 1.0$ or $> 5.0$) with `400 Bad Request`.
 
@@ -155,6 +166,7 @@ dotnet run
   * `POST /api/nineboxgrid/calculate` — Calculate block from performance & potential scores
   * `GET /api/employee` — List employees
   * `POST /api/assessment` — Submit an employee assessment
+  * `GET /api/assessment/export-raw?department=Engineering` — Seeded SAST raw query test
 
 ### B. Running the Frontend (ReactJS with Rollup)
 ```bash
