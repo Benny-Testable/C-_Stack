@@ -2,6 +2,7 @@ trigger:
   branches:
     include:
       - 9-Block-Negative-Cases
+      - 9-Block-Negative-Cases-Rollup
       - 9-Block-Positive-Cases
       - main
 
@@ -10,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  DOTNET_VERSION: '9.0.x'
+  DOTNET_VERSION: '8.0.x'
   NODE_VERSION: '20.x'
 
 stages:
@@ -26,13 +27,13 @@ stages:
               packageType: 'sdk'
               version: $(DOTNET_VERSION)
 
-          - script: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
+          - script: dotnet restore backend/NineBlock.csproj
             displayName: 'Restore NuGet Packages'
 
-          - script: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration $(buildConfiguration) --no-restore
+          - script: dotnet build backend/NineBlock.csproj --configuration $(buildConfiguration) --no-restore
             displayName: 'Build Backend Project'
 
-          - script: dotnet publish backend/NineBlock.Api/NineBlock.Api.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/backend-publish
+          - script: dotnet publish backend/NineBlock.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/backend-publish
             displayName: 'Publish Backend Artifact'
 
           - task: PublishBuildArtifacts@1
@@ -75,7 +76,7 @@ stages:
 
           - script: |
               mkdir -p reports
-              npx jscpd backend/NineBlock.Api/Services/ --reporters console,json --output reports/backend-duplication.json || true
+              npx jscpd backend/Services/ --reporters console,json --output reports/backend-duplication.json || true
               npx jscpd frontend/src/components/ --reporters console,json --output reports/frontend-duplication.json || true
             displayName: 'Scan Duplication Clones (jscpd)'
 
