@@ -11,7 +11,7 @@ This branch is [Scholarship-CMGroups-negative-1](https://github.com/Mohammed-shi
 | Application build (dotnet + Vite) | PASS | PASS |
 | Application tests (xUnit 4/4, Mocha 5/5) | PASS | PASS |
 | Statement Coverage (Coverlet / nyc, ≥ 80%) | FAIL | C# 9.17%, JS 11.53% |
-| Lint / Rule Violations (Roslyn / ESLint, 0 errors) | FAIL | Roslyn 61 errors, ESLint 16 errors + 1 warning |
+| Lint / Rule Violations (Roslyn / ESLint, 0 errors) | FAIL | Roslyn 5 errors, ESLint 12 errors + 1 warning |
 
 Run `bash scripts/verify-negative-baseline.sh` to reproduce every row. It exits 0 when the results match.
 
@@ -38,7 +38,7 @@ All people, emails, and secrets in this repository are fictional. Email addresse
 | Frontend packages | pnpm 9 |
 | Frontend language | JavaScript / JSX |
 | Coverage | Coverlet 6.0.0 (C#), nyc 17.1.0 + Mocha (JS) |
-| Lint / static analysis | Roslyn NetAnalyzers 8.0.0 + SonarAnalyzer.CSharp 9.32 (C#), ESLint 8.47.0 + sonarjs + security (JS) |
+| Lint / static analysis | Roslyn NetAnalyzers 8.0.0 (C#), ESLint 8.47.0 core rules (JS) — primary tools only |
 | Solution | `ScholarshipCMGroups.sln` (SDK pinned by `global.json`) |
 | Architecture | MVC (Model, View, Controller) |
 

@@ -28,9 +28,6 @@
     "@istanbuljs/esm-loader-hook": "0.2.0",
     "@vitejs/plugin-react": "4.3.4",
     "eslint": "8.47.0",
-    "eslint-plugin-react": "7.37.2",
-    "eslint-plugin-security": "3.0.1",
-    "eslint-plugin-sonarjs": "0.25.1",
     "mocha": "10.8.2",
     "nyc": "17.1.0",
     "vite": "6.0.7"

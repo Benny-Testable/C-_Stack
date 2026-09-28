@@ -1,5 +1,5 @@
-// INTENTIONAL NEGATIVE TEST DATA — Lint / Rule Violations (Roslyn: NetAnalyzers 8.0.0 +
-// SonarAnalyzer.CSharp 9.32). Branch: Scholarship-CMGroups-negative-1.
+// INTENTIONAL NEGATIVE TEST DATA — Lint / Rule Violations (Roslyn primary tool:
+// Microsoft.CodeAnalysis.NetAnalyzers 8.0.0). Branch: Scholarship-CMGroups-negative-1.
 // Every violation below is deliberate and catalogued with its exact line and rule id in
 // docs/NEGATIVE_METRICS.md (LINT-CS-xx). The methods still return correct values; only
 // rule compliance is broken. The class is not registered in DI and is not called by the app.

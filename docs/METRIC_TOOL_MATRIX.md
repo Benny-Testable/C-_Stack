@@ -2,7 +2,7 @@
 
 Branch: `Scholarship-CMGroups-negative-1` · Repository: `Mohammed-shihaf/C-_Stack`
 
-Source of truth: `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` (sheet **White Box**) and `Whitebox_Tools_Registry 1.xlsx` (sheets **C# (.NET)** and **JavaScript**). Rows, thresholds and tool names are copied from those workbooks. Only the C# and JavaScript columns apply to this stack. "Row" is the row number in the White Box sheet.
+Source of truth: `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` (sheet **White Box**) and `Whitebox_Tools_Registry 1.xlsx` (sheets **C# (.NET)** and **JavaScript**). Rows, thresholds and tool names are copied from those workbooks. The repository wires **only the primary tools** named for the targeted metrics, at the versions listed in the registry. Only the C# and JavaScript columns apply to this stack. "Row" is the row number in the White Box sheet.
 
 ## Status legend
 
@@ -16,8 +16,8 @@ Source of truth: `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` (sheet **White 
 
 | L3 Technique | White Box rows | C# tool (registry) | JS tool (registry) | Threshold used by the gate | Result on this branch |
 | --- | --- | --- | --- | --- | --- |
-| Statement Coverage | 56–60 | `coverlet` — Coverlet 6.0.0 | `nyc-mocha` — NYC (Istanbul) 17.1.0 + Mocha | ≥ 80% statement coverage (row 60) | C# 9.17% · JS 11.53% → **FAIL** |
-| Lint / Rule Violations | 27–38 | `roslyn-analyzers` NetAnalyzers 8.0.0 + `sonar-cs` SonarAnalyzer.CSharp 9.32.0.97167 | `eslint` ESLint 8.47.0 (+ `eslint-sonarjs` 0.25.1, `eslint-security` 3.0.1) | 0 blocking errors (rows 27, 32) | Roslyn 61 errors · ESLint 16 errors + 1 warning → **FAIL** |
+| Statement Coverage | 56–60 | `coverlet` Coverlet 6.0.0 (primary "Coverlet") | `nyc-mocha` NYC (Istanbul) 17.1.0 + Mocha (primary "nyc + mocha") | ≥ 80% statement coverage (row 60) | C# 9.17% · JS 11.53% → **FAIL** |
+| Lint / Rule Violations | 27–38 | `roslyn-analyzers` Microsoft.CodeAnalysis.NetAnalyzers 8.0.0 (primary "roslyn sast") | `eslint` ESLint 8.47.0 (primary "eslint") | 0 blocking errors (rows 27, 32) | Roslyn 5 errors · ESLint 12 errors + 1 warning → **FAIL** |
 
 ## White Box metrics (C# and JavaScript)
 
@@ -132,7 +132,7 @@ Source of truth: `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` (sheet **White 
 | # | Platform name | Underlying tool | Version | Category | Registry status | On this branch |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `roslyn-analyzers` | Microsoft.CodeAnalysis.NetAnalyzers | 8.0.0 | Linter / Code Style | Active | **Wired** — `Directory.Analyzers.props` (lint gate) |
-| 2 | `sonar-cs` | SonarAnalyzer.CSharp | 9.32.0.97167 | SAST — SonarAnalyzer | Active | **Wired** — `Directory.Analyzers.props` (lint gate) |
+| 2 | `sonar-cs` | SonarAnalyzer.CSharp | 9.32.0.97167 | SAST — SonarAnalyzer | Active | Not used — not a primary tool for the targeted metrics |
 | 3 | `security-code-scan` | SecurityCodeScan.VS2019 | 5.6.7 | SAST — Security | Active | Runs on the platform; no repo configuration needed |
 | 4 | `jscpd-cs` | jscpd | 4.0.5 | Duplication Detection | Active | Runs on the platform; no repo configuration needed |
 | 5 | `lizard` | Lizard | 1.17.10 | Complexity — Cyclomatic | Active | Runs on the platform; no repo configuration needed |
@@ -158,8 +158,8 @@ Source of truth: `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` (sheet **White 
 | 1 | `lizard` | Lizard | 1.17.31 | Complexity — Cyclomatic | Active | Runs on the platform; no repo configuration needed |
 | 2 | `semgrep-perf-static` | Semgrep (Performance Rules) | 1.0.0 | Performance — Static Heuristics | Active | Runs on the platform; no repo configuration needed |
 | 3 | `eslint` | ESLint | 8.47.0 | Linter / Code Quality | Active | **Wired** — `frontend/.eslintrc.cjs` (lint gate) |
-| 4 | `eslint-sonarjs` | eslint-plugin-sonarjs | 0.25.1 | Complexity — Cognitive | Active | **Wired** — `frontend/.eslintrc.cjs` (lint gate) |
-| 5 | `eslint-security` | eslint-plugin-security | 3.0.1 | SAST — Security | Active | **Wired** — `frontend/.eslintrc.cjs` (lint gate) |
+| 4 | `eslint-sonarjs` | eslint-plugin-sonarjs | 0.25.1 | Complexity — Cognitive | Active | Not used — not a primary tool for the targeted metrics |
+| 5 | `eslint-security` | eslint-plugin-security | 3.0.1 | SAST — Security | Active | Not used — not a primary tool for the targeted metrics |
 | 6 | `jscpd-js` | jscpd | 4.0.5 | Duplication Detection | Active | Runs on the platform; no repo configuration needed |
 | 7 | `npm-audit` | npm audit | 10.x | SCA — CVE Vulnerabilities | Active | Runs on the platform; no repo configuration needed |
 | 8 | `madge` | Madge | 8.0.0 | Dependency Graph — Module | Active | Runs on the platform; no repo configuration needed |

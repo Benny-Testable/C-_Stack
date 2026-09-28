@@ -3,7 +3,7 @@
 Branch: `Scholarship-CMGroups-negative-1` · Repository: `Mohammed-shihaf/C-_Stack`
 
 This branch is the **negative validation baseline**. It deliberately fails two White Box metrics from
-`Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`, using the tools listed in `Whitebox_Tools_Registry 1.xlsx`:
+`Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`. Only the **primary** tool for each metric is used, at the version listed in `Whitebox_Tools_Registry 1.xlsx`:
 
 1. **Statement Coverage** (Control Flow Testing, White Box rows 56–60)
 2. **Lint / Rule Violations** (Static Code Analysis, White Box rows 27–38)
@@ -20,12 +20,12 @@ not wired into the running app.
 | Backend build | `dotnet build ScholarshipCMGroups.sln` | PASS | PASS (analyzer findings are warnings) |
 | Backend tests | `dotnet test ScholarshipCMGroups.sln` | PASS | PASS, 4/4 |
 | Backend statement coverage | `dotnet test ScholarshipCMGroups.sln -p:CollectCoverage=true` | **FAIL** | 9.17% line/statement (340/3707) < 80% |
-| Backend lint (Roslyn) | `dotnet build backend/ScholarshipCMGroups.csproj --no-incremental -p:LintGate=true` | **FAIL** | 61 errors |
+| Backend lint (Roslyn) | `dotnet build backend/ScholarshipCMGroups.csproj --no-incremental -p:LintGate=true` | **FAIL** | 5 errors |
 | Frontend install | `pnpm install --frozen-lockfile` | PASS | PASS |
 | Frontend build | `pnpm build` (Vite + esbuild) | PASS | PASS |
 | Frontend tests | `pnpm test` (Mocha) | PASS | PASS, 5/5 |
 | Frontend statement coverage | `pnpm coverage` (nyc) | **FAIL** | 11.53% statements (15/130) < 80% |
-| Frontend lint (ESLint) | `pnpm lint` | **FAIL** | 16 errors, 1 warning |
+| Frontend lint (ESLint) | `pnpm lint` | **FAIL** | 12 errors, 1 warning |
 
 `bash scripts/verify-negative-baseline.sh` runs all nine gates. It exits 0 only when every outcome
 matches the Expected column.
@@ -79,87 +79,66 @@ Metric rows this data triggers (Testable_Strategy_Metrics_Mapping_v0.2, White Bo
 
 ## 2. Lint / Rule Violations
 
-### Configuration
+### Configuration (primary tools only)
 
-| Side | Tool (registry) | Config | Gate |
-| --- | --- | --- | --- |
-| C# | `roslyn-analyzers` Microsoft.CodeAnalysis.NetAnalyzers 8.0.0 + `sonar-cs` SonarAnalyzer.CSharp 9.32.0.97167 | `Directory.Analyzers.props`, `.editorconfig` (curated rule set), `Directory.Build.targets` | `-p:LintGate=true` turns warnings into errors. SARIF output: `reports/lint/ScholarshipCMGroups.sarif` |
-| JS | `eslint` ESLint 8.47.0 + `eslint-sonarjs` 0.25.1 + `eslint-security` 3.0.1 | `frontend/.eslintrc.cjs` | `eslint --max-warnings 0`. JSON output: `pnpm lint:report` → `frontend/reports/eslint.json` |
+| Side | Primary tool (mapping) | Registry entry and version | Config | Gate |
+| --- | --- | --- | --- | --- |
+| C# | roslyn sast | `roslyn-analyzers`, Microsoft.CodeAnalysis.NetAnalyzers **8.0.0** | `Directory.Analyzers.props`, `.editorconfig` (curated rule set), `Directory.Build.targets` | `-p:LintGate=true` turns warnings into errors. SARIF output: `reports/lint/ScholarshipCMGroups.sarif` |
+| JS | eslint | `eslint`, ESLint **8.47.0** (core rules, no plugins) | `frontend/.eslintrc.cjs` | `eslint --max-warnings 0`. JSON output: `pnpm lint:report` → `frontend/reports/eslint.json` |
+
+The mapping's secondary tools (`roslyn` for C#, none for JS) are the same Roslyn engine, so they need
+no separate configuration. Non-primary tools are **not** installed (SonarAnalyzer.CSharp,
+eslint-plugin-sonarjs, eslint-plugin-security, eslint-plugin-react).
 
 `.editorconfig` switches off all analyzer defaults (`dotnet_analyzer_diagnostic.severity = none`) and
-turns on only these 12 rules, as warnings: S1481, CA1707, S100, CA1805, S1066, S125, S3776, S107,
-CA2201, S1192, S4144, plus the compiler's own CS0219. A fixed rule list keeps the finding count the
-same from run to run.
+turns on only CA1707, CA1805 and CA2201 (NetAnalyzers) plus CS0219 (compiler), as warnings. A fixed
+rule list keeps the finding count the same from run to run.
 
-### C# fixture — `backend/LintNegative/ApplicantScoringRules.cs` (15 findings)
+### C# fixture — `backend/LintNegative/ApplicantScoringRules.cs` (5 findings)
+
+These are the only Roslyn findings in the repository, so the lint gate reports exactly **5 errors**.
 
 | ID | Line:Col | Rule | Technique (White Box row) | Finding |
 | --- | --- | --- | --- | --- |
 | LINT-CS-01 | 10:29 | CA1805 | Code Style Rule Validation (30) | `reviewCount` explicitly initialised to its default value |
 | LINT-CS-02 | 12:16 | CA1707 | Naming Convention Validation (29) | Underscore in method name `Score_Applicant` |
 | LINT-CS-03 | 16:13 | CS0219 | Unused Variable Detection (28) | `unusedWeight` assigned but never used |
-| LINT-CS-04 | 16:13 | S1481 | Unused Variable Detection (28) | Unused local `unusedWeight` |
-| LINT-CS-05 | 19:13 | S1066 | Code Style Rule Validation (30) | Mergeable nested `if` |
-| LINT-CS-06 | 27:16 | S4144 | Multiple Violations Detection (33) | `CopyOfScoreApplicant` identical to `Score_Applicant` |
-| LINT-CS-07 | 31:13 | CS0219 | Unused Variable Detection (28) | `unusedWeight` assigned but never used (copy) |
-| LINT-CS-08 | 31:13 | S1481 | Unused Variable Detection (28) | Unused local `unusedWeight` (copy) |
-| LINT-CS-09 | 34:13 | S1066 | Code Style Rule Validation (30) | Mergeable nested `if` (copy) |
-| LINT-CS-10 | 42:19 | S100 | Naming Convention Validation (29) | Method `reviewLabel` not PascalCase |
-| LINT-CS-11 | 45:9 | S125 | Code Style Rule Validation (30) | Commented-out code |
-| LINT-CS-12 | 48:20 | S1192 | Multiple Violations Detection (33) | Literal `"Pending review"` repeated 4 times |
-| LINT-CS-13 | 62:19 | CA2201 | Rule Severity Classification (32) | Throws the reserved type `System.Exception` |
-| LINT-CS-14 | 67:19 | S3776 | Complexity Rule Detection (31) | `ClassifyApplicant` cognitive complexity 20 > 15 |
-| LINT-CS-15 | 67:36 | S107 | Complexity Rule Detection (31) | `ClassifyApplicant` has 9 parameters > 7 |
+| LINT-CS-04 | 31:13 | CS0219 | Unused Variable Detection (28) | `unusedWeight` assigned but never used (copy) |
+| LINT-CS-05 | 62:19 | CA2201 | Rule Severity Classification (32) | Throws the reserved type `System.Exception` |
 
-### C# inherited findings (46, same rule set)
+### JS fixture — `frontend/src/lint-negative/applicantScoring.js` (12 errors, 1 warning)
 
-These come from the negative data already on `Scholarship-CMGroups-negative` and are listed in the SARIF file:
-
-| Rule | Count | Where |
-| --- | --- | --- |
-| S1192 duplicated literals | 26 | Controllers (`"anonymous"`, entity names), Repositories (`"state"`), Services (status strings) |
-| S107 too many parameters | 11 | `AdminController.calc` (10), `ScholarshipController` (12, 8), plus 8-parameter methods in controllers and services |
-| S3776 cognitive complexity | 7 | `ScholarshipService` (113), `StudentService` (61), `ReportService` (53), `ApplicationService` (45, 28, 19), `ScholarshipRepository` (17) |
-| S100 naming | 1 | `AdminController.calc` (line 194) |
-| S1066 mergeable if | 1 | `ScholarshipService.cs` line 267 |
-
-Total: 15 + 46 = **61**, the same as the lint gate's error count.
-
-### JS fixture — `frontend/src/lint-negative/applicantScoring.js` (16 errors, 1 warning)
-
-The rest of `frontend/src` is lint-clean, so every ESLint finding comes from this file.
+The rest of `frontend/src` is lint-clean, so every ESLint finding comes from this file. Because core
+ESLint can't see identifiers used only in JSX, `no-unused-vars` ignores PascalCase names (React
+components).
 
 | ID | Line:Col | Rule | Severity | Technique (White Box row) | Finding |
 | --- | --- | --- | --- | --- | --- |
-| LINT-JS-01 | 7:21 | sonarjs/no-duplicate-string | error | Multiple Violations Detection (33) | `'Pending review'` repeated 4 times |
-| LINT-JS-02 | 10:3 | no-var | error | Code Style Rule Validation (30) | `var total` |
-| LINT-JS-03 | 11:7 | prefer-const | error | Code Style Rule Validation (30) | `bonus` never reassigned |
-| LINT-JS-04 | 12:9 | no-unused-vars | error | Unused Variable Detection (28) | `unusedWeight` unused |
-| LINT-JS-05 | 13:21 | eqeqeq | error | Rule Severity Classification (32) | `==` instead of `===` |
-| LINT-JS-06 | 19:17 | camelcase | error | Naming Convention Validation (29) | `applicant_label` |
-| LINT-JS-07 | 20:3 | no-console | warning | Rule Detection Test (27) | `console.log` |
-| LINT-JS-08 | 23:10 | no-else-return | error | Code Style Rule Validation (30) | `else` after `return` |
-| LINT-JS-09 | 33:19 | security/detect-non-literal-regexp | error | Rule Severity Classification (32) | `new RegExp(pattern)` with a non-literal pattern |
-| LINT-JS-10 | 37:8 | max-params | error | Complexity Rule Detection (31) | `classifyApplicant` has 6 params > 5 |
-| LINT-JS-11 | 37:17 | sonarjs/cognitive-complexity | error | Complexity Rule Detection (31) | Cognitive complexity 20 > 15 |
-| LINT-JS-12 | 42:9 | max-depth | error | Complexity Rule Detection (31) | Nesting depth 4 > 3 |
-| LINT-JS-13 | 63:17 | sonarjs/no-identical-functions | error | Multiple Violations Detection (33) | `copyOfScoreApplicant` identical to `scoreApplicant` |
-| LINT-JS-14 | 64:3 | no-var | error | Code Style Rule Validation (30) | `var total` (copy) |
-| LINT-JS-15 | 65:7 | prefer-const | error | Code Style Rule Validation (30) | `bonus` (copy) |
-| LINT-JS-16 | 66:9 | no-unused-vars | error | Unused Variable Detection (28) | `unusedWeight` (copy) |
-| LINT-JS-17 | 67:21 | eqeqeq | error | Rule Severity Classification (32) | `==` (copy) |
+| LINT-JS-01 | 10:3 | no-var | error | Code Style Rule Validation (30) | `var total` |
+| LINT-JS-02 | 11:7 | prefer-const | error | Code Style Rule Validation (30) | `bonus` never reassigned |
+| LINT-JS-03 | 12:9 | no-unused-vars | error | Unused Variable Detection (28) | `unusedWeight` unused |
+| LINT-JS-04 | 13:21 | eqeqeq | error | Rule Severity Classification (32) | `==` instead of `===` |
+| LINT-JS-05 | 19:17 | camelcase | error | Naming Convention Validation (29) | `applicant_label` |
+| LINT-JS-06 | 20:3 | no-console | warning | Rule Detection Test (27) | `console.log` |
+| LINT-JS-07 | 23:10 | no-else-return | error | Code Style Rule Validation (30) | `else` after `return` |
+| LINT-JS-08 | 37:8 | max-params | error | Complexity Rule Detection (31) | `classifyApplicant` has 6 params > 5 |
+| LINT-JS-09 | 42:9 | max-depth | error | Complexity Rule Detection (31) | Nesting depth 4 > 3 |
+| LINT-JS-10 | 64:3 | no-var | error | Code Style Rule Validation (30) | `var total` (copy) |
+| LINT-JS-11 | 65:7 | prefer-const | error | Code Style Rule Validation (30) | `bonus` (copy) |
+| LINT-JS-12 | 66:9 | no-unused-vars | error | Unused Variable Detection (28) | `unusedWeight` (copy) |
+| LINT-JS-13 | 67:21 | eqeqeq | error | Rule Severity Classification (32) | `==` (copy) |
 
 ### Metric rows this data triggers (White Box 27–38)
 
 | Row | L4 Classification | Threshold | Outcome |
 | --- | --- | --- | --- |
-| 27 | Rule Detection Test — Violation Density per KLOC | 0 blocking errors; < 10 warnings/KLOC | **FAIL** (61 Roslyn + 16 ESLint errors) |
+| 27 | Rule Detection Test — Violation Density per KLOC | 0 blocking errors; < 10 warnings/KLOC | **FAIL** (5 Roslyn + 12 ESLint errors) |
 | 28 | Unused Variable Detection | < 1% unused declarations per module | FAIL (both fixtures) |
 | 29 | Naming Convention Validation | < 2% naming violations | FAIL (fixture modules) |
 | 30 | Code Style Rule Validation | < 5 style violations per KLOC | FAIL |
-| 31 | Complexity Rule Detection | 0 functions breaching nesting / length thresholds | FAIL |
+| 31 | Complexity Rule Detection | 0 functions breaching nesting / length thresholds | FAIL (JS `max-depth`, `max-params`) |
 | 32 | Rule Severity Classification | 0 Error-level violations | **FAIL** |
-| 33 | Multiple Violations Detection | 0 files with > 10 violations | FAIL (`applicantScoring.js`: 17, `ApplicantScoringRules.cs`: 15) |
+| 33 | Multiple Violations Detection | 0 files with > 10 violations | FAIL (`applicantScoring.js`: 13) |
 | 34 | False Positive Prevention | < 10% suppression rate | PASS (no suppressions) |
 | 35 | Custom Rule Validation (C# only) | 100% of custom rules passing | FAIL (curated `.editorconfig` rule set) |
 | 36 | Configuration File Handling | 0 non-standard lint configs | PASS (single root `.editorconfig` / `.eslintrc.cjs`) |
