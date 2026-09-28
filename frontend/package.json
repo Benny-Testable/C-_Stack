@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "React client for Scholarship CMGroups (Webpack + Yarn build variant).",
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=20.19.0"
   },
@@ -42,7 +43,7 @@
     "style-loader": "^4.0.0",
     "ts-jest": "^29.4.0",
     "ts-loader": "^9.5.2",
-    "typescript": "~5.8.3",
+    "typescript": "5.8.3",
     "typescript-eslint": "^8.70.1",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
