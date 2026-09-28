@@ -4,5 +4,7 @@
     <LangVersion>12.0</LangVersion>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <IsTestProject Condition="$(MSBuildProjectName.EndsWith('.Tests'))">true</IsTestProject>
   </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)Directory.Analyzers.props" />
 </Project>

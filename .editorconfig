@@ -1,0 +1,40 @@
+# Scholarship CMGroups — editor + Roslyn rule configuration
+# Branch: Scholarship-CMGroups-negative-1 (negative metric validation baseline)
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.{cs,csx}]
+indent_size = 4
+
+# ---------------------------------------------------------------------------
+# Lint / Rule Violations — curated, deterministic rule set.
+# All analyzer defaults are switched off; only the rules below are enabled, as
+# warnings, so `dotnet build` passes and the lint gate (-p:LintGate=true) fails.
+# Each rule maps to a "Lint / Rule Violations" technique in
+# Testable_Strategy_Metrics_Mapping_v0.2 (White Box rows 27-38).
+# ---------------------------------------------------------------------------
+dotnet_analyzer_diagnostic.severity = none
+
+# Unused Variable Detection
+dotnet_diagnostic.S1481.severity = warning   # unused local variable
+# Naming Convention Validation
+dotnet_diagnostic.CA1707.severity = warning  # identifiers should not contain underscores
+dotnet_diagnostic.S100.severity = warning    # method names should be PascalCase
+# Code Style Rule Validation
+dotnet_diagnostic.CA1805.severity = warning  # do not initialize to default value
+dotnet_diagnostic.S1066.severity = warning   # mergeable "if" statements
+dotnet_diagnostic.S125.severity = warning    # commented-out code
+# Complexity Rule Detection
+dotnet_diagnostic.S3776.severity = warning   # cognitive complexity > 15
+dotnet_diagnostic.S107.severity = warning    # too many parameters (> 7)
+# Rule Severity Classification / Multiple Violations Detection
+dotnet_diagnostic.CA2201.severity = warning  # do not raise reserved exception types
+dotnet_diagnostic.S1192.severity = warning   # duplicated string literals
+dotnet_diagnostic.S4144.severity = warning   # methods with identical implementations

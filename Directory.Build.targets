@@ -1,0 +1,12 @@
+<Project>
+  <!--
+    Lint gate for Scholarship CMGroups. Evaluated after each project file so it overrides
+    backend/ScholarshipCMGroups.csproj's TreatWarningsAsErrors=false.
+    Usage: dotnet build backend/ScholarshipCMGroups.csproj -p:LintGate=true
+    Expected on branch Scholarship-CMGroups-negative-1: FAIL (intentional).
+  -->
+  <PropertyGroup Condition="'$(LintGate)' == 'true' And '$(IsTestProject)' != 'true'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>
