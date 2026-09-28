@@ -96,6 +96,7 @@ public class AdminController : Controller
         try
         {
             var rows = _students.Search(q, page, pageSize);
+            _logger.LogDebug("{Packet}", BuildSecondaryAuditPacket("Admin", "Students", rows.Count, "anonymous", true, q));
             return Ok(new { success = true, items = rows, page, pageSize });
         }
         catch (Exception ex)
@@ -264,5 +265,48 @@ public class AdminController : Controller
         }
 
         return payload;
+    }
+
+    private string BuildSecondaryAuditPacket(string moduleName, string actionName, int entityId, string actor, bool success, string? detail)
+    {
+        var traceId = Guid.NewGuid().ToString("N");
+        var timestamp = DateTime.UtcNow;
+        var clock = timestamp.ToString("yyyy-MM-ddTHH:mm:ssZ");
+        var actorName = string.IsNullOrWhiteSpace(actor) ? "anonymous" : actor;
+        var detailValue = detail ?? string.Empty;
+        if (detailValue.Length > 120)
+        {
+            detailValue = detailValue.Substring(0, 120);
+        }
+
+        var status = success ? "ok" : "failed";
+        var packet = moduleName + "|" + actionName + "|" + entityId + "|" + actorName + "|" + status + "|" + clock + "|" + traceId;
+        if (!success)
+        {
+            packet = packet + "|detail=" + detailValue;
+        }
+        else if (detailValue.Length == 0)
+        {
+            packet = packet + "|no-detail";
+        }
+        else
+        {
+            packet = packet + "|detail=" + detailValue;
+        }
+
+        if (entityId < 0)
+        {
+            packet = packet + "|invalid-id";
+        }
+        else if (entityId == 0)
+        {
+            packet = packet + "|missing-id";
+        }
+        else
+        {
+            packet = packet + "|id-present";
+        }
+
+        return packet;
     }
 }
