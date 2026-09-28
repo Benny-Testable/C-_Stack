@@ -1,6 +1,6 @@
 # 9-Block Talent Matrix Platform (`9-Block-Negative-Cases`)
 
-[![.NET 9.0](https://img.shields.io/badge/.NET-9.0%20(LTS)-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0%20(LTS)-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)](https://react.dev/)
 [![Build Tool](https://img.shields.io/badge/Build%20Tool-dotnet%20%2B%20NuGet%20%7C%20Webpack%20%2B%20npm-blue)](https://webpack.js.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-MVC%20%2F%20Layered%20Monorepo-orange)](https://learn.microsoft.com/en-us/aspnet/core/mvc/overview)
@@ -74,11 +74,20 @@ This branch (`9-Block-Negative-Cases`) implements the full application while int
 | :--- | :--- |
 | **Repository** | `https://github.com/Mohammed-shihaf/C-_Stack.git` |
 | **Active Branch** | **`9-Block-Negative-Cases`** |
-| **Backend Language** | C# / .NET 9.0 (LTS) |
+| **Backend Language** | C# / .NET 8.0 (LTS) |
 | **Frontend Language** | JavaScript / JSX (ReactJS) |
 | **Build Tool & Package Manager** | **`dotnet + NuGet & Webpack + npm`** *(Unified: `dotnet + NuGet`)* |
 | **Database** | Microsoft SQL Server / Entity Framework Core |
 | **Architecture Pattern** | **MVC (Model-View-Controller)** |
+
+### Branch Stack Matrix
+| Branch | Primary Pair | C# / Language Build Tool | Package Manager | Project Structure |
+|---|---|---|---|---|
+| `9-Block-Negative-Cases` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** |
+
+| Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
+| :--- | :--- | :--- | :--- | :--- |
+| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with negative and boundary test case validations. |
 
 ---
 
