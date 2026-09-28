@@ -1,0 +1,8 @@
+<Project>
+  <!-- Shared build settings for Scholarship CMGroups (branch: Scholarship-CMGroups-negative-1). -->
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+</Project>
