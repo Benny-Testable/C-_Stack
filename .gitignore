@@ -41,3 +41,6 @@ ehthumbs_vista.db
 .idea/
 *.swp
 *~
+
+# Tool Trigger Reports
+**/report/
