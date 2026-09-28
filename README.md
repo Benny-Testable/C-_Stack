@@ -2,6 +2,7 @@
 
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0%20(LTS)-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)](https://react.dev/)
+[![SQL Server](https://img.shields.io/badge/Database-SQL%20Server%20%7C%20EF%20Core-CC292B?logo=microsoftsqlserver)](https://www.microsoft.com/sql-server)
 [![Build Tool](https://img.shields.io/badge/Build%20Tool-dotnet%20%2B%20NuGet%20%7C%20Webpack%20%2B%20npm-blue)](https://webpack.js.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-MVC%20%2F%20Layered%20Monorepo-orange)](https://learn.microsoft.com/en-us/aspnet/core/mvc/overview)
 [![Testing Strategy](https://img.shields.io/badge/White--Box-Multi--Metric%20Negative%20Testbed-red)](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases)
@@ -25,8 +26,13 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 ```
 9 Block/
 ├── global.json                            # .NET SDK Version Pin (8.0.100)
+├── database/                              # SQL SERVER DATABASE LAYER (DDL, DML & Stored Procedures)
+│   ├── schema.sql                         # Tables, Constraints, and Indexes DDL
+│   ├── seed.sql                           # Quadrant, Employee & Assessment Data DML
+│   └── procedures.sql                     # Stored Procedures & Dynamic SQL SAST Fixture
+│
 ├── backend/                               # ASP.NET Core (.NET 8.0 LTS) Web API
-│   ├── NineBlock.csproj                   # Project File (.NET 8.0 + SCA Dep)
+│   ├── NineBlock.csproj                   # Project File (.NET 8.0 + SQL Server + SCA Dep)
 │   ├── Controllers/                       # CONTROLLER LAYER (API Endpoints)
 │   │   ├── NineBoxGridController.cs       # Grid matrix distribution & calculations
 │   │   ├── EmployeeController.cs          # Employee profiles & departments
@@ -39,10 +45,10 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   ├── Services/                          # BUSINESS LOGIC & CALCULATION LAYER
 │   │   ├── NineBoxMatrixService.cs        # [CC, COG, LINT & DUPLICATION FIXTURES]
 │   │   └── EmployeeEvaluationService.cs   # [DUPLICATION, DATA-FLOW, MUTATION & COVERAGE FIXTURES]
-│   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core)
+│   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core & SQL Server)
 │   │   └── NineBlockDbContext.cs          # DbContext & quadrant seed data
-│   ├── Program.cs                         # DI Container, CORS & Pipeline setup
-│   └── appsettings.json                   # Configuration
+│   ├── Program.cs                         # DI Container, SQL Server Provider & Pipeline setup
+│   └── appsettings.json                   # SQL Server Connection String & Config
 │
 ├── frontend/                              # ReactJS Single Page Application (Webpack)
 │   ├── public/
@@ -82,17 +88,17 @@ This branch (`9-Block-Negative-Cases`) implements the full application with **We
 | **Backend Language** | C# / .NET 8.0 (LTS) |
 | **Frontend Language** | JavaScript / JSX (ReactJS) |
 | **Build Tool & Package Manager** | **`dotnet + NuGet & Webpack + npm`** *(Unified: `dotnet + NuGet`)* |
-| **Database** | Microsoft SQL Server / Entity Framework Core |
+| **Database** | **Microsoft SQL Server 2022 / Entity Framework Core 8.0** |
 | **Architecture Pattern** | **MVC (Model-View-Controller)** |
 
 ### Branch Stack Matrix
-| Branch | Primary Pair | C# / Language Build Tool | Package Manager | Project Structure |
-|---|---|---|---|---|
-| `9-Block-Negative-Cases` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** |
+| Branch | Primary Pair | C# / Language Build Tool | Package Manager | Project Structure | Database |
+|---|---|---|---|---|---|
+| `9-Block-Negative-Cases` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** | **SQL Server** |
 
 | Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
 | :--- | :--- | :--- | :--- | :--- |
-| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + ReactJS with Webpack bundler. 9-Box talent matrix evaluation platform with complete 11-category White-Box negative metric fixtures. |
+| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with complete 11-category White-Box negative metric fixtures and full SQL DB coverage. |
 
 ---
 
@@ -106,7 +112,7 @@ This branch embeds **concrete White-Box negative metric targets** mapped directl
 | **2** | **Structural Analysis** | **Cyclomatic Complexity** | Execution Path Integrity ($\text{CC} > 15$) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`CalculateComplexTalentRiskScore`, $\text{CC}=19$)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`calculateClientAttritionRisk`) | `Lizard` / `complexipy` / ESLint `complexity` |
 | **3** | **Readability / Maintainability** | **Cognitive Complexity** | Technical Debt Impact ($\text{CogC} > 15$) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`ComputeDepartmentCognitiveCalibration`, 4-level nesting) | SonarQube Cognitive Complexity / Roslyn |
 | **4** | **Static Code Analysis** | **Lint / Style Violations** | Violation Density & Resource Waste | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`_unusedAuditCacheKey`, `temp_debug_log_str`, dead code)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`UNUSED_CALIBRATION_TOKEN`) | Roslyn Analyzers / `dotnet format` / `ESLint` |
-| **5** | **Security White-box Testing** | **Static Vulnerabilities (SAST)** | Exploit Surface & Sensitive Tracking | [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs) (`ExportDepartmentAssessmentsRaw` CWE-89 raw SQL taint & `FallbackAdminAuthSecret`) | `Semgrep` / `Gitleaks` / Roslyn Security Analyzers |
+| **5** | **Security White-box Testing** | **Static Vulnerabilities (SAST)** | Exploit Surface & Sensitive Tracking | [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs) (`ExportDepartmentAssessmentsRaw` CWE-89 raw SQL taint & `FallbackAdminAuthSecret`)<br>[`database/procedures.sql`](database/procedures.sql) (`sp_SearchEmployeeAssessmentsRaw` dynamic SQL injection) | `Semgrep` / `Gitleaks` / `sqlfluff` / Roslyn Security Analyzers |
 | **6** | **Security White-box Testing** | **Dependency Risk (SCA)** | Vulnerability Dependency / Known CVE Count | [`backend/NineBlock.csproj`](backend/NineBlock.csproj) (`Newtonsoft.Json 12.0.1` CVE-2024-21907)<br>[`frontend/package.json`](frontend/package.json) (`axios 0.21.1` CVE-2020-28168) | `dotnet list package --vulnerable` / `npm audit` / Snyk / Trivy |
 | **7** | **Control Flow Testing** | **Statement & Branch Coverage** | Decision Coverage Gap Analysis (< 30%) | [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs) (`UncoveredBranchEvaluation`) & [`tests/NineBlock.Tests/NineBoxMatrixTests.cs`](tests/NineBlock.Tests/NineBoxMatrixTests.cs) (covers only 1 case) | `coverlet` / `dotnet test` / Coverage.py |
 | **8** | **Control Flow Testing** | **Path Coverage** | Ghost Code / Unreachable Path Gap | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (nested condition paths in `CalculateComplexTalentRiskScore`) | OpenCover / Roslyn Control Flow |
@@ -118,41 +124,48 @@ This branch embeds **concrete White-Box negative metric targets** mapped directl
 
 ### Concrete Verification Commands for White-Box Tools:
 
-1. **Code Duplication (`jscpd`)**:
+1. **SQL Database Linting & DDL Validation (`sqlfluff`)**:
+   ```bash
+   sqlfluff lint database/schema.sql --dialect tsql
+   sqlfluff lint database/procedures.sql --dialect tsql
+   ```
+
+2. **Code Duplication (`jscpd`)**:
    ```bash
    npx jscpd backend/Services/
    npx jscpd frontend/src/components/
    ```
 
-2. **Cyclomatic Complexity (`Lizard` / `complexipy`)**:
+3. **Cyclomatic Complexity (`Lizard` / `complexipy`)**:
    ```bash
    python -m lizard backend/Services/
    python -m lizard frontend/src/views/
    ```
 
-3. **Cognitive Complexity & Lint (`dotnet format` / `ESLint`)**:
+4. **Cognitive Complexity & Lint (`dotnet format` / `ESLint`)**:
    ```bash
    dotnet format whitespace --verify-no-changes
    npx eslint frontend/src/
    ```
 
-4. **Security Vulnerabilities (SAST & Hardcoded Secrets)**:
+5. **Security Vulnerabilities (SAST & SQL Injection Taint)**:
    ```bash
    npx semgrep --config=auto backend/Controllers/
+   npx semgrep --config=auto database/
    ```
 
-5. **Dependency Risk (SCA CVE Scan)**:
+6. **Dependency Risk (SCA CVE Scan)**:
    ```bash
    dotnet list backend/NineBlock.csproj package --vulnerable
    cd frontend && npm audit
    ```
 
-6. **Statement & Branch Coverage (< 30% Coverage Gap)**:
+7. **Statement & Branch Coverage (< 30% Coverage Gap)**:
    ```bash
    dotnet test tests/NineBlock.Tests/NineBlock.Tests.csproj --collect:"XPlat Code Coverage"
    ```
 
-7. **Mutation Testing (`Stryker.NET`)**:
+8. **Mutation Testing (`Stryker.NET`)**:
    ```bash
    dotnet stryker --project-file=backend/NineBlock.csproj
    ```
@@ -163,10 +176,19 @@ This branch embeds **concrete White-Box negative metric targets** mapped directl
 
 ### Prerequisites
 * **.NET SDK**: `v8.0` LTS (`8.0.100` via `global.json`)
+* **SQL Server**: 2019 / 2022 or LocalDB (`(localdb)\mssqllocaldb`)
 * **Node.js**: `v20.x` or higher (`node --version`)
 * **npm**: `v10.x` or higher (`npm --version`)
 
-### A. Running the Backend (.NET Core Web API)
+### A. Initializing SQL Server Database
+```bash
+# Execute DDL, DML Seed, and Stored Procedures scripts
+sqlcmd -S "(localdb)\mssqllocaldb" -i database/schema.sql
+sqlcmd -S "(localdb)\mssqllocaldb" -i database/seed.sql
+sqlcmd -S "(localdb)\mssqllocaldb" -i database/procedures.sql
+```
+
+### B. Running the Backend (.NET Core Web API)
 ```bash
 # Navigate to backend directory
 cd backend
@@ -182,13 +204,13 @@ dotnet run
 ```
 * Backend API runs on: `http://localhost:5000` (or `https://localhost:7001`)
 
-### B. Running the Test Suite (Verifying Coverage Gaps)
+### C. Running the Test Suite (Verifying Coverage Gaps)
 ```bash
 cd tests/NineBlock.Tests
 dotnet test
 ```
 
-### C. Running the Frontend (ReactJS with Webpack)
+### D. Running the Frontend (ReactJS with Webpack)
 ```bash
 # Navigate to frontend directory
 cd frontend

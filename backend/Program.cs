@@ -8,15 +8,28 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Register In-Memory Db for lightweight run & testing (can swap to SQL Server connection string in appsettings.json)
+// SQL Server Database Provider with InMemory fallback for isolated testing
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<NineBlockDbContext>(options =>
-    options.UseInMemoryDatabase("NineBlockDb"));
+{
+    if (!string.IsNullOrEmpty(connectionString) && !builder.Environment.IsEnvironment("Testing"))
+    {
+        options.UseSqlServer(connectionString, sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorNumbersToAdd: null);
+        });
+    }
+    else
+    {
+        options.UseInMemoryDatabase("NineBlockDb");
+    }
+});
 
 // Register Services
 builder.Services.AddScoped<NineBoxMatrixService>();
 builder.Services.AddScoped<EmployeeEvaluationService>();
 
-// CORS for React frontend (Webpack dev server on port 3000)
+// CORS for React frontend (dev server on port 3000)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
@@ -29,7 +42,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Seed initial database
+// Ensure Database schema exists & seed initial reference data
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<NineBlockDbContext>();
