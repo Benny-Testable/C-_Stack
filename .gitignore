@@ -1,0 +1,43 @@
+# ==========================================
+# 9-Block Project .gitignore (Single Branch)
+# ==========================================
+
+# .NET / C# Build Artifacts
+**/bin/
+**/obj/
+**/publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.nupkg
+
+# Sensitive appsettings overrides
+**/appsettings.Local.json
+**/appsettings.Secrets.json
+
+# Node / React (Vite & esbuild)
+**/node_modules/
+**/dist/
+**/dist-ssr/
+*.local
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Generated Files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+.DS_Store
+
+# IDE and Editor Files
+.idea/
+*.swp
+*~
