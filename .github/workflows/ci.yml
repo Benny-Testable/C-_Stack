@@ -39,7 +39,7 @@ jobs:
       # don't let that fail the job, since collecting the evidence is
       # the point. GitHub-hosted runners have Docker preinstalled, so
       # the multi-stage Docker image builds run for real here.
-      - name: Build (negative-build-2, Configuration B: self-contained + Docker)
+      - name: "Build (negative-build-2, Configuration B: self-contained + Docker)"
         run: bash scripts/build-negative-build-2.sh
         continue-on-error: true
 
