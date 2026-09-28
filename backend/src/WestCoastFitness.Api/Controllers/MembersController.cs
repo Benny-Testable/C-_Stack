@@ -9,6 +9,20 @@ namespace WestCoastFitness.Api.Controllers;
 [Route("api/members")]
 public class MembersController(FitnessClubDbContext dbContext) : ControllerBase
 {
+    private const string AdminApiKey = "sk_live_wcf_9f2c7a1e4b6d4a5f9c3e2b1a0d8f7e6c";
+
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<Member>>> Search(string name)
+    {
+        var sql = $"SELECT * FROM \"Members\" WHERE \"FullName\" LIKE '%{name}%'";
+        var members = await dbContext.Members.FromSqlRaw(sql).ToListAsync();
+
+        var export = Newtonsoft.Json.JsonConvert.SerializeObject(members);
+        Response.Headers.Append("X-Export-Debug-Length", export.Length.ToString());
+
+        return Ok(members);
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetAll(CancellationToken cancellationToken)
     {

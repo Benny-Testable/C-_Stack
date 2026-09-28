@@ -59,6 +59,8 @@ function Invoke-MutationMetric {
     $out = "artifacts/$Variant/mutation"
     Write-Host "== mutation testing ($Variant) =="
 
+    dotnet tool restore *> "$out/backend-tool-restore.log"
+
     try {
         Push-Location backend/tests/WestCoastFitness.Api.Tests
         dotnet tool run dotnet-stryker --config-file stryker-config.json --output "../../../$out/backend" *> "../../../$out/backend-stryker.log"

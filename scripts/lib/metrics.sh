@@ -66,6 +66,8 @@ metric_mutation() {
   local out="artifacts/${variant}/mutation"
   echo "== mutation testing (${variant}) =="
 
+  dotnet tool restore > "${out}/backend-tool-restore.log" 2>&1 || true
+
   (
     cd backend/tests/WestCoastFitness.Api.Tests
     dotnet tool run dotnet-stryker --config-file stryker-config.json \

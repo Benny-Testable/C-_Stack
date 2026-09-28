@@ -24,4 +24,76 @@ public class BookingsController(IBookingService bookingService) : ControllerBase
             _ => BadRequest(),
         };
     }
+
+    public static string NormalizeDisplayName(string input, string fallback, bool titleCase, bool trim, bool collapseSpaces)
+    {
+        string result;
+        if (input == null)
+        {
+            if (fallback == null)
+            {
+                result = "";
+            }
+            else
+            {
+                if (trim)
+                {
+                    result = fallback.Trim();
+                }
+                else
+                {
+                    result = fallback;
+                }
+            }
+        }
+        else
+        {
+            if (input.Length == 0)
+            {
+                if (fallback != null)
+                {
+                    result = fallback;
+                }
+                else
+                {
+                    result = "";
+                }
+            }
+            else
+            {
+                if (trim)
+                {
+                    if (collapseSpaces)
+                    {
+                        result = string.Join(" ", input.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries));
+                    }
+                    else
+                    {
+                        result = input.Trim();
+                    }
+                }
+                else
+                {
+                    if (collapseSpaces)
+                    {
+                        result = string.Join(" ", input.Split(' ', StringSplitOptions.RemoveEmptyEntries));
+                    }
+                    else
+                    {
+                        result = input;
+                    }
+                }
+            }
+        }
+
+        if (titleCase)
+        {
+            if (result.Length > 0)
+            {
+                result = char.ToUpper(result[0]) + result.Substring(1).ToLower();
+            }
+        }
+
+        return result;
+    }
 }
