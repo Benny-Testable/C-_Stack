@@ -1,7 +1,6 @@
 {
   "sdk": {
-    "version": "8.0.300",
-    "rollForward": "latestFeature"
-  },
-  "buildType": "framework-dependent"
+    "version": "8.0.100",
+    "rollForward": "major"
+  }
 }
