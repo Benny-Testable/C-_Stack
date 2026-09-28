@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 9-Block-Negative-Cases
+      - 9-Block-Negative-Cases-Rollup
       - 9-Block-Positive-Cases
       - main
   pull_request:
@@ -12,7 +13,7 @@ on:
 
 jobs:
   backend-build:
-    name: Backend CI (.NET 9.0)
+    name: Backend CI (.NET 8.0)
     runs-on: windows-latest
     steps:
       - name: Checkout Code
@@ -21,7 +22,7 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Restore Dependencies
         run: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
@@ -30,7 +31,7 @@ jobs:
         run: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration Release --no-restore
 
   frontend-build:
-    name: Frontend CI (React + Webpack)
+    name: Frontend CI (React + Rollup)
     runs-on: windows-latest
     steps:
       - name: Checkout Code
@@ -45,7 +46,7 @@ jobs:
         working-directory: frontend
         run: npm install --legacy-peer-deps
 
-      - name: Compile Webpack Production Bundle
+      - name: Compile Rollup Production Bundle
         working-directory: frontend
         run: npm run build
 

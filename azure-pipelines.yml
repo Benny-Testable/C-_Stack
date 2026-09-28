@@ -2,6 +2,7 @@ trigger:
   branches:
     include:
       - 9-Block-Negative-Cases
+      - 9-Block-Negative-Cases-Rollup
       - 9-Block-Positive-Cases
       - main
 
@@ -10,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  DOTNET_VERSION: '9.0.x'
+  DOTNET_VERSION: '8.0.x'
   NODE_VERSION: '20.x'
 
 stages:
@@ -28,7 +29,6 @@ stages:
 
           - script: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
             displayName: 'Restore NuGet Packages'
-
           - script: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration $(buildConfiguration) --no-restore
             displayName: 'Build Backend Project'
 
@@ -41,7 +41,7 @@ stages:
               ArtifactName: 'backend-drop'
 
       - job: FrontendBuild
-        displayName: 'Build React Application with Webpack'
+        displayName: 'Build React Application with Rollup'
         steps:
           - task: NodeTool@0
             displayName: 'Install Node.js'
@@ -56,7 +56,7 @@ stages:
           - script: |
               cd frontend
               npm run build
-            displayName: 'Run Webpack Production Build'
+            displayName: 'Run Rollup Production Build'
 
           - task: PublishBuildArtifacts@1
             inputs:

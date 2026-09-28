@@ -1,10 +1,10 @@
-# 9-Block Talent Matrix Platform (`9-Block-Negative-Cases`)
+# 9-Block Talent Matrix Platform (`9-Block-Negative-Cases-Rollup`)
 
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0%20(LTS)-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)](https://react.dev/)
-[![Build Tool](https://img.shields.io/badge/Build%20Tool-dotnet%20%2B%20NuGet%20%7C%20Webpack%20%2B%20npm-blue)](https://webpack.js.org/)
+[![Build Tool](https://img.shields.io/badge/Build%20Tool-dotnet%20%2B%20NuGet%20%7C%20Rollup%20%2B%20npm-orange)](https://rollupjs.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-MVC%20%2F%20Layered%20Monorepo-orange)](https://learn.microsoft.com/en-us/aspnet/core/mvc/overview)
-[![Testing Strategy](https://img.shields.io/badge/White--Box-Negative%20Metric%20Fixtures-red)](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases)
+[![Testing Strategy](https://img.shields.io/badge/White--Box-Negative%20Metric%20Fixtures-red)](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases-Rollup)
 
 ---
 
@@ -24,7 +24,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ```
 9 Block/
-├── backend/                               # ASP.NET Core (.NET 9.0) Web API
+├── backend/                               # ASP.NET Core (.NET 8.0 LTS) Web API
 │   ├── NineBlock.slnx                     # Solution File
 │   └── NineBlock.Api/
 │       ├── Controllers/                   # CONTROLLER LAYER (API Endpoints)
@@ -44,7 +44,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │       ├── Program.cs                     # DI Container, CORS & Pipeline setup
 │       └── appsettings.json               # Configuration
 │
-├── frontend/                              # ReactJS Single Page Application
+├── frontend/                              # ReactJS Single Page Application (Rollup Bundler)
 │   ├── public/
 │   │   └── index.html                     # HTML Template
 │   ├── src/
@@ -58,9 +58,9 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   │   ├── App.jsx                        # Main Application Root
 │   │   ├── index.js                       # React DOM Entrypoint
 │   │   └── index.css                      # Modern Clean Styling
-│   ├── webpack.config.js                  # Webpack Build Configuration
+│   ├── rollup.config.mjs                  # Rollup 4.x Bundler Configuration
 │   ├── .babelrc                           # Babel React Presets
-│   └── package.json                       # Frontend Dependencies & Scripts
+│   └── package.json                       # Frontend Dependencies & Scripts (Rollup)
 └── README.md                              # This Documentation
 ```
 
@@ -68,26 +68,26 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ## 3. Platform Stack & Branch Specification
 
-This branch (`9-Block-Negative-Cases`) implements the full application while intentionally incorporating **White-Box metric trigger cases** (specifically Code Duplication) based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
+This branch (`9-Block-Negative-Cases-Rollup`) implements the full application with **Rollup + npm** bundling while intentionally incorporating **White-Box metric trigger cases** (specifically Code Duplication) based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
 
 | Specification | Details |
 | :--- | :--- |
 | **Repository** | `https://github.com/Mohammed-shihaf/C-_Stack.git` |
-| **Active Branch** | **`9-Block-Negative-Cases`** |
+| **Active Branch** | **`9-Block-Negative-Cases-Rollup`** |
 | **Backend Language** | C# / .NET 8.0 (LTS) |
 | **Frontend Language** | JavaScript / JSX (ReactJS) |
-| **Build Tool & Package Manager** | **`dotnet + NuGet & Webpack + npm`** *(Unified: `dotnet + NuGet`)* |
+| **Build Tool & Package Manager** | **`dotnet + NuGet & Rollup + npm`** *(Unified: `dotnet + NuGet`)* |
 | **Database** | Microsoft SQL Server / Entity Framework Core |
 | **Architecture Pattern** | **MVC (Model-View-Controller)** |
 
 ### Branch Stack Matrix
 | Branch | Primary Pair | C# / Language Build Tool | Package Manager | Project Structure |
 |---|---|---|---|---|
-| `9-Block-Negative-Cases` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** |
+| `9-Block-Negative-Cases-Rollup` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** |
 
 | Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
 | :--- | :--- | :--- | :--- | :--- |
-| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with negative and boundary test case validations. |
+| `9-Block-Negative-Cases-Rollup` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Rollup + npm | MVC | C# ASP.NET Core Web API + ReactJS with Rollup bundler. 9-Box talent matrix evaluation platform with negative and boundary test case validations. |
 
 ---
 
@@ -130,7 +130,7 @@ This branch embeds **real-world White-Box metric targets** directly into the pro
 ## 5. Project Usage Guide
 
 ### Prerequisites
-* **.NET SDK**: `v9.0` or higher (`dotnet --version`)
+* **.NET SDK**: `v8.0` LTS or higher (`dotnet --version`)
 * **Node.js**: `v20.x` or higher (`node --version`)
 * **npm**: `v10.x` or higher (`npm --version`)
 
@@ -156,7 +156,7 @@ dotnet run
   * `GET /api/employee` — List employees
   * `POST /api/assessment` — Submit an employee assessment
 
-### B. Running the Frontend (ReactJS with Webpack)
+### B. Running the Frontend (ReactJS with Rollup)
 ```bash
 # Navigate to frontend directory
 cd frontend
@@ -164,10 +164,10 @@ cd frontend
 # Install dependencies
 npm install
 
-# Start Webpack Development Server (with HMR)
+# Start Rollup in watch mode
 npm run dev
 
-# Create optimized production build
+# Create optimized production bundle
 npm run build
 ```
-* Frontend client launches on: `http://localhost:3000`
+* Bundled assets output to `frontend/dist/`.
