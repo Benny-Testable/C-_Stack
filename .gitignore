@@ -1,0 +1,16 @@
+bin/
+obj/
+node_modules/
+dist/
+.vs/
+.vscode/
+*.user
+*.suo
+TestResults/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+tests/dependency-negative/node_modules/
+tests/dependency-negative/bin/
+tests/dependency-negative/obj/
