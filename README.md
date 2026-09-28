@@ -2,7 +2,18 @@
 
 **Scholarship-CMGroups-negative-metrics** is a runnable Scholarship Management System named **Scholarship CMGroups**. It is intentionally designed for **negative metric validation** on the Testable platform.
 
-The published branch is [Scholarship-CMGroups-negative](https://github.com/Mohammed-shihaf/C-_Stack/tree/Scholarship-CMGroups-negative).
+This branch is [Scholarship-CMGroups-negative-1](https://github.com/Mohammed-shihaf/C-_Stack/tree/Scholarship-CMGroups-negative-1) in `Mohammed-shihaf/C-_Stack`. It is branched from `Scholarship-CMGroups-negative`. Git does not allow spaces in branch names, so the requested name "Scholarship CMGroups-negative-1" is spelled with a hyphen.
+
+> **Negative validation baseline.** On this branch the **Statement Coverage** and **Lint / Rule Violations** gates fail on purpose, while the build and tests pass. See [docs/NEGATIVE_METRICS.md](docs/NEGATIVE_METRICS.md) for file/line/rule traceability and [docs/METRIC_TOOL_MATRIX.md](docs/METRIC_TOOL_MATRIX.md) for the full metric/tool mapping from `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` and `Whitebox_Tools_Registry 1.xlsx`.
+
+| Gate | Expected | Measured |
+| --- | --- | --- |
+| Application build (dotnet + Vite) | PASS | PASS |
+| Application tests (xUnit 4/4, Mocha 5/5) | PASS | PASS |
+| Statement Coverage (Coverlet / nyc, ≥ 80%) | FAIL | C# 9.17%, JS 11.53% |
+| Lint / Rule Violations (Roslyn / ESLint, 0 errors) | FAIL | Roslyn 61 errors, ESLint 16 errors + 1 warning |
+
+Run `bash scripts/verify-negative-baseline.sh` to reproduce every row. It exits 0 when the results match.
 
 The application builds and exercises student, scholarship, application, document, admin, and reporting flows. Selected areas are deliberately low quality so static-analysis, coverage, security, and Git metrics have something measurable to report. Do not treat this repository as a production system.
 
@@ -24,7 +35,11 @@ All people, emails, and secrets in this repository are fictional. Email addresse
 | Backend packages | NuGet |
 | Frontend build | Vite |
 | Vite bundler | esbuild |
-| Frontend packages | npm |
+| Frontend packages | pnpm 9 |
+| Frontend language | JavaScript / JSX |
+| Coverage | Coverlet 6.0.0 (C#), nyc 17.1.0 + Mocha (JS) |
+| Lint / static analysis | Roslyn NetAnalyzers 8.0.0 + SonarAnalyzer.CSharp 9.32 (C#), ESLint 8.47.0 + sonarjs + security (JS) |
+| Solution | `ScholarshipCMGroups.sln` (SDK pinned by `global.json`) |
 | Architecture | MVC (Model, View, Controller) |
 
 ## Architecture
@@ -56,11 +71,11 @@ The React client lives in `frontend/` and calls `http://localhost:5080/api`.
 ## Prerequisites
 
 - .NET SDK 8
-- Node.js 18 or newer and npm
+- Node.js 18 or newer and pnpm 9 (`npm install -g pnpm@9` or `corepack enable`)
 - SQL Server or LocalDB when you want to run the API against the scripts
 - Git
 
-`dotnet build` and `npm run build` do not require a running database. The API does.
+`dotnet build` and `pnpm build` do not require a running database. The API does.
 
 ## SQL Server setup
 
@@ -102,9 +117,9 @@ The MVC site and API listen on `http://localhost:5080`.
 
 ```bash
 cd frontend
-npm install
-npm run build
-npm run dev
+pnpm install
+pnpm build
+pnpm dev
 ```
 
 The Vite dev server listens on `http://localhost:5173`.
@@ -114,18 +129,18 @@ The Vite dev server listens on `http://localhost:5173`.
 Frontend:
 
 ```bash
-npm install
-npm run build
+pnpm install
+pnpm build
 ```
 
 Backend:
 
 ```bash
-dotnet restore
-dotnet build
+dotnet restore ScholarshipCMGroups.sln
+dotnet build ScholarshipCMGroups.sln
 ```
 
-Run those commands from `frontend/` and `backend/` respectively.
+Run the frontend commands from `frontend/` and `backend/` respectively.
 
 ## Test commands
 
@@ -139,8 +154,26 @@ Frontend tests:
 
 ```bash
 cd frontend
-npm test
+pnpm test
 ```
+
+## Coverage and lint gates (intentionally failing)
+
+```bash
+# Statement coverage — Coverlet, 80% threshold (FAILS on this branch)
+dotnet test ScholarshipCMGroups.sln -p:CollectCoverage=true
+
+# Roslyn lint gate — warnings promoted to errors (FAILS on this branch)
+dotnet build backend/ScholarshipCMGroups.csproj --no-incremental -p:LintGate=true
+
+cd frontend
+pnpm coverage   # nyc + Mocha, 80% statement threshold (FAILS)
+pnpm lint       # ESLint, --max-warnings 0 (FAILS)
+```
+
+Negative fixtures are labelled `INTENTIONAL NEGATIVE TEST DATA` or `COVERAGE NEGATIVE SCENARIO`:
+`backend/LintNegative/ApplicantScoringRules.cs`, `frontend/src/lint-negative/applicantScoring.js`,
+`backend/Services/AwardEstimateService.cs` and `frontend/src/utils/awardCalculator.js`.
 
 Coverage is intentionally low. Error handling, eligibility branches, rejection, document validation, admin operations, and report generation are largely untested.
 
