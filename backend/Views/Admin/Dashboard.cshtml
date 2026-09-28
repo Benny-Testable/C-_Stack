@@ -1,0 +1,12 @@
+@model DashboardStats
+<section class="panel">
+    <h1>Reviewer dashboard</h1>
+    <div class="stats">
+        <article><strong>@Model.StudentCount</strong><span>Students</span></article>
+        <article><strong>@Model.ScholarshipCount</strong><span>Scholarships</span></article>
+        <article><strong>@Model.ApplicationCount</strong><span>Applications</span></article>
+        <article><strong>@Model.ApprovedCount</strong><span>Approved</span></article>
+        <article><strong>@Model.RejectedCount</strong><span>Rejected</span></article>
+        <article><strong>@Model.PendingCount</strong><span>Pending</span></article>
+    </div>
+</section>

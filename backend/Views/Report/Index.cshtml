@@ -1,0 +1,25 @@
+@model IEnumerable<ReportRow>
+<section class="panel">
+    <h1>Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Count</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td>@row.Label</td>
+                <td>@row.Count</td>
+                <td>@row.Amount</td>
+                <td>@row.Status</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
