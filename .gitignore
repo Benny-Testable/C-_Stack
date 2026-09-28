@@ -12,6 +12,7 @@
 *.sln.docstates
 .vs/
 *.nupkg
+**/TestResults/
 
 # Sensitive appsettings overrides
 **/appsettings.Local.json
