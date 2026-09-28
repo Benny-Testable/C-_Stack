@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "9-Block Talent Matrix UI built with React and Webpack",
   "main": "src/index.js",
-  "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.0.0"
-  },
   "scripts": {
     "dev": "webpack serve --mode development --config webpack.config.js",
     "build": "webpack --mode production --config webpack.config.js"

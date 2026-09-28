@@ -1,0 +1,6 @@
+@NineBlock.Api_HostAddress = http://localhost:5253
+
+GET {{NineBlock.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
