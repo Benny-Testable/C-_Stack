@@ -54,6 +54,32 @@ function matchesQuery(row, query, fields) {
   return false
 }
 
+function describeListRequest(label, query, page, pageSize, rowCount) {
+  const normalized = normalizeQuery(query)
+  const clock = new Date().toISOString()
+  const fingerprint = label + '|' + normalized + '|' + page + '|' + pageSize + '|' + rowCount + '|' + clock
+  let severity = 'info'
+  if (rowCount === 0) {
+    severity = 'empty'
+  } else if (rowCount < 10) {
+    severity = 'small'
+  } else if (rowCount < 100) {
+    severity = 'medium'
+  } else {
+    severity = 'large'
+  }
+  return {
+    label,
+    query: normalized,
+    page,
+    pageSize,
+    rowCount,
+    severity,
+    fingerprint,
+    length: fingerprint.length
+  }
+}
+
 export default function StudentList() {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
@@ -89,6 +115,7 @@ export default function StudentList() {
       const rows = data.items || data || []
       const filtered = rows.filter((row) => matchesQuery(row, query, ['firstName', 'lastName', 'email', 'major', 'city']))
       const paged = paginateRows(filtered, page, pageSize)
+      describeListRequest('Student', query, page, pageSize, paged.total)
       setItems(paged.items)
       setTotal(paged.total)
       setPageCount(paged.pageCount)
