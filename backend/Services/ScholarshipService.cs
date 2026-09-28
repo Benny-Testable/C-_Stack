@@ -402,6 +402,44 @@ public class ScholarshipService
             result.DecisionBand = "Reject";
         }
 
+        if (student.EnrollmentYear < 2018 && student.CreditHours < 60)
+        {
+            result.Score = result.Score - 6;
+            result.Reasons.Add("Early cohort is below the credit expectation");
+        }
+        else if (student.EnrollmentYear < 2020 && student.CreditHours >= 60 && student.Gpa < 3.0m)
+        {
+            result.IsEligible = false;
+            result.Reasons.Add("Early cohort GPA is below the continuation rule");
+        }
+        else if (student.EnrollmentYear >= 2024 && student.CreditHours < 12 && scholarship.MinimumCreditHours > 0)
+        {
+            result.IsEligible = false;
+            result.Reasons.Add("New students need the minimum course load");
+        }
+        else if (student.EnrollmentYear >= 2024 && student.Gpa >= 3.8m && student.CreditHours >= 12)
+        {
+            result.Score = result.Score + 9;
+        }
+
+        if (student.AnnualIncome > 0 && student.AnnualIncome < 15000m && student.Residency == "International")
+        {
+            result.Score = result.Score + 4;
+        }
+        else if (student.AnnualIncome >= 15000m && student.AnnualIncome < 30000m && categoryCode == "NEED")
+        {
+            result.Score = result.Score + 6;
+        }
+        else if (student.AnnualIncome >= 30000m && student.AnnualIncome < 60000m && categoryCode == "MERIT" && student.Gpa < 3.7m)
+        {
+            result.Score = result.Score - 4;
+            result.Reasons.Add("Merit score reduced for this income band");
+        }
+        else if (student.AnnualIncome >= 60000m && categoryCode == "STEM" && student.Major == "Engineering")
+        {
+            result.Score = result.Score + 2;
+        }
+
         if (scholarship.Seats <= 0)
         {
             result.IsEligible = false;

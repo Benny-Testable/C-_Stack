@@ -232,6 +232,34 @@ public class ApplicationService
             return result;
         }
 
+        if (draft.RequestedAmount > 0 && draft.RequestedAmount < 500m)
+        {
+            notes.Add("Requested amount is below the usual award floor");
+        }
+        else if (draft.RequestedAmount >= 500m && draft.RequestedAmount < 2500m)
+        {
+            notes.Add("Requested amount is in the standard band");
+        }
+        else if (draft.RequestedAmount >= 2500m && draft.RequestedAmount < 5000m)
+        {
+            notes.Add("Requested amount is in the mid band");
+            if (student.Gpa < 3.2m && scholarship.Category?.CategoryCode == "MERIT")
+            {
+                result.Success = false;
+                result.Message = "Mid-band merit requests need a higher GPA";
+                result.Notes = notes;
+                return result;
+            }
+        }
+        else if (draft.RequestedAmount >= 5000m && draft.RequestedAmount <= scholarship.AwardAmount)
+        {
+            notes.Add("Requested amount is in the top band");
+            if (student.CreditHours < 24)
+            {
+                notes.Add("Top-band request has a light course load");
+            }
+        }
+
         draft.HistoryNote = "Submitted on " + DateTime.UtcNow.ToString("yyyy-MM-dd") + " with score " + eligibility.Score;
         var created = _applications.Add(draft);
         foreach (var document in documents)
