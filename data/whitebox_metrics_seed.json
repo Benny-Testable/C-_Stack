@@ -1,0 +1,517 @@
+[
+  {
+    "metric": "Execution Path Integrity",
+    "value": 96.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Decision Outcome Verification",
+    "value": 90.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Logical Sub-expression Validation",
+    "value": 92.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Total Logical Combinatorial Coverage",
+    "value": 92.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Technical Debt Impact",
+    "value": 97.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "QA Resource Allocation",
+    "value": 96.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Technical Debt Impact",
+    "value": 98.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Unit Test Complexity",
+    "value": 90.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Defect Probability",
+    "value": 94.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Modularization Opportunity",
+    "value": 90.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Reviewer Fatigue Factor",
+    "value": 92.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "QA Resource Allocation",
+    "value": 95.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Human Cognitive Load",
+    "value": 90.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Multi-Point Failure Probability",
+    "value": 92.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Redundancy Localization",
+    "value": 96.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Structural Cleanliness Score",
+    "value": 95.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Test Suite Streamlining",
+    "value": 92.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Abstraction Potential",
+    "value": 95.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Regression Focus Mapping",
+    "value": 98.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Synchronization Verification",
+    "value": 90.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Violation Density per KLOC",
+    "value": 98.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Resource Waste Identification",
+    "value": 97.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Semantic Consistency Score",
+    "value": 93.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Syntactic Uniformity Score",
+    "value": 91.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Structural Threshold Monitoring",
+    "value": 99.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Impact Prioritization",
+    "value": 93.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Aggregated Risk Assessment",
+    "value": 90.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Accuracy Tuning",
+    "value": 91.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Project-Specific Enforcement",
+    "value": 98.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Environment Standardization",
+    "value": 96.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Automated Gatekeeping",
+    "value": 98.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Quality Audit Trail",
+    "value": 97.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Best Practice Compliance",
+    "value": 95.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Entry Point Sanitization",
+    "value": 99.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Sensitive Information Tracking",
+    "value": 93.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Access Control Verification",
+    "value": 95.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Supply Chain Security",
+    "value": 98.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Regulatory Alignment",
+    "value": 96.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Exploit Surface Identification",
+    "value": 98.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Hidden Relationship Mapping",
+    "value": 95.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Legal Risk Validation",
+    "value": 97.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Trust Integrity Verification",
+    "value": 90.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Community Vitality Tracking",
+    "value": 92.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Mitigation Effort Ranking",
+    "value": 92.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Real-Time Alerting",
+    "value": 90.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Known CVE Count",
+    "value": 92.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Version Lag Assessment",
+    "value": 91.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Test Case Granularity",
+    "value": 92.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Unreachable Logic Identification",
+    "value": 96.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Coverage Gap Analysis",
+    "value": 93.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Surface-Level Correctness",
+    "value": 93.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Statement Coverage %",
+    "value": 92.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Boolean Accuracy Check",
+    "value": 92.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Sequence Integrity Mapping",
+    "value": 99.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Iteration Boundary Verification",
+    "value": 96.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Boundary Failure Identification",
+    "value": 96.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Branch Misdirection Discovery",
+    "value": 91.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Decision Coverage Gap Analysis",
+    "value": 97.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Branch Coverage %",
+    "value": 91.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Retrieving data. Wait a few seconds and try to cut or copy again.",
+    "value": 93.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Full Logic Validation",
+    "value": 99.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Gap Identification",
+    "value": 96.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Deep Logic Probing",
+    "value": 95.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Iterative Route Analysis",
+    "value": 96.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Ghost Code Discovery",
+    "value": 98.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Error Flow Verification",
+    "value": 97.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Cross-Component Mapping",
+    "value": 92.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Automated Quality Enforcement",
+    "value": 90.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Path Coverage %",
+    "value": 93.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Logic Error Sensitivity",
+    "value": 92.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Test Rigor Assessment",
+    "value": 92.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Weak Spot Localization",
+    "value": 99.4,
+    "status": "Pass"
+  },
+  {
+    "metric": "Boundary Mutant Analysis",
+    "value": 98.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Logic Error Sensitivity",
+    "value": 93.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Test Rigor Assessment",
+    "value": 96.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Logic Error Sensitivity",
+    "value": 94.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Coverage Delta %",
+    "value": 99.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Discovery Power Assessment",
+    "value": 94.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Deployment Readiness Guard",
+    "value": 92.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Ripple Effect Mapping",
+    "value": 92.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Fresh Logic Proofing",
+    "value": 95.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Structural Health Benchmarking",
+    "value": 92.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "All-Defs Coverage %",
+    "value": 95.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Data Path Correlation",
+    "value": 99.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "DU-Path Validation",
+    "value": 94.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Dead Data Identification",
+    "value": 92.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Null and Boundary Flow Analysis",
+    "value": 100.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "Audit Trail Verification",
+    "value": 95.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Data Processing Validation",
+    "value": 90.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Logic Influence Assessment",
+    "value": 90.5,
+    "status": "Pass"
+  },
+  {
+    "metric": "Path Correlation Mapping",
+    "value": 91.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Comprehensive Data Proofing",
+    "value": 96.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Data Flow Gap Analysis",
+    "value": 97.9,
+    "status": "Pass"
+  },
+  {
+    "metric": "Ambiguity Resolution",
+    "value": 94.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Inter-procedural Tracking",
+    "value": 90.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Ghost Use Identification",
+    "value": 93.8,
+    "status": "Pass"
+  },
+  {
+    "metric": "Data Integrity Audit",
+    "value": 100.0,
+    "status": "Pass"
+  },
+  {
+    "metric": "All-Uses Coverage %",
+    "value": 95.3,
+    "status": "Pass"
+  },
+  {
+    "metric": "Code Churn Score",
+    "value": 99.7,
+    "status": "Pass"
+  },
+  {
+    "metric": "Impact-Driven Verification",
+    "value": 98.6,
+    "status": "Pass"
+  },
+  {
+    "metric": "Fault Probability Modeling",
+    "value": 90.1,
+    "status": "Pass"
+  },
+  {
+    "metric": "Validation Suite Updates",
+    "value": 97.2,
+    "status": "Pass"
+  },
+  {
+    "metric": "Side Effect Mapping",
+    "value": 96.8,
+    "status": "Pass"
+  }
+]
