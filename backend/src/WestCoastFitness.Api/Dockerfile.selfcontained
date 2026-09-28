@@ -1,0 +1,21 @@
+# Build Configuration B: self-contained linux-x64 publish, packaged into a
+# minimal runtime-deps image (no shared .NET runtime installed in the final
+# image — the self-contained output bundles its own runtime). This is a
+# genuinely different artifact shape from the framework-dependent image in
+# ./Dockerfile: different publish flags, different base image, different
+# entrypoint (native executable instead of `dotnet <dll>`).
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY backend/src/WestCoastFitness.Api/WestCoastFitness.Api.csproj backend/src/WestCoastFitness.Api/
+RUN dotnet restore backend/src/WestCoastFitness.Api/WestCoastFitness.Api.csproj --runtime linux-x64
+COPY backend/src/WestCoastFitness.Api/ backend/src/WestCoastFitness.Api/
+WORKDIR /src/backend/src/WestCoastFitness.Api
+RUN dotnet publish --configuration Release --runtime linux-x64 --self-contained true \
+    -p:PublishTrimmed=false --output /app/publish
+
+FROM mcr.microsoft.com/dotnet/runtime-deps:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["./WestCoastFitness.Api"]
