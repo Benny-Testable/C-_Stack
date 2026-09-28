@@ -25,10 +25,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
+        run: dotnet restore backend/NineBlock.csproj
 
       - name: Build Backend (Release)
-        run: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration Release --no-restore
+        run: dotnet build backend/NineBlock.csproj --configuration Release --no-restore
 
   frontend-build:
     name: Frontend CI (React + Rollup)
@@ -64,7 +64,7 @@ jobs:
           node-version: '20'
 
       - name: Scan Backend Code Duplication
-        run: npx jscpd backend/NineBlock.Api/Services/ || true
+        run: npx jscpd backend/Services/ || true
 
       - name: Scan Frontend Code Duplication
         run: npx jscpd frontend/src/components/ || true

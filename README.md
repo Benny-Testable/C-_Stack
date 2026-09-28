@@ -24,25 +24,25 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ```
 9 Block/
+├── global.json                            # .NET SDK Version Pin (8.0.100)
 ├── backend/                               # ASP.NET Core (.NET 8.0 LTS) Web API
-│   ├── NineBlock.slnx                     # Solution File
-│   └── NineBlock.Api/
-│       ├── Controllers/                   # CONTROLLER LAYER (API Endpoints)
-│       │   ├── NineBoxGridController.cs   # Grid matrix distribution & calculations
-│       │   ├── EmployeeController.cs      # Employee profiles & departments
-│       │   └── AssessmentController.cs    # Performance/Potential review submissions
-│       ├── Models/                        # MODEL LAYER (Domain Entities & DTOs)
-│       │   ├── Employee.cs                # Employee entity
-│       │   ├── Assessment.cs              # Assessment ratings & coordinates
-│       │   ├── NineBoxQuadrant.cs         # 9 Quadrant definitions & metadata
-│       │   └── ReviewCycle.cs             # Quarterly/Annual review cycles
-│       ├── Services/                      # BUSINESS LOGIC & CALCULATION LAYER
-│       │   ├── NineBoxMatrixService.cs    # Primary 9-box coordinate calculator
-│       │   └── EmployeeEvaluationService.cs# [NEGATIVE FIXTURE] Duplicated calculation logic
-│       ├── Data/                          # DATA ACCESS & PERSISTENCE (EF Core)
-│       │   └── NineBlockDbContext.cs      # DbContext & quadrant seed data
-│       ├── Program.cs                     # DI Container, CORS & Pipeline setup
-│       └── appsettings.json               # Configuration
+│   ├── NineBlock.csproj                   # Project File (.NET 8.0)
+│   ├── Controllers/                       # CONTROLLER LAYER (API Endpoints)
+│   │   ├── NineBoxGridController.cs       # Grid matrix distribution & calculations
+│   │   ├── EmployeeController.cs          # Employee profiles & departments
+│   │   └── AssessmentController.cs        # Performance/Potential review submissions
+│   ├── Models/                            # MODEL LAYER (Domain Entities & DTOs)
+│   │   ├── Employee.cs                    # Employee entity
+│   │   ├── Assessment.cs                  # Assessment ratings & coordinates
+│   │   ├── NineBoxQuadrant.cs             # 9 Quadrant definitions & metadata
+│   │   └── ReviewCycle.cs                 # Quarterly/Annual review cycles
+│   ├── Services/                          # BUSINESS LOGIC & CALCULATION LAYER
+│   │   ├── NineBoxMatrixService.cs        # Primary 9-box coordinate calculator
+│   │   └── EmployeeEvaluationService.cs   # [NEGATIVE FIXTURE] Duplicated calculation logic
+│   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core)
+│   │   └── NineBlockDbContext.cs          # DbContext & quadrant seed data
+│   ├── Program.cs                         # DI Container, CORS & Pipeline setup
+│   └── appsettings.json                   # Configuration
 │
 ├── frontend/                              # ReactJS Single Page Application (Rollup Bundler)
 │   ├── public/
@@ -106,11 +106,11 @@ This branch embeds **real-world White-Box metric targets** directly into the pro
 ### Concrete Metric Fixtures Embedded in Code:
 
 1. **Backend C# Duplication Fixture**:
-   * Files: [`backend/NineBlock.Api/Services/NineBoxMatrixService.cs`](backend/NineBlock.Api/Services/NineBoxMatrixService.cs) and [`backend/NineBlock.Api/Services/EmployeeEvaluationService.cs`](backend/NineBlock.Api/Services/EmployeeEvaluationService.cs)
+   * Files: [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) and [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs)
    * **Violation**: Both services share an identical 25-line quadrant resolution pattern (`ResolveNineBoxQuadrant`), producing a duplicate clone detectable by `jscpd` or SonarQube.
    * **Verification Command**:
      ```bash
-     npx jscpd backend/NineBlock.Api/Services/
+     npx jscpd backend/Services/
      ```
 
 2. **Frontend React Duplication Fixture**:
@@ -122,7 +122,7 @@ This branch embeds **real-world White-Box metric targets** directly into the pro
      ```
 
 3. **Boundary & Negative Value Rejection**:
-   * File: [`backend/NineBlock.Api/Controllers/AssessmentController.cs`](backend/NineBlock.Api/Controllers/AssessmentController.cs)
+   * File: [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs)
    * Rejects out-of-bounds scores ($< 1.0$ or $> 5.0$) with `400 Bad Request`.
 
 ---
@@ -130,14 +130,14 @@ This branch embeds **real-world White-Box metric targets** directly into the pro
 ## 5. Project Usage Guide
 
 ### Prerequisites
-* **.NET SDK**: `v8.0` LTS or higher (`dotnet --version`)
+* **.NET SDK**: `v8.0` LTS (`8.0.100` via `global.json`)
 * **Node.js**: `v20.x` or higher (`node --version`)
 * **npm**: `v10.x` or higher (`npm --version`)
 
 ### A. Running the Backend (.NET Core Web API)
 ```bash
 # Navigate to backend directory
-cd backend/NineBlock.Api
+cd backend
 
 # Restore dependencies
 dotnet restore
