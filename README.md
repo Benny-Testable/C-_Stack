@@ -14,9 +14,18 @@ that metric passes.
 
 | | |
 |---|---|
-| Backend | C# / .NET 9.0 ASP.NET Core Web API (MVC), EF Core |
+| Backend | C# / .NET 8.0 (LTS) ASP.NET Core Web API (MVC), EF Core |
 | Frontend | ReactJS (Vite + esbuild) |
 | Architecture | Model-View-Controller, single solution |
+
+### Branch Stack Matrix
+| Branch | Primary Pair | C# / Language Build Tool | Package Manager | Project Structure |
+|---|---|---|---|---|
+| `9-Block-positive-Cases` | C# (.NET 8.0) | dotnet CLI | NuGet | **MVC** |
+
+| Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
+| :--- | :--- | :--- | :--- | :--- |
+| `9-Block-positive-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Vite (esbuild) + npm | MVC | C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with clean, non-duplicated positive-case implementations (Code Duplication metric passes). |
 
 ## Structure
 
@@ -35,7 +44,6 @@ frontend/
     views/          Dashboard.jsx
     utils/          quadrantUtils.js (single source of coordinate/color logic)
     services/       api.js
-Platform_Stack_Matrix.csv
 ```
 
 ## No-duplication fix (vs. the negative-cases branch)
