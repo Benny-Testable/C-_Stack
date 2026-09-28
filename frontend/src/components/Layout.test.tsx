@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from '@jest/globals';
 import { Layout } from './Layout';
 import { applicantSession, renderWithProviders } from '../test/renderWithProviders';
 

@@ -1,17 +1,17 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { LoginPage } from './LoginPage';
 import { renderWithProviders } from '../test/renderWithProviders';
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+  jest.restoreAllMocks();
 });
 
 describe('LoginPage', () => {
   it('shows field errors and does not call the API when the form is empty', async () => {
-    const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
+    const fetchMock = jest.fn();
+    global.fetch = fetchMock as typeof fetch;
     const user = userEvent.setup();
     renderWithProviders(<LoginPage />, { route: '/login' });
 
@@ -23,8 +23,8 @@ describe('LoginPage', () => {
   });
 
   it('rejects an ill-formed email before sending a request', async () => {
-    const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
+    const fetchMock = jest.fn();
+    global.fetch = fetchMock as typeof fetch;
     const user = userEvent.setup();
     renderWithProviders(<LoginPage />, { route: '/login' });
 
@@ -37,12 +37,9 @@ describe('LoginPage', () => {
   });
 
   it('renders an API failure as an alert', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn().mockResolvedValue(
-        new Response(JSON.stringify({ detail: 'Email or password is incorrect.' }), { status: 400 }),
-      ),
-    );
+    global.fetch = jest.fn().mockResolvedValue(
+      new Response(JSON.stringify({ detail: 'Email or password is incorrect.' }), { status: 400 }),
+    ) as typeof fetch;
     const user = userEvent.setup();
     renderWithProviders(<LoginPage />, { route: '/login' });
 

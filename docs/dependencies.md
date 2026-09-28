@@ -1,52 +1,52 @@
 # Dependencies
 
-Only packages the application or its tests actually use. Purpose is stated so SCA/license metrics have a readable inventory next to the lockfiles.
+Branch **`Scholarship-CMgroups-Positive1`** uses **Webpack + Yarn** on the frontend and **MSBuild + NuGet** on the backend.
 
-## Backend (NuGet)
+## Backend (NuGet / MSBuild)
 
-Defined in `backend/src/ScholarshipCMGroups.Api/ScholarshipCMGroups.Api.csproj` and the test project. Restore with `dotnet restore`.
+Defined in `backend/src/ScholarshipCMGroups.Api/ScholarshipCMGroups.Api.csproj` and the test project.
 
 | Package | Purpose |
 | --- | --- |
 | `Microsoft.EntityFrameworkCore.SqlServer` | SQL Server mapping |
-| `Microsoft.EntityFrameworkCore.Design` | `dotnet ef migrations` |
+| `Microsoft.EntityFrameworkCore.Design` | EF migrations |
 | `Microsoft.AspNetCore.Authentication.JwtBearer` | JWT validation |
-| `Microsoft.Extensions.Identity.Core` | `PasswordHasher<T>` only |
+| `Microsoft.Extensions.Identity.Core` | Password hashing |
 | `Swashbuckle.AspNetCore` | OpenAPI document |
-| `Azure.Identity` | Direct pin to a non-vulnerable version pulled otherwise by SqlClient |
-| `System.Formats.Asn1` | Same, transitive CVE pin |
-| `Microsoft.NET.Test.Sdk`, `xunit`, `xunit.runner.visualstudio` | Test host |
-| `coverlet.collector` | Cobertura coverage |
-| `Microsoft.EntityFrameworkCore.InMemory` | Tests without a live SQL Server |
-| `Microsoft.AspNetCore.Mvc.Testing` | In-process API tests |
+| `Microsoft.NET.Test.Sdk`, `xunit`, `coverlet.collector` | Tests and coverage |
+| `Microsoft.EntityFrameworkCore.InMemory` | In-memory tests |
+| `Microsoft.AspNetCore.Mvc.Testing` | API integration tests |
 
-NuGet audit is enabled in `backend/Directory.Build.props` (`NuGetAudit=true`, mode `all`, level `low`).
+Build: `dotnet build` invokes **MSBuild**. Restore: `dotnet restore` uses **NuGet**.
 
-## Frontend (npm)
+NuGet audit is enabled in `backend/Directory.Build.props`.
 
-Defined in `frontend/package.json`. Locked in `frontend/package-lock.json`. Install with `npm ci`.
+## Frontend (Yarn / Webpack)
+
+Defined in `frontend/package.json`. Locked in **`yarn.lock`**. Install with `yarn install` only — not npm.
 
 | Package | Purpose |
 | --- | --- |
-| `react`, `react-dom` | UI |
-| `react-router-dom` | Routes |
-| `vite`, `@vitejs/plugin-react` | Dev server and production build (esbuild transform/minify) |
-| `typescript` | Typecheck |
-| `eslint`, `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh` | Lint |
-| `vitest`, `@vitest/coverage-v8`, `jsdom` | Unit/component tests and coverage |
+| `react`, `react-dom`, `react-router-dom` | UI |
+| `webpack`, `webpack-cli`, `webpack-dev-server` | Bundling and dev server |
+| `html-webpack-plugin` | HTML shell |
+| `ts-loader`, `typescript` | TypeScript compilation |
+| `css-loader`, `style-loader` | Stylesheets |
+| `jest`, `ts-jest`, `jest-environment-jsdom` | Unit/component tests |
 | `@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom` | DOM tests |
-| `jscpd` | Duplication scan (`npm run duplication`) |
+| `eslint`, `typescript-eslint` | Lint |
+| `jscpd` | Duplication scan (`yarn duplication`) |
 
-No analytics, tracking, or payment SDKs.
+**Not used on this branch:** Vite, esbuild (as primary bundler), npm, `package-lock.json`.
 
 ## Build artefacts the metrics read
 
 | Artefact | Produced by |
 | --- | --- |
 | `backend/ScholarshipCMGroups.sln` | Solution |
-| `*.csproj` | Project + NuGet references |
-| `frontend/package-lock.json` | npm lockfile |
-| `frontend/vite.config.ts` | Vite/esbuild settings |
-| `frontend/dist/` | `npm run build` (gitignored) |
-| `coverage/cobertura-coverage.xml` | `npm run test:coverage` (gitignored) |
-| Coverlet Cobertura under `TestResults/` | `dotnet test --collect:"XPlat Code Coverage"` (gitignored) |
+| `*.csproj` | MSBuild project files |
+| `frontend/yarn.lock` | `yarn install` |
+| `frontend/webpack.config.js` | Webpack configuration |
+| `frontend/dist/` | `yarn build` |
+| Coverlet Cobertura under `TestResults/` | `dotnet test --collect:"XPlat Code Coverage"` |
+| `frontend/coverage/` | `yarn test:coverage` |

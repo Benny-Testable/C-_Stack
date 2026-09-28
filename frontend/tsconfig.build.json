@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "./.webpack-cache"
+  },
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "src/test/**"]
+}

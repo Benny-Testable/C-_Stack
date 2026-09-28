@@ -6,10 +6,9 @@ Confirm or replace each item before treating the related metric as scored.
 
 ## C-01 — Git branch name
 
-**Requested:** `Scholarship CMGroups positive`  
-**Constraint:** Git ref names cannot contain spaces (`git check-ref-format`).  
-**Used:** `Scholarship-CMGroups-positive`  
-This is a Git limitation, not a product choice.
+**This branch:** `Scholarship-CMgroups-Positive1` (Webpack + Yarn / MSBuild + NuGet variant).
+
+Other Scholarship CMGroups branches in the same repository may use different build tooling (for example Vite + npm). Each branch is isolated; `main` is unchanged.
 
 ## C-02 — Application lifecycle
 

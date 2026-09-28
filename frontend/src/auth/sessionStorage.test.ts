@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from '@jest/globals';
 import { clearSession, hasExpired, loadSession, saveSession } from './sessionStorage';
 import type { AuthSession } from '../api/types';
 

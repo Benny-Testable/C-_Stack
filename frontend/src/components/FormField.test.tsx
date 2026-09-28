@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, jest } from '@jest/globals';
 import { TextField } from './FormField';
 
 describe('TextField', () => {
   it('binds the label, marks the control invalid, and exposes the error to assistive technology', async () => {
-    const onChange = vi.fn();
+    const onChange = jest.fn();
     const user = userEvent.setup();
 
     render(

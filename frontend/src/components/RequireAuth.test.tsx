@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { Route, Routes } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from '@jest/globals';
 import { RequireAuth } from './RequireAuth';
 import { administratorSession, applicantSession, renderWithProviders } from '../test/renderWithProviders';
 

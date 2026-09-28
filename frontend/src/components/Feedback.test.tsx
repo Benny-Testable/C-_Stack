@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, jest } from '@jest/globals';
 import { EmptyState, ErrorMessage, LoadingIndicator, SuccessMessage } from './Feedback';
 
 describe('feedback states', () => {
@@ -11,7 +11,7 @@ describe('feedback states', () => {
   });
 
   it('announces an error as an alert and retries when asked', async () => {
-    const onRetry = vi.fn();
+    const onRetry = jest.fn();
     const user = userEvent.setup();
     render(<ErrorMessage message="The catalogue could not be loaded." onRetry={onRetry} />);
 

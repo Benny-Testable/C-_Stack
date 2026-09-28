@@ -1,17 +1,17 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { RegisterPage } from './RegisterPage';
 import { renderWithProviders } from '../test/renderWithProviders';
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+  jest.restoreAllMocks();
 });
 
 describe('RegisterPage', () => {
   it('blocks a short password without calling the API', async () => {
-    const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
+    const fetchMock = jest.fn();
+    global.fetch = fetchMock as typeof fetch;
     const user = userEvent.setup();
     renderWithProviders(<RegisterPage />, { route: '/register' });
 

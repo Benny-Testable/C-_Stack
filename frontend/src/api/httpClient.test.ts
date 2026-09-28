@@ -1,20 +1,20 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { ApiError } from './ApiError';
 import { HttpClient } from './httpClient';
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+  jest.restoreAllMocks();
 });
 
 describe('HttpClient', () => {
   it('sends JSON and the bearer token', async () => {
-    const fetchMock = vi.fn().mockResolvedValue(
+    const fetchMock = jest.fn().mockResolvedValue(
       new Response(JSON.stringify({ id: 1 }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       }),
     );
-    vi.stubGlobal('fetch', fetchMock);
+    global.fetch = fetchMock as typeof fetch;
 
     const client = new HttpClient({
       baseUrl: 'https://api.example.test/',
@@ -36,10 +36,10 @@ describe('HttpClient', () => {
   });
 
   it('omits undefined query values', async () => {
-    const fetchMock = vi.fn().mockResolvedValue(
+    const fetchMock = jest.fn().mockResolvedValue(
       new Response(JSON.stringify({ items: [] }), { status: 200 }),
     );
-    vi.stubGlobal('fetch', fetchMock);
+    global.fetch = fetchMock as typeof fetch;
 
     const client = new HttpClient({ baseUrl: 'https://api.example.test' });
     await client.get('/api/scholarships', { query: { search: 'merit', page: undefined } });
@@ -49,15 +49,15 @@ describe('HttpClient', () => {
   });
 
   it('treats a 204 as undefined', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(null, { status: 204 })));
+    global.fetch = jest.fn().mockResolvedValue(new Response(null, { status: 204 })) as typeof fetch;
     const client = new HttpClient({ baseUrl: 'https://api.example.test' });
 
     await expect(client.delete('/api/scholarships/1')).resolves.toBeUndefined();
   });
 
   it('notifies the session when the API returns 401', async () => {
-    const onUnauthorized = vi.fn();
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(null, { status: 401 })));
+    const onUnauthorized = jest.fn();
+    global.fetch = jest.fn().mockResolvedValue(new Response(null, { status: 401 })) as typeof fetch;
 
     const client = new HttpClient({
       baseUrl: 'https://api.example.test',

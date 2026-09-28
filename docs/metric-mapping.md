@@ -110,8 +110,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Structural Analysis · L3 Cyclomatic Complexity · L4 Logic Coverage Metric
 - **Excel Definition:** It measures the percentage of all possible unique sequences of branches that have been traveled. While branch coverage looks at individual forks, path coverage looks at the entire "journey" through the function.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: logical_combinatorial_coverage = ( functions_without_counterexample / max(total_functions_checked, 1) )
@@ -374,7 +374,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Defect Propagation Risk Detection
 - **Excel Definition:** Identifies the risk that a single bug exists in multiple locations due to copy-paste programming, measuring how likely an error is to spread across the system.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -402,7 +402,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Refactoring Identification
 - **Excel Definition:** Pinpoints specific clusters of identical or near-identical code that should be merged into a single reusable function, identifying exactly which files are bloating the project.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -428,7 +428,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Code Quality Assessment
 - **Excel Definition:** Evaluates the overall cleanliness of the code by measuring the percentage of duplication. High duplication scores indicate a lack of modular design and poor abstraction.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -454,7 +454,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Test Maintenance Reduction
 - **Excel Definition:** Measures the redundant effort spent writing similar tests for identical code blocks, reducing the number of tests that need to be managed, updated, and run.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -480,7 +480,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Refactoring Opportunity Detection
 - **Excel Definition:** Identifies patterns where common logic can be abstracted into a shared library or parent class, measuring the simplicity gain from replacing repeated blocks with a single well-defined interface.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -508,7 +508,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Risk-Based Testing Prioritization
 - **Excel Definition:** Helps prioritize testing for areas where duplication is high, directing QA resources to verify that all instances of duplicated logic behave identically under stress.
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -534,7 +534,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Code Quality Auditing · L3 Code Duplication · L4 Maintainability Testing
 - **Excel Definition:** % of code lines that are duplicated (cloned blocks) across the repository; indicates copy-paste debt
 - **Required Evidence:** Duplication scan of source
-- **Project Component Producing Evidence:** `npm run duplication` (jscpd) and modular C#/TS structure
+- **Project Component Producing Evidence:** `yarn duplication` (jscpd) and modular C#/TS structure
 - **Source of Evidence:** jscpd / copy-paste detectors named in Excel
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -561,7 +561,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Count of lint violations bucketed by severity (error, warning, info) per 1000 lines of code
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: N = total number of JSON objects (violations)
@@ -587,7 +587,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Scans the code for variables that are declared but never referenced in any operation, measuring technical debt from dead allocations that clutter the code and confuse future maintainers.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Total Duplicate Lines = SUM(endLine - line + 1)
@@ -613,7 +613,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Verifies that variables, functions, and classes follow specific casing and descriptive standards, measuring the guessability and professionalism of the code to improve readability.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Semantic Consistency = 1 - (Unique Rule Types / Total Violations)
@@ -639,7 +639,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Enforces rules regarding indentation, line length, and whitespace to ensure visual consistency so that code written by multiple developers looks uniform.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Uniformity Score = 1 - (STDEV(duplicate line counts) / AVERAGE(duplicate line counts))
@@ -665,7 +665,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Flags functions that exceed specific limits for nesting depth or length, measuring the mental load required to process a module and identifying candidates for immediate refactoring.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Threshold Score = COUNT(duplicate lines > 10) / Total Violations
@@ -691,7 +691,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Categorizes violations as Errors, Warnings, or Info based on their risk level, helping developers focus on fixing critical structural flaws before minor stylistic nitpicks.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Impact Score = Unique Modules / Unique Files
@@ -717,7 +717,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Identifies modules that suffer from a high density of different rule breaks, measuring the instability of a file and highlighting parts of the system most likely to contain bugs.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Risk Score = Total Violations * Average Duplicate Lines
@@ -743,7 +743,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Filters out rule violations that are intentional or contextually irrelevant, measuring the reliability of the analysis tool to ensure developers do not ignore valid warnings.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Accuracy = 1 - (Unique Rule IDs - 1) / Total Violations
@@ -769,7 +769,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Allows the team to create and enforce unique rules tailored to specific requirements, measuring compliance with internal business logic or architecture that generic tools might miss.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Project Enforcement = Unique Modules / Total Violations
@@ -795,7 +795,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Manages the configuration files that define which rules are active across the team, ensuring every developer on the project is using the exact same quality settings.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Standardization = Unique Types / Total Violations
@@ -824,7 +824,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Runs quality checks automatically during the build process, measuring readiness for merge by blocking any code that fails to meet the minimum quality bar before it can be merged.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Gate = IF(Total Violations > Threshold, "FAIL", "PASS")
@@ -852,7 +852,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Generates detailed logs of all detected issues including line numbers and fix suggestions, providing a transparent record of code health for reviews and long-term quality tracking.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Audit Score = Filled Fields / Total Expected Fields
@@ -878,7 +878,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Checks the code against industry-standard secure coding guidelines like OWASP, ensuring developers use safe functions and avoid dangerous coding habits that lead to vulnerabilities.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Compliance Score = 1 - ((Semgrep ERROR + Bandit HIGH + Bandit MEDIUM) / loc)
@@ -904,7 +904,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Measures how effectively the code cleans data coming from external sources, identifying locations where user input is used directly in sensitive operations without being checked for malicious content.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Entry Points = count(Semgrep injection-related results)
@@ -930,7 +930,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Tracks the movement of sensitive data through the application, ensuring private data is encrypted or masked and never leaks into logs or insecure output streams.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Sensitive Exposure Count = count(Semgrep secret-related results)
@@ -956,7 +956,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Identifies flaws in how the application verifies user identity and permissions, flagging hardcoded passwords, weak session management, or logic that allows users to bypass security checks.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Access Control Risk = count(Semgrep auth-related results)
@@ -982,7 +982,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Checks third-party libraries against databases of known security issues, measuring the risk of inherited vulnerabilities that exist in code you did not write yourself.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Supply Chain Risk = count(Semgrep dependency-related results)
@@ -1008,7 +1008,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Verifies if the code meets specific regulatory requirements such as GDPR or HIPAA, providing a report on whether the application is legally and technically secure based on external standards.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Regulatory Coverage = count(Semgrep results with CWE/OWASP)
@@ -1034,7 +1034,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Count of high/critical severity vulnerabilities found by static analysis; identifies injection risks, insecure patterns, auth weaknesses
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Exploit Surface = Semgrep ERROR + Semgrep WARNING + Bandit HIGH + Bandit MEDIUM
@@ -1060,7 +1060,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Identifies and analyzes dependencies of dependencies to uncover hidden risks deep in your software stack, measuring the total depth of your external code tree.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Hidden Relationship Risk = count(total vulnerabilities) / count(dependencies)
@@ -1086,7 +1086,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Checks the legal licenses of every library used to ensure they align with your project goals, measuring the risk of legal action or forced open-sourcing due to restrictive licenses.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Legal Risk Proxy = count(CVE-linked vulnerabilities)
@@ -1112,7 +1112,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Evaluates the integrity of the source and delivery path of your libraries to prevent poisoned packages, measuring the reliability of maintainers and security of repositories.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Supply Chain Risk = count(all vulnerabilities across dependencies)
@@ -1138,7 +1138,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Measures the activity level and support of open-source projects you rely on, identifying zombie libraries abandoned by their creators that are unlikely to be updated if a bug is found.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Community Vitality Score = count(vulnerabilities with fix_versions) / count(total vulnerabilities)
@@ -1164,7 +1164,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Ranks identified dependency issues based on severity and exploitability, helping decide which patch to apply first when development time is limited.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Mitigation Effort = count(vulnerabilities with fix_versions)
@@ -1190,7 +1190,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Provides an ongoing watchdog service that alerts immediately when a new vulnerability is discovered in your existing stack, acting as a permanent quality gate as the MVP evolves.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Alert Signal = count(new vulnerabilities detected in scan)
@@ -1216,7 +1216,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Count of known CVEs in third-party dependencies, categorised by CVSS severity
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Known CVE Count = count(vulnerabilities with CVE in aliases)
@@ -1242,7 +1242,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Measures the age of your libraries by comparing installed versions against the latest stable releases, identifying components that no longer receive security patches.
 - **Required Evidence:** Lockfiles and restore/audit output
 - **Project Component Producing Evidence:** `package-lock.json`, NuGet references, `NuGetAudit` in `Directory.Build.props`
-- **Source of Evidence:** npm/NuGet audit
+- **Source of Evidence:** yarn/NuGet audit
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Version Lag = count(vulnerabilities with fix_versions)
@@ -1267,8 +1267,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Statement Coverage · L4 Unit Testing Support
 - **Excel Definition:** Identifies exactly which lines of a function are covered by unit tests and which are ignored, helping developers write more focused tests by highlighting hidden blocks of code.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Granularity Proxy = num_statements / count(dependencies)
@@ -1293,7 +1293,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Statement Coverage · L4 Dead Code Detection
 - **Excel Definition:** Identifies ghost code — lines that can never be executed regardless of input provided — measuring technical debt by finding unused functions or conditions that clutter the codebase.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -1319,8 +1319,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Statement Coverage · L4 Test Completeness Evaluation
 - **Excel Definition:** Calculates the ratio of executed lines to total lines to show exactly where the holes are in your quality, measuring the thoroughness of the testing process.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Coverage Gap = missing_lines / num_statements
@@ -1345,7 +1345,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Statement Coverage · L4 Basic Logic Validation
 - **Excel Definition:** Verifies that the code can at least run from start to finish without crashing on a fundamental level, measuring the smoke test success of your logic to ensure the most basic paths are operational.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -1371,8 +1371,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Statement Coverage · L4 Code Execution Verification
 - **Excel Definition:** % of executable source statements exercised by the test suite at least once
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
   - Python :: Derivation: Statement Coverage % = percent_covered
@@ -1397,7 +1397,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Conditional Logic Testing
 - **Excel Definition:** Evaluates the behavior of complex logical expressions to ensure they branch correctly under different data inputs, measuring the correctness of how your code handles logical operators.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1423,7 +1423,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Control Flow Validation
 - **Excel Definition:** Verifies the physical transitions between different blocks of code to ensure execution order matches the intended design, measuring the reliability of jumps and calls within your function.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1449,7 +1449,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Loop Condition Testing
 - **Excel Definition:** Measures whether loops correctly handle the decision to start, continue, and terminate, specifically testing the zero-trip, one-trip, and n-trip paths.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -1475,7 +1475,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Edge Case Detection
 - **Excel Definition:** Identifies logical failures at the extreme limits of input values such as empty lists or None types, measuring the robustness of your branches when they encounter unexpected data.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1501,7 +1501,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Logic Error Detection
 - **Excel Definition:** Uncovers flaws where the code takes the wrong turn due to a mistake in the conditional expression, acting as a diagnostic tool for semantic bugs that produce the wrong result without crashing.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -1527,8 +1527,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Test Case Completeness
 - **Excel Definition:** Calculates the percentage of successfully executed branches versus total available decision points, showing exactly which else or elif blocks have never been visited by your tests.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Branch Coverage Gap = missing_branches / num_branches
@@ -1553,8 +1553,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Branch Coverage · L4 Decision Outcome Verification
 - **Excel Definition:** % of true/false branches of every decision point executed by tests
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
   - Python :: Derivation: Branch Coverage % = percent_branches_covered
@@ -1579,7 +1579,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Path Execution Tracking
 - **Excel Definition:** Records exactly which sequences of statements and branches are hit during active testing, providing physical proof of which routes in the code were traveled by a specific test case.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1605,7 +1605,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Complete Coverage Path Verification
 - **Excel Definition:** Confirms that every unique path identified by the complexity metric has been successfully traveled, measuring completeness of the test suite against the theoretical maximum of the code logic.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1631,7 +1631,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Partial Path Coverage Detection
 - **Excel Definition:** Highlights logical routes that have only been partially tested or completely ignored, acting as a diagnostic tool to find blind spots where complex logic remains unverified.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1657,7 +1657,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Nested Condition Path Testing
 - **Excel Definition:** Measures system stability when multiple decision points are stacked within one another, ensuring the deepest levels of code hierarchy are reachable and functional.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1683,7 +1683,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Loop Path Detection
 - **Excel Definition:** Specifically focuses on paths that enter, repeat, or skip loops entirely, measuring how the code handles different iteration counts including the zero-trip path where the loop never executes.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1709,7 +1709,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Unreachable Path Detection
 - **Excel Definition:** Identifies logical routes that can never be executed due to contradictory conditions or dead code, reducing technical debt by pointing out logic that clutters the system without providing value.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1735,7 +1735,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Exception Path Handling
 - **Excel Definition:** Measures the code ability to gracefully handle and recover from unexpected errors or try-except blocks, ensuring the system does not crash when forced into a failure state.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -1761,7 +1761,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Multi-Function Path Tracking
 - **Excel Definition:** Tracks how logic flows across multiple functions or modules to complete a single task, measuring integration quality between different parts of the application.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -1788,7 +1788,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Excel Definition:** Embeds path verification into the automated pipeline to prevent untested logic from reaching production, measuring compliance with quality standards in real-time.
 - **Required Evidence:** Static analysis configuration and clean findings
 - **Project Component Producing Evidence:** Roslyn (`Directory.Build.props`, `.editorconfig`), ESLint `eslint.config.js`
-- **Source of Evidence:** Build and `npm run lint`
+- **Source of Evidence:** Build and `yarn lint`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Automation Readiness = percent_covered + percent_branches_covered
@@ -1815,8 +1815,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Control Flow Testing · L3 Path Coverage · L4 Path Detection Testing
 - **Excel Definition:** % of all distinct execution paths through a function that are exercised by the test suite
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Path Coverage % (proxy) = (percent_covered + percent_branches_covered) / 2
@@ -1841,8 +1841,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Fault Detection Capability
 - **Excel Definition:** Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Logic Error Sensitivity = (total jobs - surviving mutants) / total jobs
@@ -1867,8 +1867,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Test Coverage Quality Validation
 - **Excel Definition:** Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Test Rigor = (total jobs - surviving mutants) / total jobs
@@ -1893,8 +1893,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Test Case Improvement Identification
 - **Excel Definition:** Pinpoints exactly which surviving mutants were not caught, identifying specific areas where test cases need to be added or strengthened to write more meaningful assertions.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Weak Spots = surviving mutants
@@ -1919,8 +1919,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Edge Case Detection
 - **Excel Definition:** Measures the test suite ability to catch errors at boundaries by specifically mutating operators, identifying if tests are robust enough to handle the precise limits of the code logic.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Boundary Weakness = count(TestOutcome.SURVIVED)
@@ -1945,8 +1945,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Fault Detection Capability
 - **Excel Definition:** Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Logic Error Sensitivity = (total jobs - surviving mutants) / total jobs
@@ -1971,8 +1971,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Test Coverage Quality Validation
 - **Excel Definition:** Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Test Rigor = (total jobs - surviving mutants) / total jobs
@@ -1997,8 +1997,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Mutation Testing · L3 Mutation Score · L4 Fault Detection Capability
 - **Excel Definition:** Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Logic Error Sensitivity = (total jobs - surviving mutants) / total jobs
@@ -2023,8 +2023,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 Regression Testing Monitoring
 - **Excel Definition:** Change in test coverage percentage between current build and previous baseline — monitors coverage trends
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: Coverage Delta % = current.percent_covered - previous.percent_covered
@@ -2052,7 +2052,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 Test Suite Effectiveness Tracking
 - **Excel Definition:** Evaluates how many unique logical journeys through the code are validated by current test cases, measuring the ratio of executed paths to total possible paths.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2078,7 +2078,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 CI/CD Quality Gate Enforcement
 - **Excel Definition:** Acts as an automated threshold that prevents code from being merged if the coverage delta is negative, ensuring that only logically verified code moves toward production.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2106,7 +2106,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 Change Impact Analysis
 - **Excel Definition:** Identifies which specific logical paths are altered by a code change and which downstream paths might be affected, measuring the logical surface area of a modification to predict unintended side effects.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2132,7 +2132,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 New Code Testing Validation
 - **Excel Definition:** Specifically measures whether newly added lines or paths have corresponding test cases, ensuring that the MVP growth is supported by an equal growth in testing depth.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2158,7 +2158,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Test Regression/Coverage Analysis · L3 Coverage Delta · L4 Quality Improvement Measurement
 - **Excel Definition:** Provides a quantitative score of how much simpler or safer the code becomes after refactoring, measuring the successful reduction of complex untestable paths into cleaner sequences.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2187,8 +2187,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Variable Definition Detection
 - **Excel Definition:** % of variable definition points (where variables are assigned) that are exercised by at least one test path
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: all_defs_coverage = (used_definitions / max(definitions, 1)) * 100
@@ -2213,7 +2213,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Definition-Use Mapping
 - **Excel Definition:** Creates a bridge between where a variable is defined and at least one line of code where that specific value is later read or modified, measuring the integrity of the data journey.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2239,7 +2239,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Coverage Measurement
 - **Excel Definition:** Calculates the percentage of Definition-Use pairs that have been successfully exercised by your test suite, providing a deeper quality check than just seeing if a line was executed.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2265,7 +2265,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Uncovered Definition Detection
 - **Excel Definition:** Identifies variables that are assigned a value but are never actually used by the program, helping reduce technical debt by spotting zombie variables that clutter memory without purpose.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2291,7 +2291,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Edge Case Handling
 - **Excel Definition:** Measures how the data flow reacts when a definition results in an unexpected state such as None or an overflow, identifying risks where valid variable definitions might lead to a crash at use.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2317,7 +2317,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Definition Coverage · L4 Reporting Validation
 - **Excel Definition:** Provides a verifiable report of the variable state at every stage of execution for debugging and compliance, ensuring that any data-related failure can be traced back to its specific definition point.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2343,7 +2343,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Computational Use Detection (C-Use)
 - **Excel Definition:** Identifies instances where a variable is used in a calculation or output statement, measuring the accuracy of data transformations and ensuring variable values correctly influence final results.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2369,7 +2369,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Predicate Use Detection (P-Use)
 - **Excel Definition:** Identifies where a variable is used to determine the outcome of a decision, measuring how data values control the program execution flow and ensuring both True and False outcomes are tested.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: Yes
@@ -2395,7 +2395,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Definition-Use Pair Identification
 - **Excel Definition:** Links every definition of a variable to all possible locations where that specific value could be read, creating a map of data influence across the function to ensure no use-case is left untested.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2421,7 +2421,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 All-Uses Coverage Verification
 - **Excel Definition:** Confirms that every single identified Definition-Use pair (both c-use and p-use) has been executed at least once, measuring the total thoroughness of the test suite regarding data integrity.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2447,7 +2447,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Partial Uses Coverage Detection
 - **Excel Definition:** Highlights specific variable uses that have never been reached during testing, helping developers find blind spots where a variable is defined but its impact on a calculation or branch is unverified.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2473,7 +2473,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Multiple Definitions Handling
 - **Excel Definition:** Tracks variables that are redefined multiple times such as inside a loop or multiple if blocks, measuring the complexity of the data lifecycle to ensure the current value is always the intended one.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2499,7 +2499,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Cross-Function Use Detection
 - **Excel Definition:** Monitors how variables such as arguments or global objects move between different functions, measuring the safety of the interfaces between code modules to prevent data corruption during hand-offs.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2525,7 +2525,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Unreachable Use Detection
 - **Excel Definition:** Identifies code blocks that attempt to use a variable but can never be executed due to logical constraints, helping clean up technical debt by removing logic that relies on impossible data states.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2551,7 +2551,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Coverage Reporting Validation
 - **Excel Definition:** Provides a detailed report showing which data paths are safe and which are risky, ensuring your MVP meets high-quality standards by providing an audit trail for every variable in the system.
 - **Required Evidence:** Application source, tests, and static-analysis configuration
-- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Vite React/TypeScript frontend
+- **Project Component Producing Evidence:** ASP.NET Core 8 backend and Webpack React/TypeScript frontend
 - **Source of Evidence:** Tools named in the Excel row for C# / JavaScript / TypeScript
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
@@ -2577,8 +2577,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 White Box · L2 Data Flow Testing · L3 All Uses Coverage · L4 Variable Use Detection
 - **Excel Definition:** % of definition-use pairs (variable defined, then used in computation or predicate) exercised by tests
 - **Required Evidence:** Test execution with coverage artefacts
-- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Vitest + v8 coverage (Cobertura)
-- **Source of Evidence:** Coverage reports from `dotnet test` and `npm run test:coverage`
+- **Project Component Producing Evidence:** xUnit + coverlet (Cobertura), Jest + Istanbul coverage (Cobertura)
+- **Source of Evidence:** Coverage reports from `dotnet test` and `yarn test:coverage`
 - **Calculation/Derivation:**
   - Python :: Metric emitted directly?: No
   - Python :: Derivation: all_uses_coverage_percent = ( len([d for d in definitions if d.user_count > 0]) / len(definitions) ) * 100
@@ -2964,7 +2964,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Black Box · L2 Compatibility Testing · L3 Experience Stability · L4 Cross-Browser Testing
 - **Excel Definition:** % of test scenarios passing across all targeted browsers (Chrome, Firefox, Safari, Edge) at defined viewport sizes
 - **Required Evidence:** Rendered UI across viewports and interactions
-- **Project Component Producing Evidence:** Responsive CSS breakpoints, Vitest + Testing Library interaction tests
+- **Project Component Producing Evidence:** Responsive CSS breakpoints, Jest + Testing Library interaction tests
 - **Source of Evidence:** Primary Tool: Playwright; Secondary Tool: Selenium; Languages Supported: Python, Node.js (JS, TS), Java, C#
 - **Calculation/Derivation:**
   - Raw Measurement Formula: Pass Rate = (Passing Browser × Scenario Combos / Total Combos) × 100
@@ -2980,7 +2980,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Black Box · L2 Compatibility Testing · L3 Cross-Device Layout Validation · L4 Breakpoint Validation
 - **Excel Definition:** % of UI breakpoints (mobile, tablet, desktop) rendering correctly without layout regression
 - **Required Evidence:** Rendered UI across viewports and interactions
-- **Project Component Producing Evidence:** Responsive CSS breakpoints, Vitest + Testing Library interaction tests
+- **Project Component Producing Evidence:** Responsive CSS breakpoints, Jest + Testing Library interaction tests
 - **Source of Evidence:** Primary Tool: Playwright; Secondary Tool: Selenium; Languages Supported: JS, TS, JSX, TSX, Vue
 - **Calculation/Derivation:**
   - Raw Measurement Formula: Breakpoint Pass Rate = (Passing Breakpoint Tests / Total Breakpoint Tests) × 100
@@ -2996,7 +2996,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Black Box · L2 Frontend Testing · L3 Visual Regression Testing · L4 Screenshot Comparison
 - **Excel Definition:** % pixel difference between baseline and current screenshot at defined viewports; detects unintended UI changes
 - **Required Evidence:** Rendered UI across viewports and interactions
-- **Project Component Producing Evidence:** Responsive CSS breakpoints, Vitest + Testing Library interaction tests
+- **Project Component Producing Evidence:** Responsive CSS breakpoints, Jest + Testing Library interaction tests
 - **Source of Evidence:** Primary Tool: Playwright; Secondary Tool: Selenium; Languages Supported: JS, TS, JSX, TSX, Vue
 - **Calculation/Derivation:**
   - Raw Measurement Formula: Pixel Diff % = (Changed Pixels / Total Pixels) × 100
@@ -3012,7 +3012,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Black Box · L2 Frontend Testing · L3 DOM & Interaction Validation · L4 Element Interaction Testing
 - **Excel Definition:** % of interactive UI elements (buttons, forms, modals, dropdowns) responding correctly to user interactions
 - **Required Evidence:** Rendered UI across viewports and interactions
-- **Project Component Producing Evidence:** Responsive CSS breakpoints, Vitest + Testing Library interaction tests
+- **Project Component Producing Evidence:** Responsive CSS breakpoints, Jest + Testing Library interaction tests
 - **Source of Evidence:** Primary Tool: Playwright; Secondary Tool: Selenium; Languages Supported: JS, TS, JSX, TSX, Vue
 - **Calculation/Derivation:**
   - Raw Measurement Formula: Interaction Pass Rate = (Passing Interaction Tests / Total Interaction Tests) × 100
@@ -3503,7 +3503,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Security Testing · L2 SOC 2 Compliance · L3 Audit Evidence Completeness · L4 SOC 2 Evidence Collection Rate
 - **Excel Definition:** % of SOC 2 Type II control evidence items collected and uploaded for audit period — access logs, change logs, test results, incident reports.
 - **Required Evidence:** Audit artefacts from tests and logs
-- **Project Component Producing Evidence:** xUnit + Vitest output, Swagger document, structured logging of surrogate keys
+- **Project Component Producing Evidence:** xUnit + Jest output, Swagger document, structured logging of surrogate keys
 - **Source of Evidence:** Primary Tool: Drata; Secondary Tool: Vanta; Validation Type: Platform / SaaS; Requires Live App?: Yes
 - **Calculation/Derivation:**
   - Direct Metric: No
@@ -3830,7 +3830,7 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric Category:** L1 Compliance Testing · L2 SOC 2 Compliance · L3 Audit Evidence Completeness · L4 SOC 2 Evidence Collection Rate
 - **Excel Definition:** % of SOC 2 Type II control evidence items collected and uploaded for audit period (access logs, change logs, test results, incident reports).
 - **Required Evidence:** Audit artefacts from tests and logs
-- **Project Component Producing Evidence:** xUnit + Vitest output, Swagger document, structured logging of surrogate keys
+- **Project Component Producing Evidence:** xUnit + Jest output, Swagger document, structured logging of surrogate keys
 - **Source of Evidence:** Primary Tool: Drata; Validation Type: Platform / SaaS; Requires Live App?: Yes — integrations
 - **Calculation/Derivation:**
   - Direct Metric: No
@@ -4019,8 +4019,8 @@ Where the workbook depends on information it does not supply (previous baselines
 - **Metric:** Build Duration (seconds)
 - **Metric Category:** L1 Performance Testing · L2 Dependency Analysis · L3 Build Performance · L4 Build Time Regression
 - **Excel Definition:** Measures total CI build time — slow builds increase feedback loop latency, reducing developer velocity and deployment frequency.
-- **Required Evidence:** Timed `dotnet build` / `npm run build` runs
-- **Project Component Producing Evidence:** `ScholarshipCMGroups.sln` and Vite `package.json` scripts
+- **Required Evidence:** Timed `dotnet build` / `yarn build` runs
+- **Project Component Producing Evidence:** `ScholarshipCMGroups.sln` and Webpack `package.json` scripts
 - **Source of Evidence:** Validation Type: Static CI Metadata; Requires Live App?: No; File / Artifact Scanned: CI pipeline logs / build manifests
 - **Calculation/Derivation:**
   - Java :: Direct Metric: No
