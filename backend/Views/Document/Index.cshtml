@@ -1,0 +1,25 @@
+@model IEnumerable<Document>
+<section class="panel">
+    <h1>Documents</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Required</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FileName</td>
+                <td>@item.DocumentType</td>
+                <td>@item.Status</td>
+                <td>@item.IsRequired</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
