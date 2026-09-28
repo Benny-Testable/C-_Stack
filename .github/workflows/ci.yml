@@ -37,7 +37,7 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Build (positive-build-2, Configuration A: framework-dependent)
+      - name: "Build (positive-build-2, Configuration A: framework-dependent)"
         shell: pwsh
         run: ./scripts/build-positive-build-2.ps1
 
