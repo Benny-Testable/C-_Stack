@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [WestCoastFitness-positive]
+  pull_request:
+    branches: [WestCoastFitness-positive]
+  workflow_dispatch:
+
+jobs:
+  build-and-metrics:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: westcoastfitness
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build (positive)
+        run: bash scripts/build-positive.sh
+
+      - name: Metrics (positive)
+        run: bash scripts/run-positive-metrics.sh
+
+      - name: E2E smoke test against real Postgres
+        env:
+          ConnectionStrings__FitnessClubDb: "Host=localhost;Port=5432;Database=westcoastfitness;Username=postgres;Password=postgres"
+          ASPNETCORE_URLS: "http://+:8080"
+        run: |
+          dotnet artifacts/positive/backend/WestCoastFitness.Api.dll &
+          APP_PID=$!
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8080/health; then break; fi
+            sleep 1
+          done
+          curl -sf http://localhost:8080/health
+          curl -sf http://localhost:8080/api/members
+          kill $APP_PID
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: positive-artifacts
+          path: artifacts/positive/
