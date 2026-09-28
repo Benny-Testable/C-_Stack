@@ -15,9 +15,9 @@ public class PlatformInfoController : ControllerBase
     {
         return Ok(new
         {
-            Branch = "9-Block-positive-Cases",
+            Branch = "9-Block-positive-Cases-Parcel",
             Language = "C# / .NET 9.0 & JavaScript (ReactJS)",
-            BuildTool = "dotnet + NuGet & Vite (esbuild) + npm",
+            BuildTool = "dotnet + NuGet & Parcel + npm",
             Architecture = "MVC (Model-View-Controller)",
             Description = "C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. " +
                            "9-Box talent matrix evaluation platform with clean, non-duplicated positive-case implementations " +

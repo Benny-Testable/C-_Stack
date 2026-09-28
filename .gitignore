@@ -17,12 +17,13 @@
 **/appsettings.Local.json
 **/appsettings.Secrets.json
 
-# Node / React (Vite & esbuild)
+# Node / React (Parcel)
 **/node_modules/
 **/dist/
 **/dist-ssr/
 *.local
 .vite/
+.parcel-cache/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

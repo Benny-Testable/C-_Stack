@@ -1,21 +1,22 @@
-# 9-Block Talent Matrix Platform (`9-Block-positive-Cases`)
+# 9-Block Talent Matrix Platform (`9-Block-positive-Cases-Parcel`)
 
 The **9-Block (9-Box Grid)** platform plots employees across two axes —
 **Performance** (X) and **Potential** (Y) — into one of nine quadrants
 (Block 1 "Enigma" through Block 3 "Star" and Block 7 "Risk"), for
 calibration reviews and succession planning.
 
-This branch is the **positive counterpart** of
-[`9-Block-Negative-Cases`](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases):
-same MVC architecture and file layout, but the quadrant-resolution logic
-that branch duplicates on purpose (to trigger the White Box **Code
-Duplication** metric) is instead shared from a single source here, so
-that metric passes.
+This branch is the same positive-case implementation as
+[`9-Block-positive-Cases`](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-positive-Cases),
+which is itself the de-duplicated counterpart of
+[`9-Block-Negative-Cases`](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases),
+but built with a **different frontend build tool** (Parcel instead of
+Vite) to validate the platform against a second Build Tool &
+Package Manager combination.
 
 | | |
 |---|---|
 | Backend | C# / .NET 9.0 ASP.NET Core Web API (MVC), EF Core |
-| Frontend | ReactJS (Vite + esbuild) |
+| Frontend | ReactJS (Parcel) |
 | Architecture | Model-View-Controller, single solution |
 
 ## Structure
@@ -59,10 +60,11 @@ dotnet run
 ```
 API on `http://localhost:5253` (or `https://localhost:7263`).
 
-Frontend (requires Node.js):
+Frontend (requires Node.js, uses Parcel):
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-UI on `http://localhost:3000`.
+UI on `http://localhost:3000` (Parcel dev server; `/api` proxied to the
+backend via `frontend/.proxyrc.json`).
