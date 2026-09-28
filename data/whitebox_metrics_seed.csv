@@ -1,104 +1,104 @@
-section,l2_testing_type,l3_technique,l4_classification,l5_metric,description,sample_normalized_score,sample_status
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Static Analysis Metric,Execution Path Integrity,Number of independent execution paths through a function; reflects decision-point density and branch explosion risk,75.3,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Decision Coverage,Decision Outcome Verification,"It measures whether every ""fork in the road"" (like an if statement) has been executed for both True and False results. It ensures that both the success and failure branches of a decision are validated.",69.9,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Condition Coverage  ,Logical Sub-expression Validation,"It measures whether each individual component of a compound logical statement (e.g., in if A and B, checking A and B separately) has been evaluated as both True and False.",75.7,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Logic Coverage Metric,Total Logical Combinatorial Coverage,"It measures the percentage of all possible unique sequences of branches that have been traveled. While branch coverage looks at individual forks, path coverage looks at the entire ""journey"" through the function.",85.4,Pass
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Maintainability Analysis,Technical Debt Impact,"It measures how likely a developer is to introduce a bug while trying to fix another one. High complexity scores here identify code that is ""brittle"" and expensive to change or support over time.",75.5,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Structural Analysis,Cyclomatic Complexity,Test Prioritization,QA Resource Allocation,It helps managers decide where to send the most experienced testers. Logic with high cognitive complexity is prioritized for deeper testing because it is the most likely place for edge-case bugs to hide.,59.0,Fail
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Maintainability Evaluation,Technical Debt Impact,Evaluates how likely a developer is to introduce a bug while fixing another. High complexity scores flag code that is brittle and expensive to change or support over time.,81.0,Pass
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Testability Analysis,Unit Test Complexity,"Measures the difficulty of writing a test that covers all possible states. If code is hard to understand, it is mathematically harder to ensure the test suite is meaningful.",73.8,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Risk Detection,Defect Probability,"Identifies hotspots in the code where the logic is so dense that human error is almost guaranteed, acting as an early warning system before the code is deployed.",74.4,Warning
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Refactoring Guidance,Modularization Opportunity,"Points to specific blocks of code that should be broken down into smaller, simpler functions, measuring the simplicity payoff if a specific area is refactored.",0,Fail
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Code Review Support,Reviewer Fatigue Factor,Estimates how much time a peer reviewer will need to spend verifying logic. High scores suggest a code review might be ineffective because the logic is too convoluted to check visually.,4.8,Fail
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Testing Effort Prioritization,QA Resource Allocation,"Helps managers direct the most experienced testers toward logic with high cognitive complexity, as it is the most likely place for edge-case bugs to hide.",100,Pass
-"STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",Readability / Maintainability,Cognitive Complexity,Code Understandability Analysis,Human Cognitive Load,Structural complexity penalising nesting depth and recursive flow; measures human comprehension difficulty,84.9,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Defect Propagation Risk Detection,Multi-Point Failure Probability,"Identifies the risk that a single bug exists in multiple locations due to copy-paste programming, measuring how likely an error is to spread across the system.",78.3,Warning
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Refactoring Identification,Redundancy Localization,"Pinpoints specific clusters of identical or near-identical code that should be merged into a single reusable function, identifying exactly which files are bloating the project.",68.1,Warning
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Code Quality Assessment,Structural Cleanliness Score,Evaluates the overall cleanliness of the code by measuring the percentage of duplication. High duplication scores indicate a lack of modular design and poor abstraction.,74.8,Warning
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Test Maintenance Reduction,Test Suite Streamlining,"Measures the redundant effort spent writing similar tests for identical code blocks, reducing the number of tests that need to be managed, updated, and run.",0,Fail
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Refactoring Opportunity Detection,Abstraction Potential,"Identifies patterns where common logic can be abstracted into a shared library or parent class, measuring the simplicity gain from replacing repeated blocks with a single well-defined interface.",87.7,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Risk-Based Testing Prioritization,Regression Focus Mapping,"Helps prioritize testing for areas where duplication is high, directing QA resources to verify that all instances of duplicated logic behave identically under stress.",92.5,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Code Quality Auditing,Code Duplication,Maintainability Testing,Synchronization Verification,% of code lines that are duplicated (cloned blocks) across the repository; indicates copy-paste debt,0,Fail
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Rule Detection Test,Violation Density per KLOC,"Count of lint violations bucketed by severity (error, warning, info) per 1000 lines of code",83.4,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Unused Variable Detection,Resource Waste Identification,"Scans the code for variables that are declared but never referenced in any operation, measuring technical debt from dead allocations that clutter the code and confuse future maintainers.",0,Fail
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Naming Convention Validation,Semantic Consistency Score,"Verifies that variables, functions, and classes follow specific casing and descriptive standards, measuring the guessability and professionalism of the code to improve readability.",0,Fail
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Code Style Rule Validation,Syntactic Uniformity Score,"Enforces rules regarding indentation, line length, and whitespace to ensure visual consistency so that code written by multiple developers looks uniform.",82.9,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Complexity Rule Detection,Structural Threshold Monitoring,"Flags functions that exceed specific limits for nesting depth or length, measuring the mental load required to process a module and identifying candidates for immediate refactoring.",87.5,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Rule Severity Classification,Impact Prioritization,"Categorizes violations as Errors, Warnings, or Info based on their risk level, helping developers focus on fixing critical structural flaws before minor stylistic nitpicks.",74.1,Warning
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Multiple Violations Detection,Aggregated Risk Assessment,"Identifies modules that suffer from a high density of different rule breaks, measuring the instability of a file and highlighting parts of the system most likely to contain bugs.",81.5,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,False Positive Prevention,Accuracy Tuning,"Filters out rule violations that are intentional or contextually irrelevant, measuring the reliability of the analysis tool to ensure developers do not ignore valid warnings.",5.0,Fail
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Custom Rule Validation,Project-Specific Enforcement,"Allows the team to create and enforce unique rules tailored to specific requirements, measuring compliance with internal business logic or architecture that generic tools might miss.",100,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Configuration File Handling,Environment Standardization,"Manages the configuration files that define which rules are active across the team, ensuring every developer on the project is using the exact same quality settings.",63.6,Warning
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,CI/CD Integration Validation,Automated Gatekeeping,"Runs quality checks automatically during the build process, measuring readiness for merge by blocking any code that fails to meet the minimum quality bar before it can be merged.",98.8,Pass
-"CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",Static Code Analysis,Lint / Rule Violations,Violation Reporting Validation,Quality Audit Trail,"Generates detailed logs of all detected issues including line numbers and fix suggestions, providing a transparent record of code health for reviews and long-term quality tracking.",68.8,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Secure Coding Validation,Best Practice Compliance,"Checks the code against industry-standard secure coding guidelines like OWASP, ensuring developers use safe functions and avoid dangerous coding habits that lead to vulnerabilities.",55.6,Fail
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Input Validation Testing,Entry Point Sanitization,"Measures how effectively the code cleans data coming from external sources, identifying locations where user input is used directly in sensitive operations without being checked for malicious content.",84.7,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Data Flow Security Analysis,Sensitive Information Tracking,"Tracks the movement of sensitive data through the application, ensuring private data is encrypted or masked and never leaks into logs or insecure output streams.",66.0,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Authentication & Authorization Weakness Detection,Access Control Verification,"Identifies flaws in how the application verifies user identity and permissions, flagging hardcoded passwords, weak session management, or logic that allows users to bypass security checks.",87.5,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Dependency & Library Vulnerability Detection,Supply Chain Security,"Checks third-party libraries against databases of known security issues, measuring the risk of inherited vulnerabilities that exist in code you did not write yourself.",85.0,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Compliance & Security Standard Validation,Regulatory Alignment,"Verifies if the code meets specific regulatory requirements such as GDPR or HIPAA, providing a report on whether the application is legally and technically secure based on external standards.",77.4,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Static Vulnerabilities (SAST),Security Vulnerability Detection,Exploit Surface Identification,"Count of high/critical severity vulnerabilities found by static analysis; identifies injection risks, insecure patterns, auth weaknesses",87.2,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Transitive Dependency Analysis,Hidden Relationship Mapping,"Identifies and analyzes dependencies of dependencies to uncover hidden risks deep in your software stack, measuring the total depth of your external code tree.",65.0,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),License Compliance Testing,Legal Risk Validation,"Checks the legal licenses of every library used to ensure they align with your project goals, measuring the risk of legal action or forced open-sourcing due to restrictive licenses.",76.0,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Supply Chain Security Analysis,Trust Integrity Verification,"Evaluates the integrity of the source and delivery path of your libraries to prevent poisoned packages, measuring the reliability of maintainers and security of repositories.",73.5,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Dependency Health Monitoring,Community Vitality Tracking,"Measures the activity level and support of open-source projects you rely on, identifying zombie libraries abandoned by their creators that are unlikely to be updated if a bug is found.",78.4,Warning
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Risk Prioritization,Mitigation Effort Ranking,"Ranks identified dependency issues based on severity and exploitability, helping decide which patch to apply first when development time is limited.",100,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Continuous Dependency Monitoring,Real-Time Alerting,"Provides an ongoing watchdog service that alerts immediately when a new vulnerability is discovered in your existing stack, acting as a permanent quality gate as the MVP evolves.",99.7,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Vulnerability Dependency Detection,Known CVE Count,"Count of known CVEs in third-party dependencies, categorised by CVSS severity",81.2,Pass
-"SECURITY WHITE-BOX — SAST, SCA",Security White-box Testing,Dependency Risk (SCA),Outdated Dependency Detection,Version Lag Assessment,"Measures the age of your libraries by comparing installed versions against the latest stable releases, identifying components that no longer receive security patches.",84.8,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Statement Coverage,Unit Testing Support,Test Case Granularity,"Identifies exactly which lines of a function are covered by unit tests and which are ignored, helping developers write more focused tests by highlighting hidden blocks of code.",87.7,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Statement Coverage,Dead Code Detection,Unreachable Logic Identification,Identifies ghost code — lines that can never be executed regardless of input provided — measuring technical debt by finding unused functions or conditions that clutter the codebase.,0,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Statement Coverage,Test Completeness Evaluation,Coverage Gap Analysis,"Calculates the ratio of executed lines to total lines to show exactly where the holes are in your quality, measuring the thoroughness of the testing process.",3.4,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Statement Coverage,Basic Logic Validation,Surface-Level Correctness,"Verifies that the code can at least run from start to finish without crashing on a fundamental level, measuring the smoke test success of your logic to ensure the most basic paths are operational.",86.4,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Statement Coverage,Code Execution Verification,Statement Coverage %,% of executable source statements exercised by the test suite at least once,78.0,Warning
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Conditional Logic Testing,Boolean Accuracy Check,"Evaluates the behavior of complex logical expressions to ensure they branch correctly under different data inputs, measuring the correctness of how your code handles logical operators.",59.0,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Control Flow Validation,Sequence Integrity Mapping,"Verifies the physical transitions between different blocks of code to ensure execution order matches the intended design, measuring the reliability of jumps and calls within your function.",100,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Loop Condition Testing,Iteration Boundary Verification,"Measures whether loops correctly handle the decision to start, continue, and terminate, specifically testing the zero-trip, one-trip, and n-trip paths.",82.2,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Edge Case Detection,Boundary Failure Identification,"Identifies logical failures at the extreme limits of input values such as empty lists or None types, measuring the robustness of your branches when they encounter unexpected data.",0,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Logic Error Detection,Branch Misdirection Discovery,"Uncovers flaws where the code takes the wrong turn due to a mistake in the conditional expression, acting as a diagnostic tool for semantic bugs that produce the wrong result without crashing.",86.2,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Test Case Completeness,Decision Coverage Gap Analysis,"Calculates the percentage of successfully executed branches versus total available decision points, showing exactly which else or elif blocks have never been visited by your tests.",39.1,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Branch Coverage,Decision Outcome Verification,Branch Coverage %,% of true/false branches of every decision point executed by tests,68.1,Warning
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Path Execution Tracking,Retrieving data. Wait a few seconds and try to cut or copy again.,"Records exactly which sequences of statements and branches are hit during active testing, providing physical proof of which routes in the code were traveled by a specific test case.",62.0,Warning
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Complete Coverage Path Verification,Full Logic Validation,"Confirms that every unique path identified by the complexity metric has been successfully traveled, measuring completeness of the test suite against the theoretical maximum of the code logic.",100,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Partial Path Coverage Detection,Gap Identification,"Highlights logical routes that have only been partially tested or completely ignored, acting as a diagnostic tool to find blind spots where complex logic remains unverified.",30.9,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Nested Condition Path Testing,Deep Logic Probing,"Measures system stability when multiple decision points are stacked within one another, ensuring the deepest levels of code hierarchy are reachable and functional.",34.9,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Loop Path Detection,Iterative Route Analysis,"Specifically focuses on paths that enter, repeat, or skip loops entirely, measuring how the code handles different iteration counts including the zero-trip path where the loop never executes.",85.6,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Unreachable Path Detection,Ghost Code Discovery,"Identifies logical routes that can never be executed due to contradictory conditions or dead code, reducing technical debt by pointing out logic that clutters the system without providing value.",5.4,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Exception Path Handling,Error Flow Verification,"Measures the code ability to gracefully handle and recover from unexpected errors or try-except blocks, ensuring the system does not crash when forced into a failure state.",54.7,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Multi-Function Path Tracking,Cross-Component Mapping,"Tracks how logic flows across multiple functions or modules to complete a single task, measuring integration quality between different parts of the application.",52.4,Fail
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,CI/CD Integration Test,Automated Quality Enforcement,"Embeds path verification into the automated pipeline to prevent untested logic from reaching production, measuring compliance with quality standards in real-time.",95.0,Pass
-"CONTROL FLOW TESTING — Statement, Branch & Path Coverage",Control Flow Testing,Path Coverage,Path Detection Testing,Path Coverage %,% of all distinct execution paths through a function that are exercised by the test suite,48.2,Fail
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Fault Detection Capability,Logic Error Sensitivity,"Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",70.7,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Test Coverage Quality Validation,Test Rigor Assessment,"Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.",69.0,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Test Case Improvement Identification,Weak Spot Localization,"Pinpoints exactly which surviving mutants were not caught, identifying specific areas where test cases need to be added or strengthened to write more meaningful assertions.",69.9,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Edge Case Detection,Boundary Mutant Analysis,"Measures the test suite ability to catch errors at boundaries by specifically mutating operators, identifying if tests are robust enough to handle the precise limits of the code logic.",79.4,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Fault Detection Capability,Logic Error Sensitivity,"Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",79.7,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Test Coverage Quality Validation,Test Rigor Assessment,"Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.",60.3,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Mutation Testing,Mutation Score,Fault Detection Capability,Logic Error Sensitivity,"Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",52.0,Fail
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,Regression Testing Monitoring,Coverage Delta %,Change in test coverage percentage between current build and previous baseline — monitors coverage trends,88.4,Pass
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,Test Suite Effectiveness Tracking,Discovery Power Assessment,"Evaluates how many unique logical journeys through the code are validated by current test cases, measuring the ratio of executed paths to total possible paths.",65.2,Warning
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,CI/CD Quality Gate Enforcement,Deployment Readiness Guard,"Acts as an automated threshold that prevents code from being merged if the coverage delta is negative, ensuring that only logically verified code moves toward production.",91.2,Pass
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,Change Impact Analysis,Ripple Effect Mapping,"Identifies which specific logical paths are altered by a code change and which downstream paths might be affected, measuring the logical surface area of a modification to predict unintended side effects.",100,Pass
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,New Code Testing Validation,Fresh Logic Proofing,"Specifically measures whether newly added lines or paths have corresponding test cases, ensuring that the MVP growth is supported by an equal growth in testing depth.",83.3,Pass
-MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness,Test Regression/Coverage Analysis,Coverage Delta,Quality Improvement Measurement,Structural Health Benchmarking,"Provides a quantitative score of how much simpler or safer the code becomes after refactoring, measuring the successful reduction of complex untestable paths into cleaner sequences.",0,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Variable Definition Detection,All-Defs Coverage %,% of variable definition points (where variables are assigned) that are exercised by at least one test path,44.9,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Definition-Use Mapping,Data Path Correlation,"Creates a bridge between where a variable is defined and at least one line of code where that specific value is later read or modified, measuring the integrity of the data journey.",54.0,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Coverage Measurement,DU-Path Validation,"Calculates the percentage of Definition-Use pairs that have been successfully exercised by your test suite, providing a deeper quality check than just seeing if a line was executed.",50.2,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Uncovered Definition Detection,Dead Data Identification,"Identifies variables that are assigned a value but are never actually used by the program, helping reduce technical debt by spotting zombie variables that clutter memory without purpose.",2.0,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Edge Case Handling,Null and Boundary Flow Analysis,"Measures how the data flow reacts when a definition results in an unexpected state such as None or an overflow, identifying risks where valid variable definitions might lead to a crash at use.",91.3,Pass
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Definition Coverage,Reporting Validation,Audit Trail Verification,"Provides a verifiable report of the variable state at every stage of execution for debugging and compliance, ensuring that any data-related failure can be traced back to its specific definition point.",81.8,Pass
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Computational Use Detection (C-Use),Data Processing Validation,"Identifies instances where a variable is used in a calculation or output statement, measuring the accuracy of data transformations and ensuring variable values correctly influence final results.",60.1,Warning
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Predicate Use Detection (P-Use),Logic Influence Assessment,"Identifies where a variable is used to determine the outcome of a decision, measuring how data values control the program execution flow and ensuring both True and False outcomes are tested.",59.0,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Definition-Use Pair Identification,Path Correlation Mapping,"Links every definition of a variable to all possible locations where that specific value could be read, creating a map of data influence across the function to ensure no use-case is left untested.",95.0,Pass
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,All-Uses Coverage Verification,Comprehensive Data Proofing,"Confirms that every single identified Definition-Use pair (both c-use and p-use) has been executed at least once, measuring the total thoroughness of the test suite regarding data integrity.",67.7,Warning
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Partial Uses Coverage Detection,Data Flow Gap Analysis,"Highlights specific variable uses that have never been reached during testing, helping developers find blind spots where a variable is defined but its impact on a calculation or branch is unverified.",30.3,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Multiple Definitions Handling,Ambiguity Resolution,"Tracks variables that are redefined multiple times such as inside a loop or multiple if blocks, measuring the complexity of the data lifecycle to ensure the current value is always the intended one.",59.9,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Cross-Function Use Detection,Inter-procedural Tracking,"Monitors how variables such as arguments or global objects move between different functions, measuring the safety of the interfaces between code modules to prevent data corruption during hand-offs.",62.8,Warning
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Unreachable Use Detection,Ghost Use Identification,"Identifies code blocks that attempt to use a variable but can never be executed due to logical constraints, helping clean up technical debt by removing logic that relies on impossible data states.",0,Fail
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Coverage Reporting Validation,Data Integrity Audit,"Provides a detailed report showing which data paths are safe and which are risky, ensuring your MVP meets high-quality standards by providing an audit trail for every variable in the system.",96.7,Pass
-DATA FLOW TESTING — All-Definition & All-Uses Coverage,Data Flow Testing,All Uses Coverage,Variable Use Detection,All-Uses Coverage %,"% of definition-use pairs (variable defined, then used in computation or predicate) exercised by tests",56.6,Fail
-DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization,Development Process Analysis,Code Churn,Risk-Based Testing Prioritization,Code Churn Score,Rate of code change (lines added + deleted) over a rolling window; high churn signals instability and elevated regression risk,45.4,Fail
-DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization,Development Process Analysis,Code Churn,Regression Testing Focus,Impact-Driven Verification,"Isolates specific modules that have undergone recent modifications, allowing QA to focus regression suites only on affected areas to prevent existing features from breaking during updates.",87.7,Pass
-DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization,Development Process Analysis,Code Churn,Defect Prediction,Fault Probability Modeling,"Uses historical churn data to predict where future bugs will likely occur, measuring the correlation between high change volume and defect density as an early warning system for unstable modules.",96.1,Pass
-DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization,Development Process Analysis,Code Churn,Test Case Maintenance Identification,Validation Suite Updates,"Identifies when code has changed so significantly that existing test cases are likely outdated or irrelevant, signaling when tests need to be rewritten to maintain accuracy.",0,Fail
-DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization,Development Process Analysis,Code Churn,Change Impact Analysis,Side Effect Mapping,"Measures the ripple effect of a code change by identifying all connected modules that may be affected, helping developers understand the full scope before merging to prevent unintended consequences.",85.8,Pass
+metric,value,status
+Execution Path Integrity,75.3,Warning
+Decision Outcome Verification,69.9,Warning
+Logical Sub-expression Validation,75.7,Warning
+Total Logical Combinatorial Coverage,85.4,Pass
+Technical Debt Impact,75.5,Warning
+QA Resource Allocation,59.0,Fail
+Technical Debt Impact,81.0,Pass
+Unit Test Complexity,73.8,Warning
+Defect Probability,74.4,Warning
+Modularization Opportunity,0,Fail
+Reviewer Fatigue Factor,4.8,Fail
+QA Resource Allocation,100,Pass
+Human Cognitive Load,84.9,Pass
+Multi-Point Failure Probability,78.3,Warning
+Redundancy Localization,68.1,Warning
+Structural Cleanliness Score,74.8,Warning
+Test Suite Streamlining,0,Fail
+Abstraction Potential,87.7,Pass
+Regression Focus Mapping,92.5,Pass
+Synchronization Verification,0,Fail
+Violation Density per KLOC,83.4,Pass
+Resource Waste Identification,0,Fail
+Semantic Consistency Score,0,Fail
+Syntactic Uniformity Score,82.9,Pass
+Structural Threshold Monitoring,87.5,Pass
+Impact Prioritization,74.1,Warning
+Aggregated Risk Assessment,81.5,Pass
+Accuracy Tuning,5.0,Fail
+Project-Specific Enforcement,100,Pass
+Environment Standardization,63.6,Warning
+Automated Gatekeeping,98.8,Pass
+Quality Audit Trail,68.8,Warning
+Best Practice Compliance,55.6,Fail
+Entry Point Sanitization,84.7,Pass
+Sensitive Information Tracking,66.0,Warning
+Access Control Verification,87.5,Pass
+Supply Chain Security,85.0,Pass
+Regulatory Alignment,77.4,Warning
+Exploit Surface Identification,87.2,Pass
+Hidden Relationship Mapping,65.0,Warning
+Legal Risk Validation,76.0,Warning
+Trust Integrity Verification,73.5,Warning
+Community Vitality Tracking,78.4,Warning
+Mitigation Effort Ranking,100,Pass
+Real-Time Alerting,99.7,Pass
+Known CVE Count,81.2,Pass
+Version Lag Assessment,84.8,Pass
+Test Case Granularity,87.7,Pass
+Unreachable Logic Identification,0,Fail
+Coverage Gap Analysis,3.4,Fail
+Surface-Level Correctness,86.4,Pass
+Statement Coverage %,78.0,Warning
+Boolean Accuracy Check,59.0,Fail
+Sequence Integrity Mapping,100,Pass
+Iteration Boundary Verification,82.2,Pass
+Boundary Failure Identification,0,Fail
+Branch Misdirection Discovery,86.2,Pass
+Decision Coverage Gap Analysis,39.1,Fail
+Branch Coverage %,68.1,Warning
+Retrieving data. Wait a few seconds and try to cut or copy again.,62.0,Warning
+Full Logic Validation,100,Pass
+Gap Identification,30.9,Fail
+Deep Logic Probing,34.9,Fail
+Iterative Route Analysis,85.6,Pass
+Ghost Code Discovery,5.4,Fail
+Error Flow Verification,54.7,Fail
+Cross-Component Mapping,52.4,Fail
+Automated Quality Enforcement,95.0,Pass
+Path Coverage %,48.2,Fail
+Logic Error Sensitivity,70.7,Warning
+Test Rigor Assessment,69.0,Warning
+Weak Spot Localization,69.9,Warning
+Boundary Mutant Analysis,79.4,Warning
+Logic Error Sensitivity,79.7,Warning
+Test Rigor Assessment,60.3,Warning
+Logic Error Sensitivity,52.0,Fail
+Coverage Delta %,88.4,Pass
+Discovery Power Assessment,65.2,Warning
+Deployment Readiness Guard,91.2,Pass
+Ripple Effect Mapping,100,Pass
+Fresh Logic Proofing,83.3,Pass
+Structural Health Benchmarking,0,Fail
+All-Defs Coverage %,44.9,Fail
+Data Path Correlation,54.0,Fail
+DU-Path Validation,50.2,Fail
+Dead Data Identification,2.0,Fail
+Null and Boundary Flow Analysis,91.3,Pass
+Audit Trail Verification,81.8,Pass
+Data Processing Validation,60.1,Warning
+Logic Influence Assessment,59.0,Fail
+Path Correlation Mapping,95.0,Pass
+Comprehensive Data Proofing,67.7,Warning
+Data Flow Gap Analysis,30.3,Fail
+Ambiguity Resolution,59.9,Fail
+Inter-procedural Tracking,62.8,Warning
+Ghost Use Identification,0,Fail
+Data Integrity Audit,96.7,Pass
+All-Uses Coverage %,56.6,Fail
+Code Churn Score,45.4,Fail
+Impact-Driven Verification,87.7,Pass
+Fault Probability Modeling,96.1,Pass
+Validation Suite Updates,0,Fail
+Side Effect Mapping,85.8,Pass

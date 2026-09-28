@@ -1,7 +1,7 @@
 """
-Extracts every White Box metric row from Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx
-and generates a deterministic seed dataset (one sample measurement per metric)
-covering all L1-L5 metrics defined on the "White Box" sheet.
+Extracts every metric name from the "White Box" sheet of
+Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx and generates one sample data
+value per metric — the value that metric would produce once executed.
 
 Usage:
     py -3.11 scripts/extract_whitebox_seed.py
@@ -19,8 +19,7 @@ OUT_DIR = Path(__file__).resolve().parent.parent / "data"
 OUT_JSON = OUT_DIR / "whitebox_metrics_seed.json"
 OUT_CSV = OUT_DIR / "whitebox_metrics_seed.csv"
 
-COL_L1, COL_L2, COL_L3, COL_L4, COL_L5 = 0, 1, 2, 3, 4
-COL_DESC = 5
+COL_L1, COL_L5 = 0, 4
 COL_THRESHOLD = 31
 
 random.seed(42)  # deterministic sample generation
@@ -59,10 +58,8 @@ def main():
     rows = list(ws.iter_rows(min_row=1, max_row=ws.max_row, values_only=True))
 
     records = []
-    section = None
     for row in rows[3:]:
         if row[0] and str(row[0]).startswith("\u25b6"):
-            section = str(row[0]).replace("\u25b6", "").strip()
             continue
         if row[COL_L1] != "White Box":
             continue
@@ -72,14 +69,9 @@ def main():
         score, status = gen_sample(threshold)
 
         records.append({
-            "section": section,
-            "l2_testing_type": row[COL_L2],
-            "l3_technique": row[COL_L3],
-            "l4_classification": row[COL_L4],
-            "l5_metric": l5,
-            "description": row[COL_DESC],
-            "sample_normalized_score": score,
-            "sample_status": status,
+            "metric": l5,
+            "value": score,
+            "status": status,
         })
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
