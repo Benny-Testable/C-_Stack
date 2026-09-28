@@ -15,8 +15,8 @@
     "test": "mocha",
     "coverage": "nyc mocha --node-option loader=@istanbuljs/esm-loader-hook",
     "coverage:report": "nyc --check-coverage=false mocha --node-option loader=@istanbuljs/esm-loader-hook",
-    "lint": "eslint --max-warnings 0 src",
-    "lint:report": "eslint -f json -o reports/eslint.json src"
+    "lint": "eslint --ext .js,.jsx --max-warnings 0 src",
+    "lint:report": "eslint --ext .js,.jsx -f json -o reports/eslint.json src"
   },
   "dependencies": {
     "axios": "1.7.9",

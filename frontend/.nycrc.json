@@ -2,7 +2,7 @@
   "all": true,
   "cwd": ".",
   "include": ["src/**/*.js"],
-  "exclude": ["src/**/*.test.js", "vite.config.js"],
+  "exclude": ["src/**/*.test.js", "src/lint-negative/**", "vite.config.js"],
   "extension": [".js"],
   "reporter": ["text", "text-summary", "json-summary", "lcov", "cobertura"],
   "report-dir": "coverage",
