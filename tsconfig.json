@@ -1,0 +1,6 @@
+{
+  "extends": "./frontend/tsconfig.app.json",
+  "compilerOptions": {
+    "target": "ES2022"
+  }
+}

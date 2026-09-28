@@ -1,6 +1,8 @@
 <Project>
-  <!-- Declares the C# language version at the repository root for tooling that scans project metadata without running MSBuild imports. -->
+  <!-- Shared build settings at the repository root (matches Scholarship-CMGroups-negative-1). -->
   <PropertyGroup>
     <LangVersion>12.0</LangVersion>
+    <Deterministic>true</Deterministic>
+    <IsTestProject Condition="$(MSBuildProjectName.EndsWith('.Tests'))">true</IsTestProject>
   </PropertyGroup>
 </Project>
