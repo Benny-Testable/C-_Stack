@@ -14,3 +14,9 @@ Thumbs.db
 tests/dependency-negative/node_modules/
 tests/dependency-negative/bin/
 tests/dependency-negative/obj/
+.nyc_output/
+frontend/reports/
+reports/
+*.sarif
+coverage.*.xml
+coverage.json

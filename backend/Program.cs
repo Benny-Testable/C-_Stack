@@ -27,6 +27,7 @@ builder.Services.AddScoped<ScholarshipService>();
 builder.Services.AddScoped<ApplicationService>();
 builder.Services.AddScoped<DocumentService>();
 builder.Services.AddScoped<ReportService>();
+builder.Services.AddScoped<AwardEstimateService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<SecurityTestSamples>();
 builder.Services.AddSingleton<SessionStore>();

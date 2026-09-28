@@ -1,0 +1,15 @@
+{
+  "all": true,
+  "cwd": ".",
+  "include": ["src/**/*.js"],
+  "exclude": ["src/**/*.test.js", "vite.config.js"],
+  "extension": [".js"],
+  "reporter": ["text", "text-summary", "json-summary", "lcov", "cobertura"],
+  "report-dir": "coverage",
+  "temp-dir": ".nyc_output",
+  "check-coverage": true,
+  "statements": 80,
+  "branches": 70,
+  "functions": 80,
+  "lines": 80
+}

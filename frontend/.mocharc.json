@@ -1,0 +1,5 @@
+{
+  "spec": ["../tests/frontend/**/*.test.js"],
+  "reporter": "spec",
+  "timeout": 5000
+}

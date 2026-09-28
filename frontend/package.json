@@ -13,8 +13,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "mocha",
-    "coverage": "nyc mocha",
-    "coverage:report": "nyc --check-coverage=false mocha",
+    "coverage": "nyc mocha --node-option loader=@istanbuljs/esm-loader-hook",
+    "coverage:report": "nyc --check-coverage=false mocha --node-option loader=@istanbuljs/esm-loader-hook",
     "lint": "eslint --max-warnings 0 src",
     "lint:report": "eslint -f json -o reports/eslint.json src"
   },
