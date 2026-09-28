@@ -7,6 +7,9 @@
     "node": ">=22.0.0",
     "npm": ">=10.0.0"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "dev": "parcel index.html --port 5173",
     "build": "parcel build index.html --dist-dir dist",
