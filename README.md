@@ -4,7 +4,7 @@
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)](https://react.dev/)
 [![Build Tool](https://img.shields.io/badge/Build%20Tool-dotnet%20%2B%20NuGet%20%7C%20Webpack%20%2B%20npm-blue)](https://webpack.js.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-MVC%20%2F%20Layered%20Monorepo-orange)](https://learn.microsoft.com/en-us/aspnet/core/mvc/overview)
-[![Testing Strategy](https://img.shields.io/badge/White--Box-Negative%20Metric%20Fixtures-red)](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases)
+[![Testing Strategy](https://img.shields.io/badge/White--Box-Multi--Metric%20Negative%20Testbed-red)](https://github.com/Mohammed-shihaf/C-_Stack/tree/9-Block-Negative-Cases)
 
 ---
 
@@ -26,7 +26,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 9 Block/
 ├── global.json                            # .NET SDK Version Pin (8.0.100)
 ├── backend/                               # ASP.NET Core (.NET 8.0 LTS) Web API
-│   ├── NineBlock.csproj                   # Project File (.NET 8.0)
+│   ├── NineBlock.csproj                   # Project File (.NET 8.0 + SCA Dep)
 │   ├── Controllers/                       # CONTROLLER LAYER (API Endpoints)
 │   │   ├── NineBoxGridController.cs       # Grid matrix distribution & calculations
 │   │   ├── EmployeeController.cs          # Employee profiles & departments
@@ -38,7 +38,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   │   └── ReviewCycle.cs                 # Quarterly/Annual review cycles
 │   ├── Services/                          # BUSINESS LOGIC & CALCULATION LAYER
 │   │   ├── NineBoxMatrixService.cs        # [CC, COG, LINT & DUPLICATION FIXTURES]
-│   │   └── EmployeeEvaluationService.cs   # [DUPLICATION FIXTURE] Cloned calculation logic
+│   │   └── EmployeeEvaluationService.cs   # [DUPLICATION, DATA-FLOW, MUTATION & COVERAGE FIXTURES]
 │   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core)
 │   │   └── NineBlockDbContext.cs          # DbContext & quadrant seed data
 │   ├── Program.cs                         # DI Container, CORS & Pipeline setup
@@ -60,7 +60,12 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 │   │   └── index.css                      # Modern Clean Styling
 │   ├── webpack.config.js                  # Webpack Build Configuration
 │   ├── .babelrc                           # Babel React Presets
-│   └── package.json                       # Frontend Dependencies & Scripts
+│   └── package.json                       # Dependencies (includes axios 0.21.1 SCA fixture)
+│
+├── tests/                                 # UNIT TESTS (Deliberate Coverage Gap Suite)
+│   └── NineBlock.Tests/
+│       ├── NineBlock.Tests.csproj         # xUnit + Coverlet (.NET 8.0)
+│       └── NineBoxMatrixTests.cs          # Single happy-path test (leaves < 30% coverage)
 └── README.md                              # This Documentation
 ```
 
@@ -68,7 +73,7 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ## 3. Platform Stack & Branch Specification
 
-This branch (`9-Block-Negative-Cases`) implements the full application with **Webpack + npm** bundling while intentionally incorporating **White-Box metric trigger cases** across 5 distinct testing techniques based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
+This branch (`9-Block-Negative-Cases`) implements the full application with **Webpack + npm** bundling while intentionally incorporating **White-Box metric trigger cases** across the complete testing taxonomy based on `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
 
 | Specification | Details |
 | :--- | :--- |
@@ -87,21 +92,27 @@ This branch (`9-Block-Negative-Cases`) implements the full application with **We
 
 | Branch | Language | Build Tool & Package Manager | Architecture Style | Description / Role |
 | :--- | :--- | :--- | :--- | :--- |
-| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with multi-category White-Box negative metric fixtures. |
+| `9-Block-Negative-Cases` | C# / .NET 8.0 (LTS) & JavaScript (ReactJS) | dotnet + NuGet & Webpack + npm | MVC | C# ASP.NET Core Web API + ReactJS with Webpack bundler. 9-Box talent matrix evaluation platform with complete 11-category White-Box negative metric fixtures. |
 
 ---
 
 ## 4. Branch Containing Files for Metric Covering
 
-This branch embeds **real-world White-Box metric targets** mapped directly to `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
+This branch embeds **concrete White-Box negative metric targets** mapped directly to all 11 techniques in `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx`:
 
-| # | L2 Testing Type | L3 Technique | L4 Classification | L5 Metric | Application Files Covering the Metric |
-|---|---|---|---|---|---|
-| **1** | **Code Quality Auditing** | **Code Duplication** | Defect Propagation Risk | Multi-Point Failure Probability / Redundancy Localization | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) & [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs)<br>[`frontend/src/components/NineBoxGrid.jsx`](frontend/src/components/NineBoxGrid.jsx) & [`frontend/src/components/CalibrationBoard.jsx`](frontend/src/components/CalibrationBoard.jsx) |
-| **2** | **Structural Analysis** | **Cyclomatic Complexity** | Static Analysis Metric | Execution Path Integrity (CC > 15) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`CalculateComplexTalentRiskScore`)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`calculateClientAttritionRisk`) |
-| **3** | **Readability / Maintainability** | **Cognitive Complexity** | Maintainability Evaluation | Technical Debt Impact (CogC > 15) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`ComputeDepartmentCognitiveCalibration`) |
-| **4** | **Static Code Analysis** | **Lint / Rule Violations** | Unused Variable / Naming Rules | Violation Density / Resource Waste | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`_unusedAuditCacheKey`, `temp_debug_log_str`, dead code)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`UNUSED_CALIBRATION_TOKEN`) |
-| **5** | **Security White-box Testing** | **Static Vulnerabilities (SAST)** | Input Validation / Credentials | Exploit Surface / Sensitive Tracking | [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs) (`ExportDepartmentAssessmentsRaw` CWE-89 & `FallbackAdminAuthSecret`) |
+| # | L2 Testing Type | L3 Technique | L5 Target Metric | Concrete Application Files Covering the Metric | Triggered Tool / Scanner |
+|:---:|:---|:---|:---|:---|:---|
+| **1** | **Code Quality Auditing** | **Code Duplication** | Multi-Point Failure Probability / Redundancy Localization | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) & [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs)<br>[`frontend/src/components/NineBoxGrid.jsx`](frontend/src/components/NineBoxGrid.jsx) & [`frontend/src/components/CalibrationBoard.jsx`](frontend/src/components/CalibrationBoard.jsx) | `jscpd` / SonarQube CPD |
+| **2** | **Structural Analysis** | **Cyclomatic Complexity** | Execution Path Integrity ($\text{CC} > 15$) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`CalculateComplexTalentRiskScore`, $\text{CC}=19$)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`calculateClientAttritionRisk`) | `Lizard` / `complexipy` / ESLint `complexity` |
+| **3** | **Readability / Maintainability** | **Cognitive Complexity** | Technical Debt Impact ($\text{CogC} > 15$) | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`ComputeDepartmentCognitiveCalibration`, 4-level nesting) | SonarQube Cognitive Complexity / Roslyn |
+| **4** | **Static Code Analysis** | **Lint / Style Violations** | Violation Density & Resource Waste | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (`_unusedAuditCacheKey`, `temp_debug_log_str`, dead code)<br>[`frontend/src/views/Dashboard.jsx`](frontend/src/views/Dashboard.jsx) (`UNUSED_CALIBRATION_TOKEN`) | Roslyn Analyzers / `dotnet format` / `ESLint` |
+| **5** | **Security White-box Testing** | **Static Vulnerabilities (SAST)** | Exploit Surface & Sensitive Tracking | [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs) (`ExportDepartmentAssessmentsRaw` CWE-89 raw SQL taint & `FallbackAdminAuthSecret`) | `Semgrep` / `Gitleaks` / Roslyn Security Analyzers |
+| **6** | **Security White-box Testing** | **Dependency Risk (SCA)** | Vulnerability Dependency / Known CVE Count | [`backend/NineBlock.csproj`](backend/NineBlock.csproj) (`Newtonsoft.Json 12.0.1` CVE-2024-21907)<br>[`frontend/package.json`](frontend/package.json) (`axios 0.21.1` CVE-2020-28168) | `dotnet list package --vulnerable` / `npm audit` / Snyk / Trivy |
+| **7** | **Control Flow Testing** | **Statement & Branch Coverage** | Decision Coverage Gap Analysis (< 30%) | [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs) (`UncoveredBranchEvaluation`) & [`tests/NineBlock.Tests/NineBoxMatrixTests.cs`](tests/NineBlock.Tests/NineBoxMatrixTests.cs) (covers only 1 case) | `coverlet` / `dotnet test` / Coverage.py |
+| **8** | **Control Flow Testing** | **Path Coverage** | Ghost Code / Unreachable Path Gap | [`backend/Services/NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) (nested condition paths in `CalculateComplexTalentRiskScore`) | OpenCover / Roslyn Control Flow |
+| **9** | **Mutation Testing** | **Mutation Score** | Boundary Mutant Survival / Logic Error Sensitivity | [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs) (`CalculatePerformanceBonusMultiplier` boundary `<` vs `<=`) | `Stryker.NET` / Stryker-JS |
+| **10** | **Data Flow Testing** | **All-Def / All-Uses Coverage** | Dead Data / DU-Path Anomaly Identification | [`backend/Services/EmployeeEvaluationService.cs`](backend/Services/EmployeeEvaluationService.cs) (`CalculateDataFlowAnomalies` Def-Def dead store & unread definition) | SpotBugs / Roslyn DataFlowAnalysis |
+| **11** | **Development Process** | **Code Churn & Diff Coverage** | Hotspot Risk & New Logic Proofing | Frequent commit modifications in [`NineBoxMatrixService.cs`](backend/Services/NineBoxMatrixService.cs) & 0% test coverage on PR diffs | Git Log Churn Analyzers / Diff-Cover |
 
 ---
 
@@ -125,14 +136,26 @@ This branch embeds **real-world White-Box metric targets** mapped directly to `T
    npx eslint frontend/src/
    ```
 
-4. **Security Vulnerabilities (`Semgrep` / `Roslyn Security`)**:
+4. **Security Vulnerabilities (SAST & Hardcoded Secrets)**:
    ```bash
    npx semgrep --config=auto backend/Controllers/
    ```
 
-5. **Boundary & Negative Value Validation**:
-   * File: [`backend/Controllers/AssessmentController.cs`](backend/Controllers/AssessmentController.cs)
-   * Rejects out-of-bounds scores ($< 1.0$ or $> 5.0$) with `400 Bad Request`.
+5. **Dependency Risk (SCA CVE Scan)**:
+   ```bash
+   dotnet list backend/NineBlock.csproj package --vulnerable
+   cd frontend && npm audit
+   ```
+
+6. **Statement & Branch Coverage (< 30% Coverage Gap)**:
+   ```bash
+   dotnet test tests/NineBlock.Tests/NineBlock.Tests.csproj --collect:"XPlat Code Coverage"
+   ```
+
+7. **Mutation Testing (`Stryker.NET`)**:
+   ```bash
+   dotnet stryker --project-file=backend/NineBlock.csproj
+   ```
 
 ---
 
@@ -158,15 +181,14 @@ dotnet build
 dotnet run
 ```
 * Backend API runs on: `http://localhost:5000` (or `https://localhost:7001`)
-* API Endpoints:
-  * `GET /api/nineboxgrid/quadrants` — Retrieve all 9 quadrant configurations
-  * `GET /api/nineboxgrid/distribution` — Retrieve employee quadrant distribution
-  * `POST /api/nineboxgrid/calculate` — Calculate block from performance & potential scores
-  * `GET /api/employee` — List employees
-  * `POST /api/assessment` — Submit an employee assessment
-  * `GET /api/assessment/export-raw?department=Engineering` — Seeded SAST raw query test
 
-### B. Running the Frontend (ReactJS with Webpack)
+### B. Running the Test Suite (Verifying Coverage Gaps)
+```bash
+cd tests/NineBlock.Tests
+dotnet test
+```
+
+### C. Running the Frontend (ReactJS with Webpack)
 ```bash
 # Navigate to frontend directory
 cd frontend
