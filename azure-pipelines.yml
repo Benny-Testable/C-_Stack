@@ -26,13 +26,13 @@ stages:
               packageType: 'sdk'
               version: $(DOTNET_VERSION)
 
-          - script: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
+          - script: dotnet restore backend/NineBlock.csproj
             displayName: 'Restore NuGet Packages'
 
-          - script: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration $(buildConfiguration) --no-restore
+          - script: dotnet build backend/NineBlock.csproj --configuration $(buildConfiguration) --no-restore
             displayName: 'Build Backend Project'
 
-          - script: dotnet publish backend/NineBlock.Api/NineBlock.Api.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/backend-publish
+          - script: dotnet publish backend/NineBlock.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/backend-publish
             displayName: 'Publish Backend Artifact'
 
           - task: PublishBuildArtifacts@1

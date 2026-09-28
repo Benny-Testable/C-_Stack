@@ -24,10 +24,10 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore backend/NineBlock.Api/NineBlock.Api.csproj
+        run: dotnet restore backend/NineBlock.csproj
 
       - name: Build Backend (Release)
-        run: dotnet build backend/NineBlock.Api/NineBlock.Api.csproj --configuration Release --no-restore
+        run: dotnet build backend/NineBlock.csproj --configuration Release --no-restore
 
   frontend-build:
     name: Frontend CI (React + Webpack)

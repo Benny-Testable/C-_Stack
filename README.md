@@ -24,25 +24,26 @@ The solution is structured as an **enterprise Model-View-Controller (MVC)** mono
 
 ```
 9 Block/
-├── backend/                               # ASP.NET Core (.NET 9.0) Web API
-│   ├── NineBlock.slnx                     # Solution File
-│   └── NineBlock.Api/
-│       ├── Controllers/                   # CONTROLLER LAYER (API Endpoints)
-│       │   ├── NineBoxGridController.cs   # Grid matrix distribution & calculations
-│       │   ├── EmployeeController.cs      # Employee profiles & departments
-│       │   └── AssessmentController.cs    # Performance/Potential review submissions
-│       ├── Models/                        # MODEL LAYER (Domain Entities & DTOs)
-│       │   ├── Employee.cs                # Employee entity
-│       │   ├── Assessment.cs              # Assessment ratings & coordinates
-│       │   ├── NineBoxQuadrant.cs         # 9 Quadrant definitions & metadata
-│       │   └── ReviewCycle.cs             # Quarterly/Annual review cycles
-│       ├── Services/                      # BUSINESS LOGIC & CALCULATION LAYER
-│       │   ├── NineBoxMatrixService.cs    # Primary 9-box coordinate calculator
-│       │   └── EmployeeEvaluationService.cs# [NEGATIVE FIXTURE] Duplicated calculation logic
-│       ├── Data/                          # DATA ACCESS & PERSISTENCE (EF Core)
-│       │   └── NineBlockDbContext.cs      # DbContext & quadrant seed data
-│       ├── Program.cs                     # DI Container, CORS & Pipeline setup
-│       └── appsettings.json               # Configuration
+├── NineBlock.sln                          # Solution File
+├── Directory.Build.props                  # .NET 8.0 & C# 12 Language Configuration
+├── backend/                               # ASP.NET Core (.NET 8.0 LTS) Web API
+│   ├── Controllers/                       # CONTROLLER LAYER (API Endpoints)
+│   │   ├── NineBoxGridController.cs       # Grid matrix distribution & calculations
+│   │   ├── EmployeeController.cs          # Employee profiles & departments
+│   │   └── AssessmentController.cs        # Performance/Potential review submissions
+│   ├── Models/                            # MODEL LAYER (Domain Entities & DTOs)
+│   │   ├── Employee.cs                    # Employee entity
+│   │   ├── Assessment.cs                  # Assessment ratings & coordinates
+│   │   ├── NineBoxQuadrant.cs             # 9 Quadrant definitions & metadata
+│   │   └── ReviewCycle.cs                 # Quarterly/Annual review cycles
+│   ├── Services/                          # BUSINESS LOGIC & CALCULATION LAYER
+│   │   ├── NineBoxMatrixService.cs        # Primary 9-box coordinate calculator
+│   │   └── EmployeeEvaluationService.cs   # [NEGATIVE FIXTURE] Duplicated calculation logic
+│   ├── Data/                              # DATA ACCESS & PERSISTENCE (EF Core)
+│   │   └── NineBlockDbContext.cs          # DbContext & quadrant seed data
+│   ├── NineBlock.csproj                   # Project File (.NET 8.0 LTS)
+│   ├── Program.cs                         # DI Container, CORS & Pipeline setup
+│   └── appsettings.json                   # Configuration
 │
 ├── frontend/                              # ReactJS Single Page Application
 │   ├── public/
@@ -137,7 +138,7 @@ This branch embeds **real-world White-Box metric targets** directly into the pro
 ### A. Running the Backend (.NET Core Web API)
 ```bash
 # Navigate to backend directory
-cd backend/NineBlock.Api
+cd backend
 
 # Restore dependencies
 dotnet restore
