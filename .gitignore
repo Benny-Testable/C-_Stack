@@ -12,18 +12,18 @@
 *.sln.docstates
 .vs/
 *.nupkg
+**/TestResults/
 
 # Sensitive appsettings overrides
 **/appsettings.Local.json
 **/appsettings.Secrets.json
 
-# Node / React (Parcel)
+# Node / React (Vite & esbuild)
 **/node_modules/
 **/dist/
 **/dist-ssr/
 *.local
 .vite/
-.parcel-cache/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
