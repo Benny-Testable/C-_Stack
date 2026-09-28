@@ -1,0 +1,1032 @@
+[
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Static Analysis Metric",
+    "l5_metric": "Execution Path Integrity",
+    "description": "Number of independent execution paths through a function; reflects decision-point density and branch explosion risk",
+    "sample_normalized_score": 75.3,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Decision Coverage",
+    "l5_metric": "Decision Outcome Verification",
+    "description": "It measures whether every \"fork in the road\" (like an if statement) has been executed for both True and False results. It ensures that both the success and failure branches of a decision are validated.",
+    "sample_normalized_score": 69.9,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Condition Coverage  ",
+    "l5_metric": "Logical Sub-expression Validation",
+    "description": "It measures whether each individual component of a compound logical statement (e.g., in if A and B, checking A and B separately) has been evaluated as both True and False.",
+    "sample_normalized_score": 75.7,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Logic Coverage Metric",
+    "l5_metric": "Total Logical Combinatorial Coverage",
+    "description": "It measures the percentage of all possible unique sequences of branches that have been traveled. While branch coverage looks at individual forks, path coverage looks at the entire \"journey\" through the function.",
+    "sample_normalized_score": 85.4,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Maintainability Analysis",
+    "l5_metric": "Technical Debt Impact",
+    "description": "It measures how likely a developer is to introduce a bug while trying to fix another one. High complexity scores here identify code that is \"brittle\" and expensive to change or support over time.",
+    "sample_normalized_score": 75.5,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Structural Analysis",
+    "l3_technique": "Cyclomatic Complexity",
+    "l4_classification": "Test Prioritization",
+    "l5_metric": "QA Resource Allocation",
+    "description": "It helps managers decide where to send the most experienced testers. Logic with high cognitive complexity is prioritized for deeper testing because it is the most likely place for edge-case bugs to hide.",
+    "sample_normalized_score": 59.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Maintainability Evaluation",
+    "l5_metric": "Technical Debt Impact",
+    "description": "Evaluates how likely a developer is to introduce a bug while fixing another. High complexity scores flag code that is brittle and expensive to change or support over time.",
+    "sample_normalized_score": 81.0,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Testability Analysis",
+    "l5_metric": "Unit Test Complexity",
+    "description": "Measures the difficulty of writing a test that covers all possible states. If code is hard to understand, it is mathematically harder to ensure the test suite is meaningful.",
+    "sample_normalized_score": 73.8,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Risk Detection",
+    "l5_metric": "Defect Probability",
+    "description": "Identifies hotspots in the code where the logic is so dense that human error is almost guaranteed, acting as an early warning system before the code is deployed.",
+    "sample_normalized_score": 74.4,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Refactoring Guidance",
+    "l5_metric": "Modularization Opportunity",
+    "description": "Points to specific blocks of code that should be broken down into smaller, simpler functions, measuring the simplicity payoff if a specific area is refactored.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Code Review Support",
+    "l5_metric": "Reviewer Fatigue Factor",
+    "description": "Estimates how much time a peer reviewer will need to spend verifying logic. High scores suggest a code review might be ineffective because the logic is too convoluted to check visually.",
+    "sample_normalized_score": 4.8,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Testing Effort Prioritization",
+    "l5_metric": "QA Resource Allocation",
+    "description": "Helps managers direct the most experienced testers toward logic with high cognitive complexity, as it is the most likely place for edge-case bugs to hide.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "STRUCTURAL ANALYSIS — Cyclomatic Complexity, Cognitive Complexity & Maintainability",
+    "l2_testing_type": "Readability / Maintainability",
+    "l3_technique": "Cognitive Complexity",
+    "l4_classification": "Code Understandability Analysis",
+    "l5_metric": "Human Cognitive Load",
+    "description": "Structural complexity penalising nesting depth and recursive flow; measures human comprehension difficulty",
+    "sample_normalized_score": 84.9,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Defect Propagation Risk Detection",
+    "l5_metric": "Multi-Point Failure Probability",
+    "description": "Identifies the risk that a single bug exists in multiple locations due to copy-paste programming, measuring how likely an error is to spread across the system.",
+    "sample_normalized_score": 78.3,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Refactoring Identification",
+    "l5_metric": "Redundancy Localization",
+    "description": "Pinpoints specific clusters of identical or near-identical code that should be merged into a single reusable function, identifying exactly which files are bloating the project.",
+    "sample_normalized_score": 68.1,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Code Quality Assessment",
+    "l5_metric": "Structural Cleanliness Score",
+    "description": "Evaluates the overall cleanliness of the code by measuring the percentage of duplication. High duplication scores indicate a lack of modular design and poor abstraction.",
+    "sample_normalized_score": 74.8,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Test Maintenance Reduction",
+    "l5_metric": "Test Suite Streamlining",
+    "description": "Measures the redundant effort spent writing similar tests for identical code blocks, reducing the number of tests that need to be managed, updated, and run.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Refactoring Opportunity Detection",
+    "l5_metric": "Abstraction Potential",
+    "description": "Identifies patterns where common logic can be abstracted into a shared library or parent class, measuring the simplicity gain from replacing repeated blocks with a single well-defined interface.",
+    "sample_normalized_score": 87.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Risk-Based Testing Prioritization",
+    "l5_metric": "Regression Focus Mapping",
+    "description": "Helps prioritize testing for areas where duplication is high, directing QA resources to verify that all instances of duplicated logic behave identically under stress.",
+    "sample_normalized_score": 92.5,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Code Quality Auditing",
+    "l3_technique": "Code Duplication",
+    "l4_classification": "Maintainability Testing",
+    "l5_metric": "Synchronization Verification",
+    "description": "% of code lines that are duplicated (cloned blocks) across the repository; indicates copy-paste debt",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Rule Detection Test",
+    "l5_metric": "Violation Density per KLOC",
+    "description": "Count of lint violations bucketed by severity (error, warning, info) per 1000 lines of code",
+    "sample_normalized_score": 83.4,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Unused Variable Detection",
+    "l5_metric": "Resource Waste Identification",
+    "description": "Scans the code for variables that are declared but never referenced in any operation, measuring technical debt from dead allocations that clutter the code and confuse future maintainers.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Naming Convention Validation",
+    "l5_metric": "Semantic Consistency Score",
+    "description": "Verifies that variables, functions, and classes follow specific casing and descriptive standards, measuring the guessability and professionalism of the code to improve readability.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Code Style Rule Validation",
+    "l5_metric": "Syntactic Uniformity Score",
+    "description": "Enforces rules regarding indentation, line length, and whitespace to ensure visual consistency so that code written by multiple developers looks uniform.",
+    "sample_normalized_score": 82.9,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Complexity Rule Detection",
+    "l5_metric": "Structural Threshold Monitoring",
+    "description": "Flags functions that exceed specific limits for nesting depth or length, measuring the mental load required to process a module and identifying candidates for immediate refactoring.",
+    "sample_normalized_score": 87.5,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Rule Severity Classification",
+    "l5_metric": "Impact Prioritization",
+    "description": "Categorizes violations as Errors, Warnings, or Info based on their risk level, helping developers focus on fixing critical structural flaws before minor stylistic nitpicks.",
+    "sample_normalized_score": 74.1,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Multiple Violations Detection",
+    "l5_metric": "Aggregated Risk Assessment",
+    "description": "Identifies modules that suffer from a high density of different rule breaks, measuring the instability of a file and highlighting parts of the system most likely to contain bugs.",
+    "sample_normalized_score": 81.5,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "False Positive Prevention",
+    "l5_metric": "Accuracy Tuning",
+    "description": "Filters out rule violations that are intentional or contextually irrelevant, measuring the reliability of the analysis tool to ensure developers do not ignore valid warnings.",
+    "sample_normalized_score": 5.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Custom Rule Validation",
+    "l5_metric": "Project-Specific Enforcement",
+    "description": "Allows the team to create and enforce unique rules tailored to specific requirements, measuring compliance with internal business logic or architecture that generic tools might miss.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Configuration File Handling",
+    "l5_metric": "Environment Standardization",
+    "description": "Manages the configuration files that define which rules are active across the team, ensuring every developer on the project is using the exact same quality settings.",
+    "sample_normalized_score": 63.6,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "CI/CD Integration Validation",
+    "l5_metric": "Automated Gatekeeping",
+    "description": "Runs quality checks automatically during the build process, measuring readiness for merge by blocking any code that fails to meet the minimum quality bar before it can be merged.",
+    "sample_normalized_score": 98.8,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CODE QUALITY AUDITING — Duplication, Maintainability Index & Lint",
+    "l2_testing_type": "Static Code Analysis",
+    "l3_technique": "Lint / Rule Violations",
+    "l4_classification": "Violation Reporting Validation",
+    "l5_metric": "Quality Audit Trail",
+    "description": "Generates detailed logs of all detected issues including line numbers and fix suggestions, providing a transparent record of code health for reviews and long-term quality tracking.",
+    "sample_normalized_score": 68.8,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Secure Coding Validation",
+    "l5_metric": "Best Practice Compliance",
+    "description": "Checks the code against industry-standard secure coding guidelines like OWASP, ensuring developers use safe functions and avoid dangerous coding habits that lead to vulnerabilities.",
+    "sample_normalized_score": 55.6,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Input Validation Testing",
+    "l5_metric": "Entry Point Sanitization",
+    "description": "Measures how effectively the code cleans data coming from external sources, identifying locations where user input is used directly in sensitive operations without being checked for malicious content.",
+    "sample_normalized_score": 84.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Data Flow Security Analysis",
+    "l5_metric": "Sensitive Information Tracking",
+    "description": "Tracks the movement of sensitive data through the application, ensuring private data is encrypted or masked and never leaks into logs or insecure output streams.",
+    "sample_normalized_score": 66.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Authentication & Authorization Weakness Detection",
+    "l5_metric": "Access Control Verification",
+    "description": "Identifies flaws in how the application verifies user identity and permissions, flagging hardcoded passwords, weak session management, or logic that allows users to bypass security checks.",
+    "sample_normalized_score": 87.5,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Dependency & Library Vulnerability Detection",
+    "l5_metric": "Supply Chain Security",
+    "description": "Checks third-party libraries against databases of known security issues, measuring the risk of inherited vulnerabilities that exist in code you did not write yourself.",
+    "sample_normalized_score": 85.0,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Compliance & Security Standard Validation",
+    "l5_metric": "Regulatory Alignment",
+    "description": "Verifies if the code meets specific regulatory requirements such as GDPR or HIPAA, providing a report on whether the application is legally and technically secure based on external standards.",
+    "sample_normalized_score": 77.4,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Static Vulnerabilities (SAST)",
+    "l4_classification": "Security Vulnerability Detection",
+    "l5_metric": "Exploit Surface Identification",
+    "description": "Count of high/critical severity vulnerabilities found by static analysis; identifies injection risks, insecure patterns, auth weaknesses",
+    "sample_normalized_score": 87.2,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Transitive Dependency Analysis",
+    "l5_metric": "Hidden Relationship Mapping",
+    "description": "Identifies and analyzes dependencies of dependencies to uncover hidden risks deep in your software stack, measuring the total depth of your external code tree.",
+    "sample_normalized_score": 65.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "License Compliance Testing",
+    "l5_metric": "Legal Risk Validation",
+    "description": "Checks the legal licenses of every library used to ensure they align with your project goals, measuring the risk of legal action or forced open-sourcing due to restrictive licenses.",
+    "sample_normalized_score": 76.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Supply Chain Security Analysis",
+    "l5_metric": "Trust Integrity Verification",
+    "description": "Evaluates the integrity of the source and delivery path of your libraries to prevent poisoned packages, measuring the reliability of maintainers and security of repositories.",
+    "sample_normalized_score": 73.5,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Dependency Health Monitoring",
+    "l5_metric": "Community Vitality Tracking",
+    "description": "Measures the activity level and support of open-source projects you rely on, identifying zombie libraries abandoned by their creators that are unlikely to be updated if a bug is found.",
+    "sample_normalized_score": 78.4,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Risk Prioritization",
+    "l5_metric": "Mitigation Effort Ranking",
+    "description": "Ranks identified dependency issues based on severity and exploitability, helping decide which patch to apply first when development time is limited.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Continuous Dependency Monitoring",
+    "l5_metric": "Real-Time Alerting",
+    "description": "Provides an ongoing watchdog service that alerts immediately when a new vulnerability is discovered in your existing stack, acting as a permanent quality gate as the MVP evolves.",
+    "sample_normalized_score": 99.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Vulnerability Dependency Detection",
+    "l5_metric": "Known CVE Count",
+    "description": "Count of known CVEs in third-party dependencies, categorised by CVSS severity",
+    "sample_normalized_score": 81.2,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "SECURITY WHITE-BOX — SAST, SCA",
+    "l2_testing_type": "Security White-box Testing",
+    "l3_technique": "Dependency Risk (SCA)",
+    "l4_classification": "Outdated Dependency Detection",
+    "l5_metric": "Version Lag Assessment",
+    "description": "Measures the age of your libraries by comparing installed versions against the latest stable releases, identifying components that no longer receive security patches.",
+    "sample_normalized_score": 84.8,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Statement Coverage",
+    "l4_classification": "Unit Testing Support",
+    "l5_metric": "Test Case Granularity",
+    "description": "Identifies exactly which lines of a function are covered by unit tests and which are ignored, helping developers write more focused tests by highlighting hidden blocks of code.",
+    "sample_normalized_score": 87.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Statement Coverage",
+    "l4_classification": "Dead Code Detection",
+    "l5_metric": "Unreachable Logic Identification",
+    "description": "Identifies ghost code — lines that can never be executed regardless of input provided — measuring technical debt by finding unused functions or conditions that clutter the codebase.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Statement Coverage",
+    "l4_classification": "Test Completeness Evaluation",
+    "l5_metric": "Coverage Gap Analysis",
+    "description": "Calculates the ratio of executed lines to total lines to show exactly where the holes are in your quality, measuring the thoroughness of the testing process.",
+    "sample_normalized_score": 3.4,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Statement Coverage",
+    "l4_classification": "Basic Logic Validation",
+    "l5_metric": "Surface-Level Correctness",
+    "description": "Verifies that the code can at least run from start to finish without crashing on a fundamental level, measuring the smoke test success of your logic to ensure the most basic paths are operational.",
+    "sample_normalized_score": 86.4,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Statement Coverage",
+    "l4_classification": "Code Execution Verification",
+    "l5_metric": "Statement Coverage %",
+    "description": "% of executable source statements exercised by the test suite at least once",
+    "sample_normalized_score": 78.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Conditional Logic Testing",
+    "l5_metric": "Boolean Accuracy Check",
+    "description": "Evaluates the behavior of complex logical expressions to ensure they branch correctly under different data inputs, measuring the correctness of how your code handles logical operators.",
+    "sample_normalized_score": 59.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Control Flow Validation",
+    "l5_metric": "Sequence Integrity Mapping",
+    "description": "Verifies the physical transitions between different blocks of code to ensure execution order matches the intended design, measuring the reliability of jumps and calls within your function.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Loop Condition Testing",
+    "l5_metric": "Iteration Boundary Verification",
+    "description": "Measures whether loops correctly handle the decision to start, continue, and terminate, specifically testing the zero-trip, one-trip, and n-trip paths.",
+    "sample_normalized_score": 82.2,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Edge Case Detection",
+    "l5_metric": "Boundary Failure Identification",
+    "description": "Identifies logical failures at the extreme limits of input values such as empty lists or None types, measuring the robustness of your branches when they encounter unexpected data.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Logic Error Detection",
+    "l5_metric": "Branch Misdirection Discovery",
+    "description": "Uncovers flaws where the code takes the wrong turn due to a mistake in the conditional expression, acting as a diagnostic tool for semantic bugs that produce the wrong result without crashing.",
+    "sample_normalized_score": 86.2,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Test Case Completeness",
+    "l5_metric": "Decision Coverage Gap Analysis",
+    "description": "Calculates the percentage of successfully executed branches versus total available decision points, showing exactly which else or elif blocks have never been visited by your tests.",
+    "sample_normalized_score": 39.1,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Branch Coverage",
+    "l4_classification": "Decision Outcome Verification",
+    "l5_metric": "Branch Coverage %",
+    "description": "% of true/false branches of every decision point executed by tests",
+    "sample_normalized_score": 68.1,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Path Execution Tracking",
+    "l5_metric": "Retrieving data. Wait a few seconds and try to cut or copy again.",
+    "description": "Records exactly which sequences of statements and branches are hit during active testing, providing physical proof of which routes in the code were traveled by a specific test case.",
+    "sample_normalized_score": 62.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Complete Coverage Path Verification",
+    "l5_metric": "Full Logic Validation",
+    "description": "Confirms that every unique path identified by the complexity metric has been successfully traveled, measuring completeness of the test suite against the theoretical maximum of the code logic.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Partial Path Coverage Detection",
+    "l5_metric": "Gap Identification",
+    "description": "Highlights logical routes that have only been partially tested or completely ignored, acting as a diagnostic tool to find blind spots where complex logic remains unverified.",
+    "sample_normalized_score": 30.9,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Nested Condition Path Testing",
+    "l5_metric": "Deep Logic Probing",
+    "description": "Measures system stability when multiple decision points are stacked within one another, ensuring the deepest levels of code hierarchy are reachable and functional.",
+    "sample_normalized_score": 34.9,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Loop Path Detection",
+    "l5_metric": "Iterative Route Analysis",
+    "description": "Specifically focuses on paths that enter, repeat, or skip loops entirely, measuring how the code handles different iteration counts including the zero-trip path where the loop never executes.",
+    "sample_normalized_score": 85.6,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Unreachable Path Detection",
+    "l5_metric": "Ghost Code Discovery",
+    "description": "Identifies logical routes that can never be executed due to contradictory conditions or dead code, reducing technical debt by pointing out logic that clutters the system without providing value.",
+    "sample_normalized_score": 5.4,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Exception Path Handling",
+    "l5_metric": "Error Flow Verification",
+    "description": "Measures the code ability to gracefully handle and recover from unexpected errors or try-except blocks, ensuring the system does not crash when forced into a failure state.",
+    "sample_normalized_score": 54.7,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Multi-Function Path Tracking",
+    "l5_metric": "Cross-Component Mapping",
+    "description": "Tracks how logic flows across multiple functions or modules to complete a single task, measuring integration quality between different parts of the application.",
+    "sample_normalized_score": 52.4,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "CI/CD Integration Test",
+    "l5_metric": "Automated Quality Enforcement",
+    "description": "Embeds path verification into the automated pipeline to prevent untested logic from reaching production, measuring compliance with quality standards in real-time.",
+    "sample_normalized_score": 95.0,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "CONTROL FLOW TESTING — Statement, Branch & Path Coverage",
+    "l2_testing_type": "Control Flow Testing",
+    "l3_technique": "Path Coverage",
+    "l4_classification": "Path Detection Testing",
+    "l5_metric": "Path Coverage %",
+    "description": "% of all distinct execution paths through a function that are exercised by the test suite",
+    "sample_normalized_score": 48.2,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Fault Detection Capability",
+    "l5_metric": "Logic Error Sensitivity",
+    "description": "Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",
+    "sample_normalized_score": 70.7,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Test Coverage Quality Validation",
+    "l5_metric": "Test Rigor Assessment",
+    "description": "Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.",
+    "sample_normalized_score": 69.0,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Test Case Improvement Identification",
+    "l5_metric": "Weak Spot Localization",
+    "description": "Pinpoints exactly which surviving mutants were not caught, identifying specific areas where test cases need to be added or strengthened to write more meaningful assertions.",
+    "sample_normalized_score": 69.9,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Edge Case Detection",
+    "l5_metric": "Boundary Mutant Analysis",
+    "description": "Measures the test suite ability to catch errors at boundaries by specifically mutating operators, identifying if tests are robust enough to handle the precise limits of the code logic.",
+    "sample_normalized_score": 79.4,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Fault Detection Capability",
+    "l5_metric": "Logic Error Sensitivity",
+    "description": "Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",
+    "sample_normalized_score": 79.7,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Test Coverage Quality Validation",
+    "l5_metric": "Test Rigor Assessment",
+    "description": "Serves as a meta-metric that validates the quality of your existing coverage. While statement coverage tells you if a line was executed, this measures how well that line was actually tested.",
+    "sample_normalized_score": 60.3,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Mutation Testing",
+    "l3_technique": "Mutation Score",
+    "l4_classification": "Fault Detection Capability",
+    "l5_metric": "Logic Error Sensitivity",
+    "description": "Evaluates the ability of tests to fail when the underlying code logic is altered, measuring whether tests are sensitive enough to catch subtle mistakes that structural coverage might miss.",
+    "sample_normalized_score": 52.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "Regression Testing Monitoring",
+    "l5_metric": "Coverage Delta %",
+    "description": "Change in test coverage percentage between current build and previous baseline — monitors coverage trends",
+    "sample_normalized_score": 88.4,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "Test Suite Effectiveness Tracking",
+    "l5_metric": "Discovery Power Assessment",
+    "description": "Evaluates how many unique logical journeys through the code are validated by current test cases, measuring the ratio of executed paths to total possible paths.",
+    "sample_normalized_score": 65.2,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "CI/CD Quality Gate Enforcement",
+    "l5_metric": "Deployment Readiness Guard",
+    "description": "Acts as an automated threshold that prevents code from being merged if the coverage delta is negative, ensuring that only logically verified code moves toward production.",
+    "sample_normalized_score": 91.2,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "Change Impact Analysis",
+    "l5_metric": "Ripple Effect Mapping",
+    "description": "Identifies which specific logical paths are altered by a code change and which downstream paths might be affected, measuring the logical surface area of a modification to predict unintended side effects.",
+    "sample_normalized_score": 100,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "New Code Testing Validation",
+    "l5_metric": "Fresh Logic Proofing",
+    "description": "Specifically measures whether newly added lines or paths have corresponding test cases, ensuring that the MVP growth is supported by an equal growth in testing depth.",
+    "sample_normalized_score": 83.3,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "MUTATION TESTING & COVERAGE DELTA — Test Suite Effectiveness",
+    "l2_testing_type": "Test Regression/Coverage Analysis",
+    "l3_technique": "Coverage Delta",
+    "l4_classification": "Quality Improvement Measurement",
+    "l5_metric": "Structural Health Benchmarking",
+    "description": "Provides a quantitative score of how much simpler or safer the code becomes after refactoring, measuring the successful reduction of complex untestable paths into cleaner sequences.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Variable Definition Detection",
+    "l5_metric": "All-Defs Coverage %",
+    "description": "% of variable definition points (where variables are assigned) that are exercised by at least one test path",
+    "sample_normalized_score": 44.9,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Definition-Use Mapping",
+    "l5_metric": "Data Path Correlation",
+    "description": "Creates a bridge between where a variable is defined and at least one line of code where that specific value is later read or modified, measuring the integrity of the data journey.",
+    "sample_normalized_score": 54.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Coverage Measurement",
+    "l5_metric": "DU-Path Validation",
+    "description": "Calculates the percentage of Definition-Use pairs that have been successfully exercised by your test suite, providing a deeper quality check than just seeing if a line was executed.",
+    "sample_normalized_score": 50.2,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Uncovered Definition Detection",
+    "l5_metric": "Dead Data Identification",
+    "description": "Identifies variables that are assigned a value but are never actually used by the program, helping reduce technical debt by spotting zombie variables that clutter memory without purpose.",
+    "sample_normalized_score": 2.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Edge Case Handling",
+    "l5_metric": "Null and Boundary Flow Analysis",
+    "description": "Measures how the data flow reacts when a definition results in an unexpected state such as None or an overflow, identifying risks where valid variable definitions might lead to a crash at use.",
+    "sample_normalized_score": 91.3,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Definition Coverage",
+    "l4_classification": "Reporting Validation",
+    "l5_metric": "Audit Trail Verification",
+    "description": "Provides a verifiable report of the variable state at every stage of execution for debugging and compliance, ensuring that any data-related failure can be traced back to its specific definition point.",
+    "sample_normalized_score": 81.8,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Computational Use Detection (C-Use)",
+    "l5_metric": "Data Processing Validation",
+    "description": "Identifies instances where a variable is used in a calculation or output statement, measuring the accuracy of data transformations and ensuring variable values correctly influence final results.",
+    "sample_normalized_score": 60.1,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Predicate Use Detection (P-Use)",
+    "l5_metric": "Logic Influence Assessment",
+    "description": "Identifies where a variable is used to determine the outcome of a decision, measuring how data values control the program execution flow and ensuring both True and False outcomes are tested.",
+    "sample_normalized_score": 59.0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Definition-Use Pair Identification",
+    "l5_metric": "Path Correlation Mapping",
+    "description": "Links every definition of a variable to all possible locations where that specific value could be read, creating a map of data influence across the function to ensure no use-case is left untested.",
+    "sample_normalized_score": 95.0,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "All-Uses Coverage Verification",
+    "l5_metric": "Comprehensive Data Proofing",
+    "description": "Confirms that every single identified Definition-Use pair (both c-use and p-use) has been executed at least once, measuring the total thoroughness of the test suite regarding data integrity.",
+    "sample_normalized_score": 67.7,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Partial Uses Coverage Detection",
+    "l5_metric": "Data Flow Gap Analysis",
+    "description": "Highlights specific variable uses that have never been reached during testing, helping developers find blind spots where a variable is defined but its impact on a calculation or branch is unverified.",
+    "sample_normalized_score": 30.3,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Multiple Definitions Handling",
+    "l5_metric": "Ambiguity Resolution",
+    "description": "Tracks variables that are redefined multiple times such as inside a loop or multiple if blocks, measuring the complexity of the data lifecycle to ensure the current value is always the intended one.",
+    "sample_normalized_score": 59.9,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Cross-Function Use Detection",
+    "l5_metric": "Inter-procedural Tracking",
+    "description": "Monitors how variables such as arguments or global objects move between different functions, measuring the safety of the interfaces between code modules to prevent data corruption during hand-offs.",
+    "sample_normalized_score": 62.8,
+    "sample_status": "Warning"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Unreachable Use Detection",
+    "l5_metric": "Ghost Use Identification",
+    "description": "Identifies code blocks that attempt to use a variable but can never be executed due to logical constraints, helping clean up technical debt by removing logic that relies on impossible data states.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Coverage Reporting Validation",
+    "l5_metric": "Data Integrity Audit",
+    "description": "Provides a detailed report showing which data paths are safe and which are risky, ensuring your MVP meets high-quality standards by providing an audit trail for every variable in the system.",
+    "sample_normalized_score": 96.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DATA FLOW TESTING — All-Definition & All-Uses Coverage",
+    "l2_testing_type": "Data Flow Testing",
+    "l3_technique": "All Uses Coverage",
+    "l4_classification": "Variable Use Detection",
+    "l5_metric": "All-Uses Coverage %",
+    "description": "% of definition-use pairs (variable defined, then used in computation or predicate) exercised by tests",
+    "sample_normalized_score": 56.6,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization",
+    "l2_testing_type": "Development Process Analysis",
+    "l3_technique": "Code Churn",
+    "l4_classification": "Risk-Based Testing Prioritization",
+    "l5_metric": "Code Churn Score",
+    "description": "Rate of code change (lines added + deleted) over a rolling window; high churn signals instability and elevated regression risk",
+    "sample_normalized_score": 45.4,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization",
+    "l2_testing_type": "Development Process Analysis",
+    "l3_technique": "Code Churn",
+    "l4_classification": "Regression Testing Focus",
+    "l5_metric": "Impact-Driven Verification",
+    "description": "Isolates specific modules that have undergone recent modifications, allowing QA to focus regression suites only on affected areas to prevent existing features from breaking during updates.",
+    "sample_normalized_score": 87.7,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization",
+    "l2_testing_type": "Development Process Analysis",
+    "l3_technique": "Code Churn",
+    "l4_classification": "Defect Prediction",
+    "l5_metric": "Fault Probability Modeling",
+    "description": "Uses historical churn data to predict where future bugs will likely occur, measuring the correlation between high change volume and defect density as an early warning system for unstable modules.",
+    "sample_normalized_score": 96.1,
+    "sample_status": "Pass"
+  },
+  {
+    "section": "DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization",
+    "l2_testing_type": "Development Process Analysis",
+    "l3_technique": "Code Churn",
+    "l4_classification": "Test Case Maintenance Identification",
+    "l5_metric": "Validation Suite Updates",
+    "description": "Identifies when code has changed so significantly that existing test cases are likely outdated or irrelevant, signaling when tests need to be rewritten to maintain accuracy.",
+    "sample_normalized_score": 0,
+    "sample_status": "Fail"
+  },
+  {
+    "section": "DEVELOPMENT PROCESS ANALYSIS — Code Churn & Risk-Based Prioritization",
+    "l2_testing_type": "Development Process Analysis",
+    "l3_technique": "Code Churn",
+    "l4_classification": "Change Impact Analysis",
+    "l5_metric": "Side Effect Mapping",
+    "description": "Measures the ripple effect of a code change by identifying all connected modules that may be affected, helping developers understand the full scope before merging to prevent unintended consequences.",
+    "sample_normalized_score": 85.8,
+    "sample_status": "Pass"
+  }
+]
