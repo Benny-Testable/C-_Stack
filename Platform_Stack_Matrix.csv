@@ -1,3 +1,2 @@
 Branch,Language,Build Tool & Package Manager,Architecture Style,Description / Role
-CE-CS-001,C# / .NET 8.0 (LTS),dotnet + NuGet,Monolith,C# ASP.NET Core gRPC Server & Client + Mongo + Angular single solution. Monolithic .NET 8 solution with unified project references.
 P-Block-Negative-Cases,C# / .NET 9.0 & JavaScript (ReactJS),dotnet + NuGet & Vite (esbuild) + npm,MVC (Model-View-Controller),C# ASP.NET Core Web API + SQL Server (EF Core) + ReactJS single solution. 9-Box talent matrix evaluation platform with negative and boundary test case validations.
