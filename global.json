@@ -1,6 +1,7 @@
 {
   "sdk": {
-    "version": "8.0.100",
+    "version": "8.0.400",
     "rollForward": "latestFeature"
-  }
+  },
+  "buildType": "self-contained-linux-x64-containerized"
 }
