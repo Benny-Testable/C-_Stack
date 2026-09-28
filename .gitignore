@@ -44,3 +44,6 @@ ehthumbs_vista.db
 
 # Tool Trigger Reports
 **/report/
+
+# Local run logs
+*.log

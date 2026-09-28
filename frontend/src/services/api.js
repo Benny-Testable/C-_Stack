@@ -15,6 +15,12 @@ export async function fetchDistribution(cycleId) {
   return response.json();
 }
 
+export async function fetchPlatformInfo() {
+  const response = await fetch(`${API_BASE_URL}/platforminfo`);
+  if (!response.ok) throw new Error('Failed to fetch platform build info');
+  return response.json();
+}
+
 export async function calculateQuadrant(performanceScore, potentialScore) {
   const response = await fetch(`${API_BASE_URL}/nineboxgrid/calculate`, {
     method: 'POST',

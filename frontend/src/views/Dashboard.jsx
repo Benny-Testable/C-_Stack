@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import NineBoxGrid from '../components/NineBoxGrid';
-import { fetchDistribution } from '../services/api';
+import BuildInfoBanner from '../components/BuildInfoBanner';
+import { fetchDistribution, fetchPlatformInfo } from '../services/api';
 
 export default function Dashboard() {
+  const [platformInfo, setPlatformInfo] = useState(null);
   const [distribution, setDistribution] = useState([
     { blockNumber: 1, count: 2, employees: [{ employeeId: 101, employeeName: 'Alice Johnson', department: 'Engineering', performanceScore: 2.4, potentialScore: 4.8 }] },
     { blockNumber: 2, count: 4, employees: [{ employeeId: 102, employeeName: 'Bob Smith', department: 'Product', performanceScore: 3.6, potentialScore: 4.2 }] },
@@ -24,6 +26,10 @@ export default function Dashboard() {
         // Fall back to initial demonstration distribution if backend API is not running
         console.warn('Backend API not reachable, running with mock calibration data', err);
       });
+
+    fetchPlatformInfo()
+      .then(setPlatformInfo)
+      .catch(err => console.warn('Backend API not reachable, build info unavailable', err));
   }, []);
 
   return (
@@ -34,6 +40,8 @@ export default function Dashboard() {
           Interactive Performance vs. Potential Grid (Model-View-Controller Architecture)
         </p>
       </header>
+
+      <BuildInfoBanner info={platformInfo} />
 
       <NineBoxGrid distribution={distribution} />
     </div>
