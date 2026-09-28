@@ -1,0 +1,25 @@
+@model IEnumerable<Student>
+<section class="panel">
+    <h1>Students</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Major</th>
+                <th>GPA</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td><a href="/students/profile/@student.StudentId">@student.FirstName @student.LastName</a></td>
+                <td>@student.Email</td>
+                <td>@student.Major</td>
+                <td>@student.Gpa</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,9 @@
+@model Student
+<section class="panel">
+    <h1>@Model.FirstName @Model.LastName</h1>
+    <p>@Model.Email · @Model.Major · GPA @Model.Gpa</p>
+    <p>@Model.City · @Model.Residency · Enrolled @Model.EnrollmentYear</p>
+    @* INTENTIONAL NEGATIVE TEST DATA: student-provided notes are rendered without encoding. *@
+    <div class="raw-note">@Html.Raw(Model.Notes)</div>
+    <div class="raw-note">@Html.Raw(ViewBag.UnsafeNotes as string)</div>
+</section>
