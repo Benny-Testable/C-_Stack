@@ -1,4 +1,5 @@
 # Scholarship CMGroups
+# Benny dummy commit 
 
 Scholarship CMGroups is an EdTech scholarship-management application. Applicants browse programmes, open and submit applications, and can erase their own data. Administrators maintain the catalogue and record review decisions.
 
