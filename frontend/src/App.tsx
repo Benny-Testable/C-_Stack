@@ -30,7 +30,7 @@ export function App(): ReactNode {
         <Route path="scholarships/:id" element={<ScholarshipDetailPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-
+        <Route path="register" element={<RegisterScreen />} />
         <Route element={<RequireAuth />}>
           <Route path="applications" element={<ApplicationListPage />} />
           <Route path="applications/:id" element={<ApplicationDetailPage />} />
