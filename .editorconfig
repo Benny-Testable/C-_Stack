@@ -45,7 +45,7 @@ dotnet_diagnostic.CA1707.severity = warning
 # The Excel "Accuracy Tuning / False Positive Rate" metric expects a suppression
 # rate below 10%; this scope covers generated files only.
 # ---------------------------------------------------------------------------
-[**/Data/Migrations/*.cs]
+[**/Migrations/*.cs]
 dotnet_diagnostic.CA1861.severity = none
 dotnet_diagnostic.CA1062.severity = none
 dotnet_diagnostic.CA1707.severity = none

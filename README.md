@@ -1,119 +1,74 @@
-# Scholarship CMGroups
+# West Coast Fitness Club
 
-Scholarship CMGroups is an EdTech scholarship-management application. Applicants browse programmes, open and submit applications, and can erase their own data. Administrators maintain the catalogue and record review decisions.
+Arizona fitness-club application: React + Vite + TypeScript, ASP.NET Core 8 Clean Architecture, PostgreSQL.
 
-The Excel workbook `Testable_Strategy_Metrics_Mapping_v0.2 1.xlsx` is the source of truth for **engineering quality metrics** (structure, tests, security, compliance, performance). It does not define scholarship business rules. Application behaviour that is not in the workbook is listed in [docs/clarifications.md](docs/clarifications.md) and is marked provisional.
+Branch `SR_west-coast-fitness-club`. The reference branch `Scholarship-CMGroups-positive` is unchanged.
 
-## Technology stack
+## Layout
 
-| Layer | Choice |
+```text
+frontend/                         React, Vite, TypeScript, Vitest, ESLint
+backend/src/WestCoastFitness.Domain
+backend/src/WestCoastFitness.Application
+backend/src/WestCoastFitness.Infrastructure   EF Core 8 + Npgsql, migrations
+backend/src/WestCoastFitness.Api              ASP.NET Core 8
+backend/tests/WestCoastFitness.Application.Tests
+database/schema/001-initial-schema.sql        generated from the EF migration
+```
+
+## Runtimes used
+
+| Piece | Version |
 | --- | --- |
-| SCM | Git (compatible with GitHub, GitLab, and Bitbucket) |
-| Frontend | React, TypeScript, Vite (esbuild), npm |
-| Backend | ASP.NET Core 8, C#, dotnet CLI, NuGet |
-| Database | Microsoft SQL Server |
-| Architecture | MVC-style API (Models, Controllers, Services/Repositories) with a React view layer |
+| .NET SDK | 8.0.420, `global.json` asks for 8.0.100 with `latestFeature` roll-forward |
+| ASP.NET Core / JWT bearer | 8.0.31 |
+| EF Core + Npgsql provider | 8.0.11 (last 8.0 provider release; it does not track EF 8.0.31) |
+| Node | 22.14.0 |
+| Frontend packages | pinned in `frontend/package.json` and `frontend/package-lock.json` |
 
-## Architecture
+## Local run
 
-```text
-ReactJS (Vite)
-   ↓  HTTPS JSON API
-ASP.NET Core 8 API
-   ↓  Controllers → Services → Repositories
-SQL Server
+PostgreSQL and a signing key are supplied by the environment. They are not committed.
+
+```powershell
+$env:POSTGRES_PASSWORD = "<local-password>"
+$env:JWT_SIGNING_KEY = "<at-least-32-characters>"
+docker compose up --build
 ```
 
-Details: [docs/architecture.md](docs/architecture.md).
+Apply the schema once the database is up:
 
-## Repository structure
-
-This branch lives in the existing [C-_Stack](https://github.com/Mohammed-shihaf/C-_Stack.git) repository. `main` contains only the original README; this project is added on the working branch without changing `main`.
-
-```text
-C-_Stack/
-├── frontend/          React + Vite client
-├── backend/           ASP.NET Core 8 solution
-├── database/          SQL schema and catalogue seed
-├── docs/              Architecture, setup, metric mapping
-└── README.md
+```powershell
+$env:ConnectionStrings__Postgres = "Host=localhost;Port=5432;Database=westcoastfitness;Username=fitness;Password=$env:POSTGRES_PASSWORD"
+dotnet tool restore
+dotnet ef database update --project backend/src/WestCoastFitness.Infrastructure --startup-project backend/src/WestCoastFitness.Infrastructure
 ```
 
-## Git branch
+Then, for the API outside compose:
 
-Work is on **`Scholarship-CMGroups-positive`**.
+```powershell
+$env:Jwt__SigningKey = $env:JWT_SIGNING_KEY
+dotnet run --project backend/src/WestCoastFitness.Api
+```
 
-Git rejects branch names that contain spaces (`git check-ref-format`). The name `Scholarship CMGroups positive` is therefore not a legal ref. Hyphens replace the spaces. See [docs/clarifications.md](docs/clarifications.md) item C-01.
+Frontend:
 
-Do not commit or merge this work to `main` unless you are explicitly asked to.
-
-## Setup and run
-
-Step-by-step instructions: [docs/setup.md](docs/setup.md).
-
-Short version, after SQL Server and user-secrets are configured:
-
-```bash
-# Backend
-cd backend
-dotnet restore
-dotnet build
-dotnet test
-dotnet run --project src/ScholarshipCMGroups.Api
-
-# Frontend (separate terminal)
+```powershell
 cd frontend
 npm ci
-npm run test
-npm run build
 npm run dev
 ```
 
-The Vite dev server proxies `/api` to `https://localhost:7148`.
+The UI is at http://localhost:5173 and proxies `/api` to http://localhost:5080.
 
-## API
+Payments are a mock gateway in `MockPaymentGateway`. Amounts of zero or less are declined. No card data is stored.
 
-| Method | Route | Access |
-| --- | --- | --- |
-| GET | `/api/health` | Anonymous |
-| POST | `/api/auth/register` | Anonymous |
-| POST | `/api/auth/login` | Anonymous |
-| GET | `/api/scholarships` | Anonymous |
-| GET | `/api/scholarships/{id}` | Anonymous |
-| POST/PUT/DELETE | `/api/scholarships` | Administrator |
-| GET | `/api/scholarships/{id}/statistics` | Administrator |
-| GET/POST/PUT | `/api/applications` | Authenticated (applicants see own rows) |
-| POST | `/api/applications/{id}/transitions` | Authenticated; role-checked in the service |
-| GET/PUT/DELETE | `/api/applicants/{id}` | Owner or administrator |
+## Tests
 
-OpenAPI UI: `https://localhost:7148/swagger` in Development.
-
-## Database
-
-Four tables: `Scholarships`, `Applicants`, `UserAccounts`, `ScholarshipApplications`. Scripts:
-
-- [database/schema/001-initial-schema.sql](database/schema/001-initial-schema.sql)
-- [database/seed/001-reference-scholarships.sql](database/seed/001-reference-scholarships.sql)
-- EF Core migrations under `backend/src/ScholarshipCMGroups.Api/Data/Migrations/`
-
-No applicant or credential rows are seeded in source control.
-
-## Metric mapping
-
-Every Excel L5 metric is listed in [docs/metric-mapping.md](docs/metric-mapping.md). Rows that need a value the workbook does not give are marked **Requirement clarification needed**.
-
-## Testing
-
-```bash
-cd backend
-dotnet test --collect:"XPlat Code Coverage"
-
-cd ../frontend
-npm run test
-npm run test:coverage
+```powershell
+dotnet test WestCoastFitness.sln --collect:"XPlat Code Coverage"
+cd frontend
+npm test
 npm run lint
+npm run build
 ```
-
-## Configuration
-
-Secrets are not in source. Use `dotnet user-secrets` or environment variables for the SQL connection string, JWT signing key, and optional bootstrap administrator. See [docs/setup.md](docs/setup.md) and [docs/dependencies.md](docs/dependencies.md).

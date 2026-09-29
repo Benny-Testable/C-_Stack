@@ -1,8 +1,8 @@
 {
-  "name": "scholarship-cmgroups-frontend",
+  "name": "west-coast-fitness-frontend",
   "version": "1.0.0",
   "private": true,
-  "description": "React client for the Scholarship CMGroups application management API.",
+  "description": "React client for the West Coast Fitness Club API.",
   "type": "module",
   "packageManager": "npm@10.9.2",
   "engines": {
@@ -15,7 +15,6 @@
     "lint": "eslint .",
     "typecheck": "tsc --build --force",
     "test": "vitest run",
-    "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "duplication": "jscpd src"
   },

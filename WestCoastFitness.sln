@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{02FE894B-5C6B-488F-8504-D7E4996B5B1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{04B88FCA-A83F-46E6-9DA7-5B45E275BACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Domain", "backend\src\WestCoastFitness.Domain\WestCoastFitness.Domain.csproj", "{A40074EA-3F5B-42B3-BD70-A6162C09FEF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Application", "backend\src\WestCoastFitness.Application\WestCoastFitness.Application.csproj", "{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Infrastructure", "backend\src\WestCoastFitness.Infrastructure\WestCoastFitness.Infrastructure.csproj", "{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Api", "backend\src\WestCoastFitness.Api\WestCoastFitness.Api.csproj", "{26F86CDF-3586-4F6E-B80C-9658B0CD13F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4FEAE7A3-EAE3-4634-B439-6B05BC679394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Application.Tests", "backend\tests\WestCoastFitness.Application.Tests\WestCoastFitness.Application.Tests.csproj", "{305D98EE-A812-47D0-911E-C786A73A7464}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A40074EA-3F5B-42B3-BD70-A6162C09FEF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40074EA-3F5B-42B3-BD70-A6162C09FEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40074EA-3F5B-42B3-BD70-A6162C09FEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40074EA-3F5B-42B3-BD70-A6162C09FEF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F86CDF-3586-4F6E-B80C-9658B0CD13F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F86CDF-3586-4F6E-B80C-9658B0CD13F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F86CDF-3586-4F6E-B80C-9658B0CD13F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F86CDF-3586-4F6E-B80C-9658B0CD13F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305D98EE-A812-47D0-911E-C786A73A7464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305D98EE-A812-47D0-911E-C786A73A7464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305D98EE-A812-47D0-911E-C786A73A7464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305D98EE-A812-47D0-911E-C786A73A7464}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04B88FCA-A83F-46E6-9DA7-5B45E275BACF} = {02FE894B-5C6B-488F-8504-D7E4996B5B1C}
+		{A40074EA-3F5B-42B3-BD70-A6162C09FEF7} = {04B88FCA-A83F-46E6-9DA7-5B45E275BACF}
+		{9BDE4AC9-37A7-46BF-9FDC-F13F2F97D1C9} = {04B88FCA-A83F-46E6-9DA7-5B45E275BACF}
+		{36D50EF1-CEAD-4A5E-A37D-543F0C7A7755} = {04B88FCA-A83F-46E6-9DA7-5B45E275BACF}
+		{26F86CDF-3586-4F6E-B80C-9658B0CD13F4} = {04B88FCA-A83F-46E6-9DA7-5B45E275BACF}
+		{4FEAE7A3-EAE3-4634-B439-6B05BC679394} = {02FE894B-5C6B-488F-8504-D7E4996B5B1C}
+		{305D98EE-A812-47D0-911E-C786A73A7464} = {4FEAE7A3-EAE3-4634-B439-6B05BC679394}
+	EndGlobalSection
+EndGlobal

@@ -40,3 +40,4 @@ Thumbs.db
 # Vite cache
 .vite/
 *.local
+*.tsbuildinfo
